@@ -1,0 +1,35 @@
+{
+    "name": "gladejs",
+    "version": "0.0.1",
+    "description": "Helping Marko to Roll Uphill, Past the CaScadeS and enter the GladeJS",
+    "keywords": [
+        "marko",
+        "rollup",
+        "postcss"
+    ],
+    "repository": "github:Glade-JS/gladejs",
+    "homepage": "https://github.com/Glade-JS/gladejs",
+    "author": "Aurélien Stébé <aurelien.stebe@gmail.com>",
+    "license": "MIT",
+    "main": "rollup-plugin.js",
+    "scripts": {
+        "start": "rollup -c -w",
+        "build": "NODE_ENV='production' rollup -c",
+        "clean": "rm -rf build && find . -name '*.marko.js' -delete"
+    },
+    "dependencies": {
+        "@marko/rollup": "^2.0.0",
+        "glob": "^7.1.4",
+        "marko": "^4.18.14",
+        "mz": "^2.7.0",
+        "rollup": "^1.21.4",
+        "rollup-plugin-commonjs": "^10.1.0",
+        "rollup-plugin-json": "^4.0.0",
+        "rollup-plugin-livereload": "^1.0.3",
+        "rollup-plugin-node-resolve": "^5.2.0",
+        "rollup-plugin-postcss": "^2.0.3",
+        "rollup-plugin-serve": "^1.0.1",
+        "rollup-plugin-visualizer": "^2.6.0",
+        "tslib": "^1.10.0"
+    }
+}
