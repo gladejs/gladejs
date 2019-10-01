@@ -1,7 +1,7 @@
 import path from 'path';
 
 import marko from '@marko/rollup';
-import gladejs from './rollup-plugin.js';
+import gladejs from './rollup-plugin';
 
 import resolve from 'rollup-plugin-node-resolve';
 import commonjs from 'rollup-plugin-commonjs';

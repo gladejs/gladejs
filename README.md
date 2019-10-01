@@ -26,9 +26,9 @@ Paste this one line in a new file named "`rollup.config.js`" to hide the magic :
 ```js
 export { default } from './node_modules/gladejs/rollup.config';
 ```
-... or copy the GladeJS config file itself for the full mystical power of Rollup :
+... or copy the GladeJS config itself for the full mystical power of Rollup :
 ```sh
-$ cp node_modules/gladejs/rollup.config.js .
+$ cp node_modules/gladejs/rollup*.js .
 ```
 
 ### Pages & Components
