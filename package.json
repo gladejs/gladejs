@@ -31,5 +31,8 @@
         "rollup-plugin-serve": "^1.0.1",
         "rollup-plugin-visualizer": "^2.6.0",
         "tslib": "^1.10.0"
+    },
+    "devDependencies": {
+        "semantic-release": "^15.13.24"
     }
 }
