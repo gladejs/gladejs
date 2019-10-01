@@ -24,7 +24,7 @@ Use the following in your "`package.json`" file :
 ### Rollup Configuration
 Paste this one line in a new file named "`rollup.config.js`" to hide the magic :
 ```js
-export { default } from 'gladejs/rollup.config';
+export { default } from './node_modules/gladejs/rollup.config';
 ```
 ... or copy the GladeJS config file itself for the full mystical power of Rollup :
 ```sh
