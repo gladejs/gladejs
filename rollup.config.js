@@ -7,8 +7,7 @@ import resolve from 'rollup-plugin-node-resolve';
 import commonjs from 'rollup-plugin-commonjs';
 import json from 'rollup-plugin-json';
 import postcss from 'rollup-plugin-postcss';
-import serve from 'rollup-plugin-serve';
-import livereload from 'rollup-plugin-livereload';
+import browsersync from 'rollup-plugin-browsersync';
 import visualizer from 'rollup-plugin-visualizer';
 
 const OUTPUT_DIR = path.resolve('build');
@@ -41,8 +40,7 @@ const plugins = [
     json({ compact: isProd }),
     postcss({ extract: OUTPUT_DIR + '/styles.css' }),
     gladejs(),
-    isLive && serve(OUTPUT_DIR),
-    isLive && livereload(OUTPUT_DIR),
+    isLive && browsersync({ server: OUTPUT_DIR }),
     !isProd && visualizer({ filename: OUTPUT_DIR + '/bundle.stats.html' })
 ];
 
