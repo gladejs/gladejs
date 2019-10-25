@@ -1,0 +1,14 @@
+.flex-col {
+    height: 80vh;
+    display: flex;
+    flex-flow: column;
+}
+
+.flex-col img {
+    margin: auto;
+}
+
+.flex-col .count,
+.flex-col .example-button {
+    margin: 1em auto;
+}
