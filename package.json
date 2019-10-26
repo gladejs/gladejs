@@ -19,10 +19,10 @@
     },
     "dependencies": {
         "@marko/rollup": "^2.0.1",
+        "browser-sync": "^2.26.7",
         "glob": "^7.1.5",
-        "marko": "^4.18.16",
+        "marko": "^4.18.18",
         "rollup": "^1.25.2",
-        "rollup-plugin-browsersync": "^1.0.0",
         "rollup-plugin-commonjs": "^10.1.0",
         "rollup-plugin-json": "^4.0.0",
         "rollup-plugin-node-resolve": "^5.2.0",
@@ -31,6 +31,6 @@
         "rollup-plugin-visualizer": "^2.6.0"
     },
     "devDependencies": {
-        "semantic-release": "^15.13.27"
+        "semantic-release": "^15.13.28"
     }
 }

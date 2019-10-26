@@ -8,7 +8,6 @@ import commonjs from 'rollup-plugin-commonjs';
 import url from 'rollup-plugin-url';
 import json from 'rollup-plugin-json';
 import postcss from 'rollup-plugin-postcss';
-import browsersync from 'rollup-plugin-browsersync';
 import visualizer from 'rollup-plugin-visualizer';
 
 const SOURCE_DIR = path.resolve('pages');
@@ -16,16 +15,6 @@ const OUTPUT_DIR = path.resolve('build');
 
 const isLive = process.env.ROLLUP_WATCH === 'true';
 const isProd = isLive ? false : process.env.NODE_ENV === 'production';
-
-function domdatafix() {
-    return {
-        name: 'dom-data-fix',
-        transform(code, id) {
-            if (!id.endsWith('/runtime/components/dom-data.js')) return null;
-            return code.replace('require.resolve("./dom-data");', 'navigator.appVersion;');
-        }
-    };
-}
 
 const plugins = [
     domdatafix(),
@@ -46,7 +35,13 @@ const plugins = [
     json({ compact: isProd }),
     postcss({ extract: OUTPUT_DIR + '/css/styles.css' }),
     gladejs(),
-    isLive && browsersync({ server: OUTPUT_DIR }),
+    // @ "https://www.browsersync.io/docs/options" for the full list of options
+    isLive && browsersync({
+        open: false, // Pick one => 'ui', 'local' or 'external'
+        watch: true, // Watching is kind of the whole point here
+        notify: false, // Maybe you like notifications, I don't
+        server: OUTPUT_DIR // Obviously we are serving the output
+    }),
     !isProd && visualizer({ filename: OUTPUT_DIR + '/bundle.stats.html' })
 ];
 
@@ -70,3 +65,23 @@ export default {
         if (id.includes('/node_modules/')) return 'js/other';
     }
 };
+
+function browsersync(config) {
+    const bs = require('browser-sync').create();
+    return {
+        name: 'browser-sync',
+        writeBundle() {
+            if (!bs.active) bs.init(config);
+        }
+    };
+}
+
+function domdatafix() {
+    return {
+        name: 'dom-data-fix',
+        transform(code, id) {
+            if (!id.endsWith('/runtime/components/dom-data.js')) return null;
+            return code.replace('require.resolve("./dom-data");', 'navigator.appVersion;');
+        }
+    };
+}
