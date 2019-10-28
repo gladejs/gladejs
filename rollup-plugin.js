@@ -8,9 +8,9 @@ export default () => {
         name: 'gladejs',
 
         options(options) {
-            let input = path.resolve(options.input);
+            const input = path.resolve(options.input);
 
-            let pages = glob.sync('*.marko', {
+            const pages = glob.sync('*.marko', {
                 matchBase: true, absolute: true,
                 ignore: '**/components/**', cwd: input
             });
@@ -19,7 +19,7 @@ export default () => {
                 [page.substring(input.length + 1, page.length - 6), page]
             )));
 
-            let manualChunks = options.manualChunks;
+            const manualChunks = options.manualChunks;
             options.manualChunks = (id) => {
                 if (id.endsWith('|assets')) return 'assets';
                 if (manualChunks) return manualChunks(id);
@@ -29,11 +29,11 @@ export default () => {
         },
 
         generateBundle(_, bundle) {
-            let assets = Object.values(bundle).find(entry => entry.name == 'assets');
-            let assetPaths = new Function('assets', assets.code + 'return assets;')([]);
-            let assetReducer = (code, path) => code.replace(new RegExp(path[0], 'g'), path[1]);
+            const assets = Object.values(bundle).find(entry => entry.name == 'assets');
+            const assetPaths = new Function('assets', assets.code + 'return assets;')([]);
+            const assetReducer = (code, path) => code.replace(new RegExp(path[0], 'g'), path[1]);
 
-            let styles = Object.values(bundle).filter(entry =>
+            const styles = Object.values(bundle).filter(entry =>
                 entry.isAsset && entry.fileName.endsWith('.css')
             ).map(file =>
                 ({ href: '/' + file.fileName, code: file.source })
@@ -42,14 +42,14 @@ export default () => {
             Object.values(bundle).filter(entry =>
                 entry.isEntry && entry.facadeModuleId.endsWith('.marko')
             ).forEach(file => {
-                let tagIndex = file.facadeModuleId.indexOf(':');
-                let pagePath = file.facadeModuleId.substring(tagIndex + 1);
+                const tagIndex = file.facadeModuleId.indexOf(':');
+                const pagePath = file.facadeModuleId.substring(tagIndex + 1);
 
                 delete require.cache[pagePath];
-                let template = require(pagePath);
+                const template = require(pagePath);
 
                 file.code = file.code.replace(new RegExp("import '.*/" + assets.fileName + "';"), '');
-                let rendered = template.renderToString({ module: file, styles: styles });
+                const rendered = template.renderToString({ module: file, styles: styles });
 
                 this.emitFile({
                     type: 'asset', fileName: file.name + '.html',
