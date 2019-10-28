@@ -35,14 +35,20 @@ const plugins = [
     json({ compact: isProd }),
     postcss({ extract: OUTPUT_DIR + '/css/styles.css' }),
     gladejs(),
-    // @ "https://www.browsersync.io/docs/options" for the full list of options
+    // @docs "https://github.com/btd/rollup-plugin-visualizer#options"
+    isProd && visualizer({
+        filename: 'rollup_stats.html', // The graph file, to commit or not
+        open: false, // Usefull when adjusting bundle chunks distribution
+        template: 'sunburst', // 'sunburst', 'treemap' or 'circlepacking'
+        bundlesRelative: false // Group all bundles into one graph or not
+    }),
+    // @docs "https://www.browsersync.io/docs/options"
     isLive && browsersync({
         open: false, // Pick one => 'ui', 'local' or 'external'
         watch: true, // Watching is kind of the whole point here
         notify: false, // Maybe you like notifications, I don't
         server: OUTPUT_DIR // Obviously we are serving the output
-    }),
-    !isProd && visualizer({ filename: OUTPUT_DIR + '/bundle.stats.html' })
+    })
 ];
 
 export default {
