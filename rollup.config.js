@@ -17,37 +17,45 @@ const isLive = process.env.ROLLUP_WATCH === 'true';
 const isProd = isLive ? false : process.env.NODE_ENV === 'production';
 
 const plugins = [
-    domdatafix(),
-    marko({ hydrate: true }),
+    domdatafix(), // Move on, this is just a quick fix & shall be deleted soon.
+    marko({ hydrate: true }), // We are doing SSR, so let's stay well hydrated !
+
     resolve({
         browser: true,
         preferBuiltins: false,
         extensions: ['.mjs', '.js', '.json', '.node', '.marko']
     }),
+
     commonjs({
         include: /node_modules/,
         extensions: ['.js', '.marko']
     }),
+
     url({
         limit: 10 * 1024, // inline files < 10 kb
         fileName: '/assets/[name]-[hash][extname]'
     }),
+
     json({ compact: isProd }),
+
     postcss({ extract: OUTPUT_DIR + '/css/styles.css' }),
-    gladejs(),
+
+    gladejs(), // Our plugin is "last" to get access to the finished bundle.
+
     // @docs "https://github.com/btd/rollup-plugin-visualizer#options"
     isProd && visualizer({
-        filename: 'rollup_stats.html', // The graph file, to commit or not
-        open: false, // Usefull when adjusting bundle chunks distribution
+        filename: 'rollup_stats.html', // the graph file, to commit or not
+        open: false, // usefull when adjusting bundle chunks distribution
         template: 'sunburst', // 'sunburst', 'treemap' or 'circlepacking'
-        bundlesRelative: false // Group all bundles into one graph or not
+        bundlesRelative: false // group all bundles into one graph or not
     }),
+
     // @docs "https://www.browsersync.io/docs/options"
     isLive && browsersync({
-        open: false, // Pick one => 'ui', 'local' or 'external'
-        watch: true, // Watching is kind of the whole point here
-        notify: false, // Maybe you like notifications, I don't
-        server: OUTPUT_DIR // Obviously we are serving the output
+        open: false, // pick one => 'ui', 'local' or 'external'
+        watch: true, // watching is kind of the whole point here
+        notify: false, // maybe you like notifications, I don't
+        server: OUTPUT_DIR // obviously we are serving the output
     })
 ];
 
