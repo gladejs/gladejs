@@ -20,25 +20,39 @@ const plugins = [
     domdatafix(), // Move on, this is just a quick fix & shall be deleted soon.
     marko({ hydrate: true }), // We are doing SSR, so let's stay well hydrated !
 
+    // @docs "https://github.com/rollup/rollup-plugin-node-resolve#usage"
     resolve({
-        browser: true,
-        preferBuiltins: false,
+        browser: true, // we are indeed building for the browser
+        preferBuiltins: false, // and hence do not have builtins
         extensions: ['.mjs', '.js', '.json', '.node', '.marko']
     }),
 
+    // @docs "https://github.com/rollup/rollup-plugin-commonjs#usage"
     commonjs({
-        include: /node_modules/,
-        extensions: ['.js', '.marko']
+        include: /node_modules/, // let's limit this to node
+        extensions: ['.js', '.marko'] // and add Marko files
     }),
 
+    // @docs "https://github.com/rollup/rollup-plugin-url#options"
     url({
-        limit: 10 * 1024, // inline files < 10 kb
-        fileName: '/assets/[name]-[hash][extname]'
+        limit: 7 * 1024, // inline files < 7 kb, copy the rest
+        sourceDir: SOURCE_DIR, // to get the correct [dirname]
+        fileName: '/assets/[dirname][name]-[hash][extname]',
+        include: ['**/*.svg', '**/*.png', '**/*.jpe?g', '**/*.gif']
     }),
 
-    json({ compact: isProd }),
+    // @docs "https://github.com/rollup/rollup-plugin-json#usage"
+    json({
+        namedExports: true, // we name each JSON property
+        preferConst: true // and prefer "const" to "var"
+    }),
 
-    postcss({ extract: OUTPUT_DIR + '/css/styles.css' }),
+    // @docs "https://github.com/egoist/rollup-plugin-postcss#options"
+    postcss({
+        plugins: [], // pick yours @ "https://www.postcss.parts"
+        minimize: isProd, // apply "cssnano" in production
+        extract: OUTPUT_DIR + '/css/styles.css'
+    }),
 
     gladejs(), // Our plugin is "last" to get access to the finished bundle.
 
