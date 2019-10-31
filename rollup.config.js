@@ -109,7 +109,8 @@ function domdatafix() {
         name: 'dom-data-fix',
         transform(code, id) {
             if (!id.endsWith('/runtime/components/dom-data.js')) return null;
-            return code.replace('require.resolve("./dom-data");', 'navigator.appVersion;');
+            return code.replace(' require("./util").___runtimeId;',
+                ' (window.$MUID || (window.$MUID = { i: 0 })).i++;');
         }
     };
 }
