@@ -20,17 +20,18 @@
     "dependencies": {
         "@marko/rollup": "^2.0.1",
         "browser-sync": "^2.26.7",
-        "glob": "^7.1.5",
-        "marko": "^4.18.20",
-        "rollup": "^1.26.0",
+        "glob": "^7.1.6",
+        "marko": "^4.18.23",
+        "rollup": "^1.26.3",
         "rollup-plugin-commonjs": "^10.1.0",
         "rollup-plugin-json": "^4.0.0",
         "rollup-plugin-node-resolve": "^5.2.0",
         "rollup-plugin-postcss": "^2.0.3",
         "rollup-plugin-url": "^3.0.0",
-        "rollup-plugin-visualizer": "^2.6.0"
+        "rollup-plugin-visualizer": "^2.7.2"
     },
     "devDependencies": {
-        "semantic-release": "^15.13.28"
+        "semantic-release": "^15.13.30",
+        "standard": "^14.3.1"
     }
 }
