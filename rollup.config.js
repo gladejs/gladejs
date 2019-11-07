@@ -17,7 +17,6 @@ const isLive = process.env.ROLLUP_WATCH === 'true'
 const isProd = isLive ? false : process.env.NODE_ENV === 'production'
 
 const plugins = [
-  domdatafix(), // Move on, this is just a quick fix & shall be deleted soon.
   marko({ hydrate: true }), // We are doing SSR, so let's stay well hydrated !
 
   // @docs "https://github.com/rollup/rollup-plugin-node-resolve#usage"
@@ -100,17 +99,6 @@ function browsersync (config) {
     name: 'browser-sync',
     writeBundle () {
       if (!bs.active) bs.init(config)
-    }
-  }
-}
-
-function domdatafix () {
-  return {
-    name: 'dom-data-fix',
-    transform (code, id) {
-      if (!id.endsWith('/runtime/components/dom-data.js')) return null
-      return code.replace(' require("./util").___runtimeId;',
-        ' (window.$MUID || (window.$MUID = { i: 0 })).i++;')
     }
   }
 }

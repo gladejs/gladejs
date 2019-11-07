@@ -21,7 +21,7 @@
         "@marko/rollup": "^2.0.1",
         "browser-sync": "^2.26.7",
         "glob": "^7.1.6",
-        "marko": "^4.18.23",
+        "marko": "^4.18.24",
         "rollup": "^1.26.3",
         "rollup-plugin-commonjs": "^10.1.0",
         "rollup-plugin-json": "^4.0.0",
