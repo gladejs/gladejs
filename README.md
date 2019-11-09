@@ -20,7 +20,7 @@ Use the following in your "`package.json`" file :
 "scripts": {
     "start": "rollup -c -w",
     "build": "NODE_ENV='production' rollup -c",
-    "clean": "rm -rf build && find . -name '*.marko.js' -delete"
+    "clean": "rimraf build **/*.marko.js && rimraf **/*.marko.js"
 },
 ```
 
