@@ -1,7 +1,6 @@
 import path from 'path'
-
 import marko from '@marko/rollup'
-import gladejs from './rollup-plugin'
+import { gladejs, browsersync } from './rollup-plugin'
 
 import resolve from 'rollup-plugin-node-resolve'
 import commonjs from 'rollup-plugin-commonjs'
@@ -84,21 +83,5 @@ export default {
   watch: {
     chokidar: false,
     exclude: /node_modules/
-  },
-
-  manualChunks (id) {
-    if (id.startsWith(path.resolve('components'))) return 'js/components'
-    if (id.includes('/node_modules/marko/')) return 'js/marko'
-    if (id.includes('/node_modules/')) return 'js/other'
-  }
-}
-
-function browsersync (config) {
-  const bs = require('browser-sync').create()
-  return {
-    name: 'browser-sync',
-    writeBundle () {
-      if (!bs.active) bs.init(config)
-    }
   }
 }
