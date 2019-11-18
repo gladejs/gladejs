@@ -16,7 +16,7 @@ export function gladejs () {
       const styles = listStyleAssets(bundle)
 
       const assets = Object.values(bundle).find(entry => entry.name === 'assets')
-      const assetPaths = new Function('assets', assets.code + 'return assets;')([]) // eslint-disable-line
+      const assetPaths = new Function('assets', assets.code + 'return assets;')([]) // eslint-disable-line no-new-func
       const assetReducer = (code, path) => code.replace(new RegExp(path[0], 'g'), path[1])
 
       Object.values(bundle).filter(entry =>
@@ -39,6 +39,21 @@ export function gladejs () {
         else if (entry.type === 'chunk') {
           entry.code = assetPaths.reduce(assetReducer, entry.code)
         }
+      })
+    }
+  }
+}
+
+export function htmlminifier (config) {
+  const minify = require('html-minifier').minify
+
+  return {
+    name: 'html-minifier',
+    generateBundle (_, bundle) {
+      Object.values(bundle).filter(entry =>
+        entry.isAsset && entry.fileName.endsWith('.html')
+      ).forEach(file => {
+        file.source = minify(file.source, config)
       })
     }
   }
