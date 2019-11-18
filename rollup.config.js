@@ -86,13 +86,12 @@ const plugins = [
   isProd && visualizer({
     filename: 'rollup_stats.html', // the graph file, to commit or not
     open: false, // usefull when adjusting bundle chunks distribution
-    template: 'sunburst', // 'sunburst', 'treemap' or 'circlepacking'
-    bundlesRelative: false // group all bundles into one graph or not
+    template: 'treemap' // 'sunburst' or 'treemap' or 'circlepacking'
   }),
 
   // @docs "https://www.browsersync.io/docs/options"
   isLive && browsersync({
-    open: false, // pick one => 'ui', 'local' or 'external'
+    open: false, // pick one => 'ui' or 'local' or 'external'
     watch: true, // watching is kind of the whole point here
     notify: false, // maybe you like notifications, I don't
     server: OUTPUT_DIR // obviously we are serving the output
