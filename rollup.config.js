@@ -100,9 +100,9 @@ const plugins = [
 
   // @docs "https://github.com/btd/rollup-plugin-visualizer#options"
   isProd && visualizer({
-    filename: 'rollup_stats.html', // the graph file, to commit or not
+    template: 'treemap', // 'sunburst' or 'treemap' or 'circlepacking'
     open: false, // usefull when adjusting bundle chunks distribution
-    template: 'treemap' // 'sunburst' or 'treemap' or 'circlepacking'
+    filename: 'rollup_stats.html' // the graph file, to commit or not
   }),
 
   // @docs "https://www.browsersync.io/docs/options"
