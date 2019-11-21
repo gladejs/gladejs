@@ -7,6 +7,7 @@ import commonjs from 'rollup-plugin-commonjs'
 import url from 'rollup-plugin-url'
 import json from 'rollup-plugin-json'
 import postcss from 'rollup-plugin-postcss'
+import { terser } from 'rollup-plugin-terser'
 import visualizer from 'rollup-plugin-visualizer'
 
 const SOURCE_DIR = path.resolve('pages')
@@ -50,6 +51,21 @@ const plugins = [
     plugins: [], // pick yours @ "https://www.postcss.parts"
     minimize: isProd, // apply "cssnano" in production
     extract: OUTPUT_DIR + '/css/styles.css'
+  }),
+
+  // @docs "https://github.com/TrySound/rollup-plugin-terser#options"
+  isProd && terser({
+    ecma: 6, // choose 5/6/7/8, but ES6 is the safe bet right now
+    mangle: true, // turn it off to get readable stacktraces back
+    nameCache: {}, // we use the same object cache for all chunks
+
+    // @docs "https://terser.org/docs/api-reference#compress-options"
+    compress: {
+      passes: 3, // number of times to compress, 3 is probably plenty
+      inline: 3, // level of function calls to inline => [0, 1, 2, 3]
+      unused: true, // turn it off if you are missing some javascript
+      unsafe: false // turn it on at your own peril (seems OK though)
+    }
   }),
 
   gladejs(), // Our plugin is "last" to get access to the finished bundle.

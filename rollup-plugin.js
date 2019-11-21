@@ -16,20 +16,20 @@ export function gladejs () {
       const styles = listStyleAssets(bundle)
 
       const assets = Object.values(bundle).find(entry => entry.name === 'assets')
+      const assetImportRegExp = new RegExp('import[^;]+/' + assets.fileName + '.;')
       const assetPaths = new Function('assets', assets.code + 'return assets;')([]) // eslint-disable-line no-new-func
       const assetReducer = (code, path) => code.replace(new RegExp(path[0], 'g'), path[1])
 
       Object.values(bundle).filter(entry =>
         entry.isEntry && entry.facadeModuleId.endsWith('.marko')
       ).forEach(file => {
-        file.code = file.code.replace(new RegExp("import '.*/" + assets.fileName + "';"), '')
-        const rendered = getMarkoFacade(file).renderToString({ module: file, styles: styles })
+        file.code = file.code.replace(assetImportRegExp, '').trim()
 
-        this.emitFile({
-          type: 'asset',
-          fileName: file.name + '.html',
-          source: assetPaths.reduce(assetReducer, rendered)
-        })
+        const template = getMarkoFacade(file)
+        const rendered = template.renderToString({ module: file, styles: styles })
+        const htmlCode = assetPaths.reduce(assetReducer, rendered)
+
+        this.emitFile({ type: 'asset', source: htmlCode, fileName: file.name + '.html' })
       })
 
       assets.code = ''
