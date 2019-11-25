@@ -124,7 +124,7 @@ export default {
   },
 
   watch: {
-    chokidar: false,
+    chokidar: true,
     exclude: /node_modules/
   }
 }
