@@ -1,13 +1,16 @@
 import path from 'path'
 import marko from '@marko/rollup'
+
 import { gladejs, htmlminifier, browsersync } from './rollup-plugin'
 
 import resolve from 'rollup-plugin-node-resolve'
 import commonjs from 'rollup-plugin-commonjs'
-import url from 'rollup-plugin-url'
-import json from 'rollup-plugin-json'
+import url from '@rollup/plugin-url'
+import json from '@rollup/plugin-json'
 import postcss from 'rollup-plugin-postcss'
 import { terser } from 'rollup-plugin-terser'
+import gzip from 'rollup-plugin-gzip'
+import brotli from 'rollup-plugin-brotli'
 import visualizer from 'rollup-plugin-visualizer'
 
 const SOURCE_DIR = path.resolve('pages')
@@ -32,7 +35,7 @@ const plugins = [
     extensions: ['.js', '.marko'] // and add Marko files
   }),
 
-  // @docs "https://github.com/rollup/rollup-plugin-url#options"
+  // @docs "https://github.com/rollup/plugins/tree/master/packages/url#options"
   url({
     limit: 7 * 1024, // inline files < 7 kb, copy the rest
     sourceDir: SOURCE_DIR, // to get the correct [dirname]
@@ -40,7 +43,7 @@ const plugins = [
     include: ['**/*.svg', '**/*.png', '**/*.jpe?g', '**/*.gif']
   }),
 
-  // @docs "https://github.com/rollup/rollup-plugin-json#usage"
+  // @docs "https://github.com/rollup/plugins/tree/master/packages/json#options"
   json({
     namedExports: true, // we name each JSON property
     preferConst: true // and prefer "const" to "var"
@@ -96,6 +99,17 @@ const plugins = [
     removeOptionalTags: false, // remove optional tags like HTML, HEAD, BODY, ...
     removeAttributeQuotes: false, // remove quotes around attributes when possible
     removeEmptyAttributes: false // remove attributes with whitespace-only values
+  }),
+
+  // @docs "https://github.com/kryops/rollup-plugin-gzip#configuration"
+  isProd && gzip({
+    minSize: 1024, // skip files < 1kb
+    filter: /\.(js|css|html|json)$/
+  }),
+
+  // @docs "https://github.com/keithamus/rollup-plugin-brotli#configuration"
+  isProd && brotli({
+    minSize: 1024 // skip files < 1kb
   }),
 
   // @docs "https://github.com/btd/rollup-plugin-visualizer#options"

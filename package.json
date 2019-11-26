@@ -19,6 +19,8 @@
     },
     "dependencies": {
         "@marko/rollup": "^2.0.1",
+        "@rollup/plugin-json": "^4.0.0",
+        "@rollup/plugin-url": "^4.0.0",
         "browser-sync": "^2.26.7",
         "chokidar": "^2.1.8",
         "cssnano": "^4.1.10",
@@ -28,12 +30,12 @@
         "postcss": "^7.0.23",
         "rimraf": "^3.0.0",
         "rollup": "^1.27.5",
+        "rollup-plugin-brotli": "^2.0.2",
         "rollup-plugin-commonjs": "^10.1.0",
-        "rollup-plugin-json": "^4.0.0",
+        "rollup-plugin-gzip": "^2.2.0",
         "rollup-plugin-node-resolve": "^5.2.0",
         "rollup-plugin-postcss": "^2.0.3",
         "rollup-plugin-terser": "^5.1.2",
-        "rollup-plugin-url": "^3.0.0",
         "rollup-plugin-visualizer": "^3.2.2",
         "terser": "^4.4.0"
     },
