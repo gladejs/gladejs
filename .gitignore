@@ -1,5 +1,3 @@
-build/
 .DS_Store
 *.marko.js
 node_modules/
-rollup_stats.html
