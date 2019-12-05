@@ -71,7 +71,7 @@ const plugins = [
     }
   }),
 
-  gladejs(), // Our plugin is "last" to get access to the finished bundle.
+  gladejs(isLive), // Our plugin is "last" to get access to the finished bundle.
 
   // @docs "https://github.com/kangax/html-minifier#options-quick-reference"
   isProd && htmlminifier({

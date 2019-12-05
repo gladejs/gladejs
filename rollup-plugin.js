@@ -3,7 +3,7 @@ import glob from 'glob'
 
 import 'marko/node-require'
 
-export function gladejs () {
+export function gladejs (isLive = false) {
   return {
     name: 'gladejs',
 
@@ -24,9 +24,10 @@ export function gladejs () {
         entry.isEntry && entry.facadeModuleId.endsWith('.marko')
       ).forEach(file => {
         file.code = file.code.replace(assetImportRegExp, '').trim()
+        const data = { isLive: isLive, module: file, styles: styles }
 
-        const template = getMarkoFacade(file)
-        const rendered = template.renderToString({ module: file, styles: styles })
+        const template = getMarkoFacade(file.facadeModuleId)
+        const rendered = template.renderToString({ $global: data })
         const htmlCode = assetPaths.reduce(assetReducer, rendered)
 
         this.emitFile({ type: 'asset', source: htmlCode, fileName: file.name + '.html' })
@@ -103,9 +104,9 @@ function listStyleAssets (bundle) {
   )
 }
 
-function getMarkoFacade (entry) {
-  const tagIndex = entry.facadeModuleId.indexOf(':')
-  const pagePath = entry.facadeModuleId.substring(tagIndex + 1)
+function getMarkoFacade (moduleId) {
+  const tagIndex = moduleId.indexOf(':')
+  const pagePath = moduleId.substring(tagIndex + 1)
 
   delete require.cache[pagePath]
   return require(pagePath)

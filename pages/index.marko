@@ -3,12 +3,14 @@
     <head>
         <meta charset="utf-8"/>
         <title>Hello World !</title>
-        <base href="https://glade-js.github.io/gladejs/"/>
-        <for|style| of=input.styles>
+        <if(!out.global.isLive)>
+            <base href="/gladejs/"/>
+        </if>
+        <for|style| of=out.global.styles>
             <link rel="stylesheet" href=style.href/>
         </for>
-        <script type="module">${input.module.code}</script>
-        $ input.module.code = "";
+        <script type="module">${out.global.module.code}</script>
+        $ out.global.module.code = "";
     </head>
     <body>
         <main.flex-col role="main">
