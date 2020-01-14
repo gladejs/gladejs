@@ -3,7 +3,7 @@ import glob from 'glob'
 
 import 'marko/node-require'
 
-export function gladejs (isLive = false) {
+export function gladejs (isProd = true) {
   return {
     name: 'gladejs',
 
@@ -24,7 +24,7 @@ export function gladejs (isLive = false) {
         entry.isEntry && entry.facadeModuleId.endsWith('.marko')
       ).forEach(file => {
         file.code = file.code.replace(assetImportRegExp, '').trim()
-        const data = { isLive: isLive, module: file, styles: styles }
+        const data = { isProd: isProd, module: file, styles: styles }
 
         const template = getMarkoFacade(file.facadeModuleId)
         const rendered = template.renderToString({ $global: data })

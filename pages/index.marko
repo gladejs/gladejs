@@ -3,9 +3,7 @@
     <head>
         <meta charset="utf-8"/>
         <title>Hello World !</title>
-        <if(!out.global.isLive)>
-            <base href="/gladejs/"/>
-        </if>
+        <base href=(out.global.isProd ? "/gladejs/" : "/")/>
         <for|style| of=out.global.styles>
             <link rel="stylesheet" href=style.href/>
         </for>
