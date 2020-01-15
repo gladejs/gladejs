@@ -23,8 +23,9 @@ export function gladejs (isProd = true) {
       Object.values(bundle).filter(entry =>
         entry.isEntry && entry.facadeModuleId.endsWith('.marko')
       ).forEach(file => {
+        const pageId = getMarkoPageId(file.name)
         file.code = file.code.replace(assetImportRegExp, '').trim()
-        const data = { isProd: isProd, module: file, styles: styles }
+        const data = { isProd: isProd, pageId: pageId, styles: styles, module: file }
 
         const template = getMarkoFacade(file.facadeModuleId)
         const rendered = template.renderToString({ $global: data })
@@ -94,6 +95,13 @@ function gladeChunking (userChunks) {
       if (id.includes('/node_modules/')) return 'js/packages'
     }
   }
+}
+
+function getMarkoPageId (fileId) {
+  if (fileId === 'index') return '/'
+  if (fileId.endsWith('/index')) {
+    return '/' + fileId.substring(0, fileId.length - 5)
+  } else return `/${fileId}.html`
 }
 
 function listStyleAssets (bundle) {

@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8"/>
         <title>Hello World !</title>
-        <base href=(out.global.isProd ? "/gladejs/" : "/")/>
+        <base href=out.global.pageId/>
         <for|style| of=out.global.styles>
             <link rel="stylesheet" href=style.href/>
         </for>
