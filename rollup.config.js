@@ -39,6 +39,7 @@ const plugins = [
   url({
     limit: 7 * 1024, // inline files < 7 kb, copy the rest
     sourceDir: SOURCE_DIR, // to get the correct [dirname]
+    publicPath: '', // add it also to your <base href> tag
     fileName: '/assets/[dirname][name]-[hash][extname]',
     include: ['**/*.svg', '**/*.png', '**/*.jpe?g', '**/*.gif']
   }),
