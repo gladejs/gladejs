@@ -3,10 +3,11 @@ import marko from '@marko/rollup'
 
 import { gladejs, htmlminifier, browsersync } from './rollup-plugin'
 
-import resolve from 'rollup-plugin-node-resolve'
-import commonjs from 'rollup-plugin-commonjs'
+import resolve from '@rollup/plugin-node-resolve'
+import commonjs from '@rollup/plugin-commonjs'
 import url from '@rollup/plugin-url'
 import json from '@rollup/plugin-json'
+
 import postcss from 'rollup-plugin-postcss'
 import { terser } from 'rollup-plugin-terser'
 import gzip from 'rollup-plugin-gzip'
@@ -22,14 +23,14 @@ const isProd = isLive ? false : process.env.NODE_ENV === 'production'
 const plugins = [
   marko({ hydrate: true }), // We are doing SSR, so let's stay hydrated !
 
-  // @docs "https://github.com/rollup/rollup-plugin-node-resolve#usage"
+  // @docs "https://github.com/rollup/plugins/tree/master/packages/node-resolve#options"
   resolve({
     browser: true, // we are indeed building for the browser
     preferBuiltins: false, // and hence do not have builtins
     extensions: ['.mjs', '.js', '.json', '.node', '.marko']
   }),
 
-  // @docs "https://github.com/rollup/rollup-plugin-commonjs#usage"
+  // @docs "https://github.com/rollup/plugins/tree/master/packages/commonjs#options"
   commonjs({
     include: /node_modules/, // let's limit this to node
     extensions: ['.js', '.marko'] // and add Marko files
@@ -59,7 +60,7 @@ const plugins = [
 
   // @docs "https://github.com/TrySound/rollup-plugin-terser#options"
   isProd && terser({
-    ecma: 6, // choose 5/6/7/8, but ES6 is the safe bet right now
+    ecma: 2016, // choose your vintage (ES6 being the safest bet)
     mangle: true, // turn it off to get readable stacktraces back
     nameCache: {}, // we use the same object cache for all chunks
 
