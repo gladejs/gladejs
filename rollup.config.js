@@ -18,10 +18,10 @@ const SOURCE_DIR = path.resolve('pages')
 const OUTPUT_DIR = path.resolve('build')
 
 const isLive = process.env.ROLLUP_WATCH === 'true'
-const isProd = isLive ? false : process.env.NODE_ENV === 'production'
+const isProd = process.env.NODE_ENV === 'production'
 
 const plugins = [
-  marko({ hydrate: true }), // We are doing SSR, so let's stay hydrated !
+  marko({ hydrate: true }), // We are doing SSR, so let's stay well hydrated !
 
   // @docs "https://github.com/rollup/plugins/tree/master/packages/node-resolve#options"
   resolve({
@@ -73,7 +73,7 @@ const plugins = [
     }
   }),
 
-  gladejs(isProd), // Our plugin is "last" to get access to the finished bundle.
+  gladejs(process.env), // We are "last" to get access to the finished bundle.
 
   // @docs "https://github.com/kangax/html-minifier#options-quick-reference"
   isProd && htmlminifier({

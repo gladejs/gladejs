@@ -1,10 +1,19 @@
 import path from 'path'
 import glob from 'glob'
 
-import 'marko/node-require'
 import relateURL from 'relateurl'
+import { install } from 'marko/node-require'
+const isProd = process.env.NODE_ENV === 'production'
 
-export function gladejs (isProd = true) {
+install({
+  compilerOptions: {
+    writeToDisk: false, // we don't need no ".marko.js" files
+    preserveWhitespace: !isProd, // minification in Production
+    ignoreUnrecognizedTags: true // error-free Web Components
+  }
+})
+
+export function gladejs (envVar = { }) {
   return {
     name: 'gladejs',
 
@@ -27,7 +36,7 @@ export function gladejs (isProd = true) {
         const module = file.code.replace(assetImportRegExp, '').trim()
 
         file.code = '' // Empty the Marko JS file, it will be removed from the bundle
-        const data = { isProd: isProd, pageId: pageId, styles: styles, module: module }
+        const data = { envVar: envVar, pageId: pageId, styles: styles, module: module }
 
         const template = getMarkoFacade(file.facadeModuleId)
         const rendered = template.renderToString({ $global: data })
