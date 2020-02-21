@@ -9,8 +9,8 @@ module.exports = function transform (el, context) {
       assetPath = path.resolve(path.dirname(context.filename), assetPath)
       el.setAttributeValue('src', context.builder.literal(assetPath))
 
-      let assetCode = "import assetPath from '" + assetPath + "'; "
-      assetCode += "assets.push(['" + assetPath + "', assetPath]);"
+      let assetCode = 'import assetPath from \'' + assetPath + '\'; '
+      assetCode += 'assets.push([\'' + assetPath + '\', assetPath]);'
 
       context.addDependency({
         type: 'asset',
