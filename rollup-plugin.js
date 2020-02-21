@@ -92,9 +92,11 @@ function listMarkoPages (inputDir) {
     ignore: '**/components/**'
   })
 
-  return Object.fromEntries(new Map(pages.map(page =>
-    [page.substring(inputDir.length + 1, page.length - 6), page]
-  )))
+  return pages.reduce((list, page) => {
+    const name = page.substring(inputDir.length + 1, page.length - 6)
+    list[name] = page
+    return list
+  }, {})
 }
 
 function gladeChunking (userChunks) {
