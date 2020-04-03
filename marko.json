@@ -1,7 +1,0 @@
-{
-    "taglib-id": "glade-core",
-    "tags-dir": "./tags",
-    "<*>": {
-        "transformer": "./tags/asset-transformer.js"
-    }
-}

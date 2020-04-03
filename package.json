@@ -32,32 +32,29 @@
         ]
     },
     "dependencies": {
+        "@gladejs/rollup": "^0.1.2",
         "@marko/rollup": "^2.1.1",
         "@rollup/plugin-commonjs": "^11.0.2",
         "@rollup/plugin-json": "^4.0.2",
         "@rollup/plugin-node-resolve": "^7.1.1",
         "@rollup/plugin-url": "^4.0.2",
-        "browser-sync": "^2.26.7",
         "chokidar": "^2.1.8",
         "cssnano": "^4.1.10",
-        "glob": "^7.1.6",
-        "html-minifier": "^4.0.0",
-        "marko": "^4.19.2",
+        "marko": "^4.19.9",
         "postcss": "^7.0.27",
-        "relateurl": "^0.2.7",
         "rimraf": "^3.0.2",
-        "rollup": "^1.32.0",
+        "rollup": "^1.32.1",
         "rollup-plugin-brotli": "^2.0.2",
         "rollup-plugin-gzip": "^2.3.0",
-        "rollup-plugin-postcss": "^2.1.1",
-        "rollup-plugin-terser": "^5.2.0",
-        "rollup-plugin-visualizer": "^3.3.1",
-        "terser": "^4.6.6"
+        "rollup-plugin-postcss": "^2.5.0",
+        "rollup-plugin-terser": "^5.3.0",
+        "rollup-plugin-visualizer": "^3.3.2",
+        "terser": "^4.6.10"
     },
     "devDependencies": {
-        "@semantic-release/changelog": "^5.0.0",
+        "@semantic-release/changelog": "^5.0.1",
         "@semantic-release/git": "^9.0.0",
         "semantic-release": "^17.0.4",
-        "standard": "^14.3.1"
+        "standard": "^14.3.3"
     }
 }

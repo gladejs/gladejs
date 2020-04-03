@@ -1,7 +1,7 @@
 import path from 'path'
-import marko from '@marko/rollup'
 
-import { gladejs, htmlminifier, browsersync } from './rollup-plugin'
+import marko from '@marko/rollup'
+import gladejs from '@gladejs/rollup'
 
 import resolve from '@rollup/plugin-node-resolve'
 import commonjs from '@rollup/plugin-commonjs'
@@ -13,6 +13,9 @@ import { terser } from 'rollup-plugin-terser'
 import gzip from 'rollup-plugin-gzip'
 import brotli from 'rollup-plugin-brotli'
 import visualizer from 'rollup-plugin-visualizer'
+
+import htmlminifier from '@gladejs/rollup/dist/html-minifier'
+import browsersync from '@gladejs/rollup/dist/browser-sync'
 
 const SOURCE_DIR = path.resolve('pages')
 const OUTPUT_DIR = path.resolve('build')
