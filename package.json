@@ -21,7 +21,8 @@
         "build": "rollup -c --environment NODE_ENV:production"
     },
     "engines": {
-        "node": ">=10.3"
+        "npm": ">=6.9.0",
+        "node": ">=10.16"
     },
     "os": [
         "darwin",
