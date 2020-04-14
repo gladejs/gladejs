@@ -30,13 +30,13 @@ const plugins = [
   resolve({
     browser: true, // we are indeed building for the browser
     preferBuiltins: false, // and hence do not have builtins
-    extensions: ['.mjs', '.js', '.json', '.node', '.marko']
+    extensions: ['.mjs', '.cjs', '.js', '.json', '.node', '.marko']
   }),
 
   // @docs "https://github.com/rollup/plugins/tree/master/packages/commonjs#options"
   commonjs({
-    include: /node_modules/, // let's limit this to node
-    extensions: ['.js', '.marko'] // and add Marko files
+    include: /node_modules/, // let's limit this to NodeJS
+    extensions: ['.cjs', '.js'] // and only CommonJS files
   }),
 
   // @docs "https://github.com/rollup/plugins/tree/master/packages/url#options"
@@ -63,7 +63,7 @@ const plugins = [
 
   // @docs "https://github.com/TrySound/rollup-plugin-terser#options"
   isProd && terser({
-    ecma: 2016, // choose your vintage (ES6 being the safest bet)
+    ecma: 2018, // pick the vintage (ECMAScript 9 should be safe)
     mangle: true, // turn it off to get readable stacktraces back
     nameCache: {}, // we use the same object cache for all chunks
 
@@ -118,7 +118,7 @@ const plugins = [
   }),
 
   // @docs "https://github.com/btd/rollup-plugin-visualizer#options"
-  isProd && visualizer({
+  !isLive && visualizer({
     template: 'treemap', // pick your graphic: 'sunburst' or 'treemap'
     open: false, // usefull when adjusting bundle chunks distribution
     filename: 'rollup_stats.html' // the graph file, to commit or not
