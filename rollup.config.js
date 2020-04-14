@@ -138,12 +138,7 @@ export default {
   plugins: plugins,
 
   output: {
-    format: 'esm',
-    dir: OUTPUT_DIR
-  },
-
-  watch: {
-    chokidar: true,
-    exclude: /node_modules/
+    dir: OUTPUT_DIR,
+    format: 'module'
   }
 }
