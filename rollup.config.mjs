@@ -11,7 +11,7 @@ import json from '@rollup/plugin-json'
 import postcss from 'rollup-plugin-postcss'
 import { terser } from 'rollup-plugin-terser'
 import gzip from 'rollup-plugin-gzip'
-import brotli from 'rollup-plugin-brotli'
+import { brotliCompressSync } from 'zlib'
 import visualizer from 'rollup-plugin-visualizer'
 
 import htmlminifier from '@gladejs/rollup/dist/html-minifier'
@@ -112,9 +112,13 @@ const plugins = [
     filter: /\.(js|css|html|json)$/
   }),
 
-  // @docs "https://github.com/keithamus/rollup-plugin-brotli#configuration"
-  isProd && brotli({
-    minSize: 1024 // skip files < 1kb
+  // @docs "https://github.com/kryops/rollup-plugin-gzip#brotli-compression"
+  isProd && gzip({
+    fileName: '.br', // Brotli this time
+    minSize: 1024, // skip files < 1kb
+    filter: /\.(js|css|html|json)$/,
+    customCompression: content =>
+      brotliCompressSync(Buffer.from(content))
   }),
 
   // @docs "https://github.com/btd/rollup-plugin-visualizer#options"
