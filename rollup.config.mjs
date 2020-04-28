@@ -56,9 +56,9 @@ const plugins = [
 
   // @docs "https://github.com/egoist/rollup-plugin-postcss#options"
   postcss({
-    plugins: [], // pick yours @ "https://www.postcss.parts"
-    minimize: isProd, // apply "cssnano" in production
-    extract: OUTPUT_DIR + '/css/styles.css'
+    extract: 'css/styles.css', // funnel it all into 1 file
+    minimize: isProd, // and apply "cssnano" in production
+    plugins: [] // pick yours @ "https://www.postcss.parts"
   }),
 
   // @docs "https://github.com/TrySound/rollup-plugin-terser#options"
