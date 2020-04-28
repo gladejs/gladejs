@@ -14,8 +14,8 @@ import gzip from 'rollup-plugin-gzip'
 import { brotliCompressSync } from 'zlib'
 import visualizer from 'rollup-plugin-visualizer'
 
-import htmlminifier from '@gladejs/rollup/dist/html-minifier'
-import browsersync from '@gladejs/rollup/dist/browser-sync'
+import htmlminifier from '@gladejs/rollup/html-minifier'
+import browsersync from '@gladejs/rollup/browser-sync'
 
 const SOURCE_DIR = path.resolve('pages')
 const OUTPUT_DIR = path.resolve('build')

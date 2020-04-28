@@ -44,7 +44,7 @@
         ]
     },
     "dependencies": {
-        "@gladejs/rollup": "^0.2.0",
+        "@gladejs/rollup": "^0.2.1",
         "@marko/rollup": "^2.1.1",
         "@rollup/plugin-commonjs": "^11.1.0",
         "@rollup/plugin-json": "^4.0.3",
