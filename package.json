@@ -15,9 +15,9 @@
         "email": "aurelien.stebe@gmail.com"
     },
     "type": "module",
-    "main": "./rollup.config.mjs",
-    "module": "./rollup.config.mjs",
-    "exports": "./rollup.config.mjs",
+    "main": "./rollup.config.js",
+    "module": "./rollup.config.js",
+    "exports": "./rollup.config.js",
     "license": "MIT",
     "scripts": {
         "start": "rollup -c --watch",
