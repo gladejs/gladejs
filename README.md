@@ -6,36 +6,67 @@
 [![NPM Version](https://img.shields.io/npm/v/gladejs)](https://www.npmjs.com/package/gladejs)
 
 ## Description
-A basic [Rollup](https://rollupjs.org/) setup for bundling static Web Sites built with [Marko](https://markojs.com/) components.
+GladeJS is a simple [Rollup](https://rollupjs.org/) setup for bundling static Web Sites built with [Marko](https://markojs.com/) components.
+
+This project requires [NodeJS](https://nodejs.org/) v10.16 or superior and the included "npm" CLI v6.9.0 or superior.
+
+It is tested on the latest versions of NodeJS v10 / v12 / v14 on MacOS, Ubuntu and Windows.
+
+While still in early development, you are welcome to consult & comment on the [ROADMAP.md](https://gist.github.com/gladejs/e7d680794bcead43e7f1e7d86ab21729)
 
 ## Installation
-Create a new NodeJS project and install GladeJS as a "devDependency" :
+
+### Automatic (not ready yet)
+An automated & interactive "@gladejs/create" package is planned for the v0.4 release.
+
+It will allow for a simple "`npm init @gladejs MyWebSite`" installation, but not yet.
+
+### Manual (in 4 easy steps)
+
+1. Create a new NodeJS project and install GladeJS as a "devDependency" :
 ```bash
-$ mkdir example && cd example
+$ mkdir MyWebSite && cd MyWebSite
 $ npm init -y && npm i -D gladejs
 ```
 
-### Command Scripts
-Use the following scripts configuration in the new "`package.json`" file :
+2. Paste the following scripts configuration into your new "`package.json`" :
 ```json
 "scripts": {
-    "start": "rollup -c -w",
-    "build": "NODE_ENV='production' rollup -c",
-    "clean": "rimraf build **/*.marko.js && rimraf **/*.marko.js"
+    "start": "rollup -c --watch",
+    "clean": "rimraf build rollup_stats.html",
+    "build": "rollup -c --environment NODE_ENV:production"
 },
 ```
 
+3. Copy the GladeJS Rollup configuration file itself into your project directory :
+```bash
+$ npx shx cp node_modules/gladejs/rollup.config.js .
+```
+
+4. Copy the GladeJS documentation Marko pages to start building right away :
+```bash
+$ npx shx cp -R node_modules/gladejs/pages .
+```
+
+## Documentation
+
+### Command Scripts
+GladeJS is directly controlled via NPM scripts, use the following commands :
+
+ - "`npm start`" to run Rollup in 'watch' mode for live development
+ - "`npm run build`" to bundle your project for production delivery
+ - "`npm run clean`" to remove the build folder & 'rollup_stats.html'
+
 ### Rollup Configuration
-Paste this one line in a new file named "`rollup.config.js`" to hide the magic :
-```js
-export { default } from './node_modules/gladejs/rollup.config'
-```
-... or copy the GladeJS config itself for the full mystical power of Rollup :
-```sh
-$ cp node_modules/gladejs/rollup*.js .
-```
+A single "`rollup.config.js`" file is used to configure your build process.
+
+If you are not a NodeJS and/or Rollup guru, fret not, the defaults are just fine.
+
+Nevertheless, [give it a quick glance](./rollup.config.js), it's relatively organised and documented.
 
 ### Pages & Components
-Have a look  at the [minimal index page](./pages/index.marko) and the [sample component](./pages/components/counter.marko).
+The [GladeJS website](https://gladejs.com/) is under construction and its source code will have comments to serve as guide.
 
-Finally, as always [RTFMD (Read The Fabulous Marko Documentation)](https://markojs.com/docs/getting-started/).
+In the meantime, have a look  at the [minimal Index page](./pages/index.marko) and the [sample Marko component](./pages/components/counter.marko).
+
+And finally, as always [RTFMD (Read The Fabulous Marko Documentation)](https://markojs.com/docs/getting-started/).
