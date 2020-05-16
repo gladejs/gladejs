@@ -6,19 +6,15 @@
 [![NPM Version](https://img.shields.io/npm/v/gladejs)](https://www.npmjs.com/package/gladejs)
 
 ## Description
-GladeJS is a simple [Rollup](https://rollupjs.org/) setup for bundling static Web Sites built with [Marko](https://markojs.com/) components.
-
-This project requires [NodeJS](https://nodejs.org/) v10.16 or superior and the included "npm" CLI v6.9.0 or superior.
-
-It is tested on the latest versions of NodeJS v10 / v12 / v14 on MacOS, Ubuntu and Windows.
-
+GladeJS is a simple [Rollup](https://rollupjs.org/) setup for bundling static Web Sites built with [Marko](https://markojs.com/) components.<br />
+This project requires [NodeJS](https://nodejs.org/) v10.16 or superior and the included "npm" CLI v6.9.0 or superior.<br />
+It is tested on the latest versions of NodeJS v10 / v12 / v14 on MacOS, Ubuntu and Windows.<br />
 While still in early development, you are welcome to consult & comment on the [ROADMAP.md](https://gist.github.com/gladejs/e7d680794bcead43e7f1e7d86ab21729)
 
 ## Installation
 
 ### Automatic (not ready yet)
-An automated & interactive "@gladejs/create" package is planned for the v0.4 release.
-
+An automated & interactive "@gladejs/create" package is planned for the v0.4 release.<br />
 It will allow for a simple "`npm init @gladejs MyWebSite`" installation, but not yet.
 
 ### Manual (in 4 easy steps)
@@ -52,21 +48,16 @@ $ npx shx cp -R node_modules/gladejs/pages .
 
 ### Command Scripts
 GladeJS is directly controlled via NPM scripts, use the following commands :
-
  - "`npm start`" to run Rollup in 'watch' mode for live development
  - "`npm run build`" to bundle your project for production delivery
  - "`npm run clean`" to remove the build folder & 'rollup_stats.html'
 
 ### Rollup Configuration
-A single "`rollup.config.js`" file is used to configure your build process.
-
-If you are not a NodeJS and/or Rollup guru, fret not, the defaults are just fine.
-
+A single "`rollup.config.js`" file is used to configure your build process.<br />
+If you are not a NodeJS and/or Rollup guru, fret not, the defaults are just fine.<br />
 Nevertheless, [give it a quick glance](./rollup.config.js), it's relatively organised and documented.
 
 ### Pages & Components
-The [GladeJS website](https://gladejs.com/) is under construction and its source code will have comments to serve as guide.
-
-In the meantime, have a look  at the [minimal Index page](./pages/index.marko) and the [sample Marko component](./pages/components/counter.marko).
-
+The [GladeJS website](https://gladejs.com/) is under construction and its source code will have comments to serve as guide.<br />
+In the meantime, have a look  at the [minimal Index page](./pages/index.marko) and the [sample Marko component](./pages/components/counter.marko).<br />
 And finally, as always [RTFMD (Read The Fabulous Marko Documentation)](https://markojs.com/docs/getting-started/).
