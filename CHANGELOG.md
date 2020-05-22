@@ -1,3 +1,10 @@
+## [0.3.1](https://github.com/gladejs/gladejs/compare/v0.3.0...v0.3.1) (2020-05-22)
+
+
+### Bug Fixes
+
+* **asset:** register the compiler hook correctly ([abe8332](https://github.com/gladejs/gladejs/commit/abe83325e85ffe426c6c78e635c5cac1c05b2e8f)), closes [#5](https://github.com/gladejs/gladejs/issues/5)
+
 # [0.3.0](https://github.com/gladejs/gladejs/compare/v0.2.0...v0.3.0) (2020-05-13)
 
 
