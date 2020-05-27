@@ -25,7 +25,7 @@ $ mkdir MyWebSite && cd MyWebSite
 $ npm init -y && npm i -D gladejs
 ```
 
-2. Paste the following scripts configuration into your new "`package.json`" :
+2. Replace the "scripts" config section in your new "`package.json`" with :
 ```json
 "scripts": {
     "start": "rollup -c --watch",
