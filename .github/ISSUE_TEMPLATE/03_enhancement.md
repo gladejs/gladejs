@@ -1,5 +1,5 @@
 ---
-name: ':rocket: | Enhancement'
+name: '🚀 | Enhancement'
 about: "New feature or request to be discussed"
 labels: ':rocket: | enhancement'
 ---

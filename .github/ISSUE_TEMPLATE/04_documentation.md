@@ -1,5 +1,5 @@
 ---
-name: ':books: | Documentation'
+name: '📚 | Documentation'
 about: "Improvements or additions to documentation"
 labels: ':books: | documentation'
 ---

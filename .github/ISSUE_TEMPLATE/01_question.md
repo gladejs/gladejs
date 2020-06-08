@@ -1,5 +1,5 @@
 ---
-name: ':question: | Question'
+name: '❓ | Question'
 about: "Any general question, comment or suggestion"
 labels: ':grey_question: | question'
 ---
