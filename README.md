@@ -6,10 +6,11 @@
 [![NPM Version](https://img.shields.io/npm/v/gladejs)](https://www.npmjs.com/package/gladejs)
 
 ## Description
+
 GladeJS is a simple [Rollup](https://rollupjs.org/) setup for bundling static Web Sites built with [Marko](https://markojs.com/) components.<br />
+
 This project requires [NodeJS](https://nodejs.org/) v10.16 or superior and the included "npm" CLI v6.9.0 or superior.<br />
 It is tested on the latest versions of NodeJS v10 / v12 / v14 on MacOS, Ubuntu and Windows.<br />
-While still in early development, you are welcome to consult & comment on the [ROADMAP.md](https://gist.github.com/gladejs/e7d680794bcead43e7f1e7d86ab21729)
 
 ## Installation
 
@@ -61,3 +62,7 @@ Nevertheless, [give it a quick glance](./rollup.config.js), it's relatively orga
 The [GladeJS website](https://gladejs.com/) is under construction and its source code will have comments to serve as guide.<br />
 In the meantime, have a look  at the [minimal Index page](./pages/index.marko) and the [sample Marko component](./pages/components/counter.marko).<br />
 And finally, as always [RTFMD (Read The Fabulous Marko Documentation)](https://markojs.com/docs/getting-started/).
+
+## Contributing
+
+While we are still in early development, you are welcome to consult the [ROADMAP.md](./ROADMAP.md)
