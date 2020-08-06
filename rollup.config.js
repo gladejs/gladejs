@@ -122,7 +122,7 @@ const plugins = [
   !isLive && visualizer({
     template: 'treemap', // pick your graphic: 'sunburst' or 'treemap'
     open: false, // usefull when adjusting bundle chunks distribution
-    filename: 'rollup_stats.html' // the graph file, to commit or not
+    filename: 'bundle_stats.html' // the graph file, to commit or not
   }),
 
   // @docs "https://www.browsersync.io/docs/options"

@@ -30,7 +30,7 @@ $ npm init -y && npm i -D gladejs
 ```json
 "scripts": {
     "start": "rollup -c --watch",
-    "clean": "rimraf build _site rollup_stats.html",
+    "clean": "rimraf build _site bundle_stats.html",
     "build": "rollup -c --environment NODE_ENV:production"
 },
 ```
@@ -51,7 +51,7 @@ $ npx shx cp -R node_modules/gladejs/pages .
 GladeJS is directly controlled via NPM scripts, use the following commands :
  - "`npm start`" to run Rollup in 'watch' mode for live development
  - "`npm run build`" to bundle your project for production delivery
- - "`npm run clean`" to remove the build folder & 'rollup_stats.html'
+ - "`npm run clean`" to remove the build folder & 'bundle_stats.html'
 
 ### Rollup Configuration
 A single "`rollup.config.js`" file is used to configure your build process.<br />
