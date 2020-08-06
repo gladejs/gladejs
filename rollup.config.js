@@ -2,6 +2,7 @@ import path from 'path'
 
 import marko from '@marko/rollup'
 import gladejs from '@gladejs/rollup'
+import eleventy from '@gladejs/eleventy'
 
 import resolve from '@rollup/plugin-node-resolve'
 import commonjs from '@rollup/plugin-commonjs'
@@ -18,13 +19,16 @@ import htmlminifier from '@gladejs/rollup/html-minifier'
 import browsersync from '@gladejs/rollup/browser-sync'
 
 const SOURCE_DIR = path.resolve('pages')
-const OUTPUT_DIR = path.resolve('build')
+const BUILD_DIR = path.resolve('build')
+const OUTPUT_DIR = path.resolve('_site')
 
 const isLive = process.env.ROLLUP_WATCH === 'true'
 const isProd = process.env.NODE_ENV === 'production'
 
 const plugins = [
   marko({ hydrate: true }), // We are doing SSR, so let's stay well hydrated !
+
+  eleventy(SOURCE_DIR, BUILD_DIR), // First we just let Eleventy do its thing.
 
   // @docs "https://github.com/rollup/plugins/tree/master/packages/node-resolve#options"
   resolve({
@@ -42,7 +46,7 @@ const plugins = [
   // @docs "https://github.com/rollup/plugins/tree/master/packages/url#options"
   url({
     limit: 7 * 1024, // inline files < 7 kb, copy the rest
-    sourceDir: SOURCE_DIR, // to get the correct [dirname]
+    sourceDir: BUILD_DIR, // to get the correct [dirname]
     publicPath: '', // add it also to your <base href> tag
     fileName: '/assets/[dirname][name]-[hash][extname]',
     include: ['**/*.svg', '**/*.png', '**/*.jpe?g', '**/*.gif']
@@ -138,7 +142,7 @@ const plugins = [
 ]
 
 export default {
-  input: SOURCE_DIR,
+  input: BUILD_DIR,
   plugins: plugins,
 
   output: {

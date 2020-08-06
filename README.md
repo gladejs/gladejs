@@ -30,7 +30,7 @@ $ npm init -y && npm i -D gladejs
 ```json
 "scripts": {
     "start": "rollup -c --watch",
-    "clean": "rimraf build rollup_stats.html",
+    "clean": "rimraf build _site rollup_stats.html",
     "build": "rollup -c --environment NODE_ENV:production"
 },
 ```
