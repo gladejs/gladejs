@@ -6,8 +6,7 @@ import eleventy from '@gladejs/eleventy'
 
 import resolve from '@rollup/plugin-node-resolve'
 import commonjs from '@rollup/plugin-commonjs'
-import url from '@rollup/plugin-url'
-import json from '@rollup/plugin-json'
+import assets from '@rollup/plugin-url'
 
 import postcss from 'rollup-plugin-postcss'
 import { terser } from 'rollup-plugin-terser'
@@ -44,18 +43,12 @@ const plugins = [
   }),
 
   // @docs "https://github.com/rollup/plugins/tree/master/packages/url#options"
-  url({
+  assets({
     limit: 7 * 1024, // inline files < 7 kb, copy the rest
     sourceDir: BUILD_DIR, // to get the correct [dirname]
     publicPath: '', // add it also to your <base href> tag
     fileName: '/assets/[dirname][name]-[hash][extname]',
     include: ['**/*.svg', '**/*.png', '**/*.jpe?g', '**/*.gif']
-  }),
-
-  // @docs "https://github.com/rollup/plugins/tree/master/packages/json#options"
-  json({
-    namedExports: true, // we name each JSON property
-    preferConst: true // and prefer "const" to "var"
   }),
 
   // @docs "https://github.com/egoist/rollup-plugin-postcss#options"

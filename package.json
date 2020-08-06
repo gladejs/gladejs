@@ -50,7 +50,6 @@
         "@gladejs/rollup": "^0.3.2",
         "@marko/rollup": "^2.1.1",
         "@rollup/plugin-commonjs": "^14.0.0",
-        "@rollup/plugin-json": "^4.1.0",
         "@rollup/plugin-node-resolve": "^8.4.0",
         "@rollup/plugin-url": "^5.0.1",
         "browser-sync": "^2.26.12",
