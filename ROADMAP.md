@@ -6,10 +6,10 @@ This is an evolving roadmap / checklist / manifesto for the [GladeJS](https://gl
  - ✅ [Marko](https://markojs.com) and [Eleventy](https://www.11ty.dev) "pages" generating fully server-rendered static HTML, CSS & JS at build time
  - ✅ Development mode with Live server using [Browsersync](https://www.browsersync.io) & performant file watching using [Chokidar](https://github.com/paulmillr/chokidar)
    - 🚧 Create a Pull Request for ["@marko/rollup"](https://github.com/marko-js/rollup) to get the full Hot-Reload working \[[#6](https://github.com/gladejs/gladejs/issues/6)\]
- - ✅ Various graph representations of the JS bundle content & sizes using this [Visualizer plugin](https://github.com/btd/rollup-plugin-visualizer)
- - 🚧 Detailed report of the whole website filesizes repartition & performance budget objectives \[[#7](https://github.com/gladejs/gladejs/issues/7)\]
- - 🚧 Automated & interactive install script, with guided updates to the Rollup config file
- - 🚧 Clear and to the point error messages & warnings instead of cryptic stacktraces \[[#8](https://github.com/gladejs/gladejs/issues/8)\]
+ - ✅  Various graph representations of the JS bundle content & sizes using this [Visualizer plugin](https://github.com/btd/rollup-plugin-visualizer)
+ - 🚧&nbsp; Detailed report of the whole website filesizes repartition & performance budget objectives \[[#7](https://github.com/gladejs/gladejs/issues/7)\]
+ - 🚧&ensp; Automated & interactive install script, with guided updates to the Rollup config file
+ - 🚧&emsp; Clear and to the point error messages & warnings instead of cryptic stacktraces \[[#8](https://github.com/gladejs/gladejs/issues/8)\]
 
 ## JS Bundle
  - ✅ Support modern browsers with "module" script tags containing each page JS inlined and using standard imports
