@@ -1,3 +1,16 @@
+# [0.4.0](https://github.com/gladejs/gladejs/compare/v0.3.1...v0.4.0) (2020-08-07)
+
+
+### Bug Fixes
+
+* **deps:** remove the official Rollup "json" plugin ([70a47fa](https://github.com/gladejs/gladejs/commit/70a47fa6ab81870756277c5f4d08306d0de7f6d6))
+* **rollup:** rename the Visualizer output file ([2a31349](https://github.com/gladejs/gladejs/commit/2a31349d7d4f3d6507b9a456640bb6c9fd154ecd))
+
+
+### Features
+
+* **11ty:** integrate Eleventy as first build step ([cfca8cc](https://github.com/gladejs/gladejs/commit/cfca8cce576b20b48432776213ed5c3310701edc))
+
 ## [0.3.1](https://github.com/gladejs/gladejs/compare/v0.3.0...v0.3.1) (2020-05-22)
 
 
