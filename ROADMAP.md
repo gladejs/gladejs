@@ -5,19 +5,18 @@ This is an evolving roadmap / checklist / manifesto for the [GladeJS](https://gl
 ## Framework
  - ✅ [Marko](https://markojs.com) and [Eleventy](https://www.11ty.dev) "pages" generating fully server-rendered static HTML, CSS & JS at build time
  - ✅ Development mode with Live server using [Browsersync](https://www.browsersync.io) & performant file watching using [Chokidar](https://github.com/paulmillr/chokidar)
-   - (#6) Create a Pull Request for ["@marko/rollup"](https://github.com/marko-js/rollup) to get the full Hot-Reload working
+   - 🚧 Create a Pull Request for ["@marko/rollup"](https://github.com/marko-js/rollup) to get the full Hot-Reload working \[[#6](https://github.com/gladejs/gladejs/issues/6)\]
  - ✅ Various graph representations of the JS bundle content & sizes using this [Visualizer plugin](https://github.com/btd/rollup-plugin-visualizer)
- - (#7) Detailed report of the whole website filesizes repartition & performance budget objectives
+ - 🚧 Detailed report of the whole website filesizes repartition & performance budget objectives \[[#7](https://github.com/gladejs/gladejs/issues/7)\]
  - 🚧 Automated & interactive install script, with guided updates to the Rollup config file
- - (#8) Clear and to the point error messages & warnings instead of cryptic stacktraces
+ - 🚧 Clear and to the point error messages & warnings instead of cryptic stacktraces \[[#8](https://github.com/gladejs/gladejs/issues/8)\]
 
 ## JS Bundle
  - ✅ Support modern browsers with "module" script tags containing each page JS inlined and using standard imports
- - (#9) Support legacy browsers with "nomodule" script tags pointing to the full bundle file transpiled by [Babel](https://babeljs.io) / [Bublé](https://buble.surge.sh/guide/) ?
+ - 🚧 Support legacy browsers with "nomodule" script tags pointing to the full bundle file transpiled by [Babel](https://babeljs.io) / [Bublé](https://buble.surge.sh/guide/) ? \[[#9](https://github.com/gladejs/gladejs/issues/9)\]
  - ✅ [Configurable bundle chunking](https://github.com/gladejs/rollup/blob/9d21bc77d3a34a29f02c5a7a654cf4aefadfa529/dist/gladejs-rollup.js#L81) (default: "project" for components, "markojs" for the engine, "modules" for the rest)
  - ✅ Install & import NPM packages with the official "node-resolve" & "commonjs" Rollup plugins
  - ✅ Mangle & compress all JS code in Production using this ["Terser" plugin](https://github.com/TrySound/rollup-plugin-terser)
- - ✅ Format & indent all JS code in Live Mode using this ["Prettier" plugin](https://github.com/mjeanroy/rollup-plugin-prettier)
 
 ## CSS Files
  - ✅ Compile SASS & LESS, then funnel everything into one file using this ["PostCSS" plugin](https://github.com/egoist/rollup-plugin-postcss)
@@ -25,7 +24,6 @@ This is an evolving roadmap / checklist / manifesto for the [GladeJS](https://gl
    - 🚧 Improve support for [PostCSS plugins](https://www.postcss.parts) (install & configure a few by default)
  - 🚧 Configurably split the styles afterward (per page, "@" rule or auto-magically)
  - 🚧 Inline the critical and above-the-fold styles ; load the others asynchronously
- - ✅ Format & indent all CSS code in Live Mode using this ["Prettier" plugin](https://github.com/mjeanroy/rollup-plugin-prettier)
 
 ## HTML Pages
  - ✅ Eleventy's support for [layouts](https://www.11ty.dev/docs/layouts/), [permalinks](https://www.11ty.dev/docs/permalinks/), [collections](https://www.11ty.dev/docs/collections/), [pagination](https://www.11ty.dev/docs/pagination/), [filters](https://www.11ty.dev/docs/filters/) & [shortcodes](https://www.11ty.dev/docs/shortcodes/) on top of ...
@@ -33,7 +31,6 @@ This is an evolving roadmap / checklist / manifesto for the [GladeJS](https://gl
  - ✅ [List all Marko "pages"](https://github.com/gladejs/rollup/blob/9d21bc77d3a34a29f02c5a7a654cf4aefadfa529/dist/gladejs-rollup.js#L66) from a single folder for the Rollup input, ignoring "components" sub-folders
  - ✅ [Render each template](https://github.com/gladejs/rollup/blob/9d21bc77d3a34a29f02c5a7a654cf4aefadfa529/dist/gladejs-rollup.js#L38) with the CSS styles, client-side JS, page path Id & env variables as globals
  - ✅ Minify all HTML code in Production using ["html-minifier"](https://github.com/kangax/html-minifier) correctly configured
- - ✅ Format & indent all HTML code in Live Mode using this ["Prettier" plugin](https://github.com/mjeanroy/rollup-plugin-prettier)
 
 ## Data & Assets
  - ✅ Advanced [JSON & JS data cascade](https://www.11ty.dev/docs/data-cascade/) (with optional support for [YAML, TOML, CSV, etc ...](https://www.11ty.dev/docs/data-custom/) )
