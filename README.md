@@ -20,13 +20,18 @@ It will allow for a simple "`npm init @gladejs MyWebSite`" installation, but not
 
 ### Manual (in 4 easy steps)
 
-1. Create a new NodeJS project and install GladeJS as a "devDependency" :
+1. Create a new NodeJS project & install GladeJS as a "devDependency" :
 ```bash
 $ mkdir MyWebSite && cd MyWebSite
 $ npm init -y && npm i -D gladejs
 ```
 
-2. Replace the "scripts" config section in your new "`package.json`" with :
+2. Copy the GladeJS Rollup configuration file into your project folder :
+```bash
+$ npx shx cp node_modules/gladejs/rollup.config.js .
+```
+
+3. Replace the "scripts" config section in your "`package.json`" with :
 ```json
 "scripts": {
     "start": "rollup -c --watch",
@@ -35,12 +40,7 @@ $ npm init -y && npm i -D gladejs
 },
 ```
 
-3. Copy the GladeJS Rollup configuration file itself into your project directory :
-```bash
-$ npx shx cp node_modules/gladejs/rollup.config.js .
-```
-
-4. Copy the GladeJS documentation Marko pages to start building right away :
+4. Copy the GladeJS documentation pages to start building right away :
 ```bash
 $ npx shx cp -R node_modules/gladejs/pages .
 ```
