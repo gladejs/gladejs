@@ -1,3 +1,10 @@
+## [0.4.1](https://github.com/gladejs/gladejs/compare/v0.4.0...v0.4.1) (2020-08-20)
+
+
+### Bug Fixes
+
+* **11ty:** improve Eleventy's integration & config ([649131f](https://github.com/gladejs/gladejs/commit/649131f03641620e674a05531be53ae2a7676842)), closes [#12](https://github.com/gladejs/gladejs/issues/12)
+
 # [0.4.0](https://github.com/gladejs/gladejs/compare/v0.3.1...v0.4.0) (2020-08-07)
 
 
