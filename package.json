@@ -1,7 +1,7 @@
 {
     "name": "gladejs",
     "version": "0.4.1",
-    "description": "Helping Marko to Roll Uphill, Past the CaScadeS and enter the GladeJS",
+    "description": "Helping Marko to Roll Uphill, Pass the CaScadeS and reach the GladeJS at 11' for Tea (it's a static site generator)",
     "keywords": [
         "marko",
         "rollup",
