@@ -1,11 +1,10 @@
 # Roadmap
 
-This is an evolving roadmap / checklist / manifesto for the [GladeJS](https://gladejs.com) project.
+The following is an evolving roadmap / checklist / manifesto for the [GladeJS](https://gladejs.com) project...
 
 ## Framework
  - ✅&nbsp; [Marko](https://markojs.com) and [Eleventy](https://www.11ty.dev) "pages" generating fully server-rendered static HTML, CSS & JS at build time
  - ✅&nbsp; Development mode with Live server using [Browsersync](https://www.browsersync.io) & performant file watching using [Chokidar](https://github.com/paulmillr/chokidar)
-   - 🚧&nbsp; Create a Pull Request for ["@marko/rollup"](https://github.com/marko-js/rollup) to get the full Hot-Reload working \[[#6](https://github.com/gladejs/gladejs/issues/6)\]
  - ✅&nbsp; Various graph representations of the JS bundle content & sizes using this [Visualizer plugin](https://github.com/btd/rollup-plugin-visualizer)
  - 🚧&nbsp; Detailed report of the whole website filesizes repartition & performance budget objectives \[[#7](https://github.com/gladejs/gladejs/issues/7)\]
  - 🚧&nbsp; Automated & interactive install script, with guided updates to the Rollup config file
