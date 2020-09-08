@@ -1,0 +1,23 @@
+<svg viewBox="-.1 -.1 7.128 8.2" xmlns="http://www.w3.org/2000/svg">
+    <g stroke="#FAFAFA" stroke-width="0.05" stroke-opacity="0.5"
+                        stroke-linecap="round" stroke-linejoin="round">
+        <path fill="hsl(140, 100%, 70%)" d="M5.196 3l1.732-1-1.732-1"/>
+        <path fill="hsl(165, 100%, 60%)" d="M5.196 1v2l-1.732-1"/>
+        <path fill="hsl(180, 100%, 50%)" d="M3.464 2l1.732-1-1.732-1"/>
+        <path fill="hsl(192, 100%, 50%)" d="M3.464 2v-2l-1.732 1"/>
+        <path fill="hsl(204, 100%, 50%)" d="M1.732 1l1.732 1-1.732 1"/>
+        <path fill="hsl(216, 100%, 50%)" d="M1.732 3v-2l-1.732 1"/>
+        <path fill="hsl(228, 100%, 50%)" d="M1.732 3l-1.732-1v2"/>
+        <path fill="hsl(240, 100%, 40%)" d="M0 4l1.732-1v2"/>
+        <path fill="hsl(240, 100%, 30%)" d="M1.732 5l-1.732-1v2"/>
+        <path fill="hsl(0, 100%, 30%)"   d="M1.732 5l-1.732 1 1.732 1"/>
+        <path fill="hsl(0, 100%, 40%)"   d="M1.732 7v-2l1.732 1"/>
+        <path fill="hsl(12, 100%, 50%)"  d="M3.464 6l-1.732 1 1.732 1"/>
+        <path fill="hsl(24, 100%, 50%)"  d="M3.464 6v2l1.732-1"/>
+        <path fill="hsl(36, 100%, 50%)"  d="M5.196 7l-1.732-1 1.732-1"/>
+        <path fill="hsl(48, 100%, 50%)"  d="M5.196 5v2l1.732-1"/>
+        <path fill="hsl(60, 100%, 50%)"  d="M5.196 5l1.732 1v-2"/>
+        <path fill="hsl(75, 100%, 60%)"  d="M5.196 5l1.732-1-1.732-1"/>
+        <path fill="hsl(100, 100%, 70%)" d="M5.196 5v-2l-1.732 1Z"/>
+    </g>
+</svg>
