@@ -1,18 +1,23 @@
-<!doctype html>
+<!DOCTYPE HTML>
 <html>
     <head>
         <meta charset="utf-8"/>
-        <title>Hello World !</title>
+        <title>GladeJS Homepage</title>
         <base href=out.global.pageId/>
         <for|style| of=out.global.styles>
             <link rel="stylesheet" href=style.href/>
         </for>
         <script type="module">${out.global.module}</script>
     </head>
-    <body>
-        <main.flex-col role="main">
-            <img src="./logos/marko.png"/>
-            <counter/>
-        </main>
+    <body class="home-page">
+        <h1>Welcome to the GladeJS !</h1>
+        <a class="logo" href="https://github.com/gladejs/gladejs">
+            <img alt="GladeJS GitHub" src="./logos/gladejs-hsl.svg"/>
+        </a>
+        <h2>
+            Coming Soon to a
+            <a href="https://github.com/gladejs/gladejs">GitHub</a>
+            near you ...
+        </h2>
     </body>
 </html>
