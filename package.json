@@ -58,12 +58,12 @@
         "marko": "^4.23.2",
         "postcss": "^7.0.32",
         "rimraf": "^3.0.2",
-        "rollup": "^2.26.7",
+        "rollup": "^2.26.11",
         "rollup-plugin-gzip": "^2.5.0",
-        "rollup-plugin-postcss": "^3.1.6",
-        "rollup-plugin-terser": "^7.0.1",
+        "rollup-plugin-postcss": "^3.1.8",
+        "rollup-plugin-terser": "^7.0.2",
         "rollup-plugin-visualizer": "^4.1.1",
-        "terser": "^5.2.1"
+        "terser": "^5.3.1"
     },
     "devDependencies": {
         "@semantic-release/changelog": "^5.0.1",
