@@ -1,3 +1,10 @@
+## [0.4.3](https://github.com/gladejs/gladejs/compare/v0.4.2...v0.4.3) (2020-10-05)
+
+
+### Bug Fixes
+
+* **deps:** minor version updates to dependencies ([43c6c58](https://github.com/gladejs/gladejs/commit/43c6c584684b6ed54599e2a5dce37ccac92b5bbf))
+
 ## [0.4.2](https://github.com/gladejs/gladejs/compare/v0.4.1...v0.4.2) (2020-09-14)
 
 
