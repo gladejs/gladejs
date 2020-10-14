@@ -21,6 +21,7 @@
     "exports": "./rollup.config.js",
     "license": "MIT",
     "scripts": {
+        "lint": "prettier -c . && eslint *.js",
         "start": "rollup -c --watch",
         "clean": "rimraf build _site bundle_stats.html",
         "build": "rollup -c --environment NODE_ENV:production"
@@ -39,6 +40,17 @@
         "tabWidth": 4,
         "singleQuote": true,
         "trailingComma": "es5"
+    },
+    "eslintConfig": {
+        "extends": [
+            "eslint:recommended",
+            "plugin:node/recommended",
+            "plugin:import/recommended",
+            "plugin:promise/recommended",
+            "standard",
+            "prettier",
+            "prettier/standard"
+        ]
     },
     "release": {
         "plugins": [
@@ -74,8 +86,14 @@
     "devDependencies": {
         "@semantic-release/changelog": "^5.0.1",
         "@semantic-release/git": "^9.0.0",
+        "eslint": "^7.11.0",
+        "eslint-config-prettier": "^6.12.0",
+        "eslint-config-standard": "^14.1.1",
+        "eslint-plugin-import": "^2.22.1",
+        "eslint-plugin-node": "^11.1.0",
+        "eslint-plugin-promise": "^4.2.1",
+        "eslint-plugin-standard": "^4.0.1",
         "prettier": "^2.1.2",
-        "semantic-release": "^17.1.2",
-        "standard": "^14.3.4"
+        "semantic-release": "^17.1.2"
     }
 }
