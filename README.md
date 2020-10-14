@@ -1,16 +1,14 @@
-<br/>
-
 <p align="center">
     <a href="https://gladejs.com" rel="nofollow">
         <img width="240" alt="GladeJS Logo" src="https://raw.githubusercontent.com/gladejs/gladejs/master/pages/logos/gladejs-hsl.svg">
     </a>
 </p>
 
-<br/><hr/><br/>
+<br/><hr/>
 
 <h3 align="center">Helping Marko to Roll Uphill, Pass the CaScadeS and reach the GladeJS at 11' for Tea.</h3>
 
-<br/><hr/><br/>
+<hr/><br/>
 
 <p align="center">
     <a href="https://standardjs.com" rel="nofollow">
@@ -29,8 +27,6 @@
         <img alt="NPM Version" src="https://img.shields.io/npm/v/gladejs">
     </a>
 </p>
-
-<br/>
 
 ## Description
 
