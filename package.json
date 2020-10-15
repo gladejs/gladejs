@@ -81,7 +81,7 @@
         "marko": "^4.23.9",
         "postcss": "^7.0.35",
         "rimraf": "^3.0.2",
-        "rollup": "^2.30.0",
+        "rollup": "^2.31.0",
         "rollup-plugin-gzip": "^2.5.0",
         "rollup-plugin-postcss": "^3.1.8",
         "rollup-plugin-terser": "^7.0.2",
