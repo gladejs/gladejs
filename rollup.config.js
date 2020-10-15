@@ -6,9 +6,9 @@ import eleventy from '@gladejs/eleventy'
 
 import resolve from '@rollup/plugin-node-resolve'
 import commonjs from '@rollup/plugin-commonjs'
+import postcss from 'rollup-plugin-postcss'
 import assets from '@rollup/plugin-url'
 
-import postcss from 'rollup-plugin-postcss'
 import { terser } from 'rollup-plugin-terser'
 import gzip from 'rollup-plugin-gzip'
 import { brotliCompressSync } from 'zlib'
@@ -42,6 +42,13 @@ const plugins = [
         extensions: ['.cjs', '.js'], // and only CommonJS files
     }),
 
+    // @docs "https://github.com/egoist/rollup-plugin-postcss#options"
+    postcss({
+        extract: 'css/styles.css', // funnel it all into 1 file
+        minimize: isProd, // and apply "cssnano" in production
+        plugins: [], // pick yours @ "https://www.postcss.parts"
+    }),
+
     // @docs "https://github.com/rollup/plugins/tree/master/packages/url#options"
     assets({
         limit: 7 * 1024, // inline files < 7 kb, copy the rest
@@ -49,13 +56,6 @@ const plugins = [
         publicPath: '', // add it also to your <base href> tag
         fileName: '/assets/[dirname][name]-[hash][extname]',
         include: ['**/*.svg', '**/*.png', '**/*.jpe?g', '**/*.gif'],
-    }),
-
-    // @docs "https://github.com/egoist/rollup-plugin-postcss#options"
-    postcss({
-        extract: 'css/styles.css', // funnel it all into 1 file
-        minimize: isProd, // and apply "cssnano" in production
-        plugins: [], // pick yours @ "https://www.postcss.parts"
     }),
 
     // @docs "https://github.com/TrySound/rollup-plugin-terser#options"
