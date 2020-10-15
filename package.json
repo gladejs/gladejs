@@ -21,7 +21,8 @@
     "exports": "./rollup.config.js",
     "license": "MIT",
     "scripts": {
-        "lint": "prettier -c . && eslint *.js",
+        "lint": "prettier -c . && eslint *.js tests",
+        "test": "jest --ci --bail",
         "start": "rollup -c --watch",
         "clean": "rimraf build _site bundle_stats.html",
         "build": "rollup -c --environment NODE_ENV:production"
@@ -35,6 +36,9 @@
         "linux",
         "win32"
     ],
+    "jest": {
+        "testEnvironment": "node"
+    },
     "prettier": {
         "semi": false,
         "tabWidth": 4,
@@ -47,6 +51,7 @@
             "plugin:node/recommended",
             "plugin:import/recommended",
             "plugin:promise/recommended",
+            "plugin:jest/recommended",
             "standard",
             "prettier",
             "prettier/standard"
@@ -90,9 +95,11 @@
         "eslint-config-prettier": "^6.12.0",
         "eslint-config-standard": "^14.1.1",
         "eslint-plugin-import": "^2.22.1",
+        "eslint-plugin-jest": "^24.1.0",
         "eslint-plugin-node": "^11.1.0",
         "eslint-plugin-promise": "^4.2.1",
         "eslint-plugin-standard": "^4.0.1",
+        "jest": "^26.5.3",
         "prettier": "^2.1.2",
         "semantic-release": "^17.2.1"
     }
