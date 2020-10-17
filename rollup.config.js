@@ -1,21 +1,23 @@
-import path from 'path'
+'use strict'
 
-import marko from '@marko/rollup'
-import gladejs from '@gladejs/rollup'
-import eleventy from '@gladejs/eleventy'
+const path = require('path')
 
-import resolve from '@rollup/plugin-node-resolve'
-import commonjs from '@rollup/plugin-commonjs'
-import postcss from 'rollup-plugin-postcss'
-import assets from '@rollup/plugin-url'
+const marko = require('@marko/rollup').default
+const gladejs = require('@gladejs/rollup')
+const eleventy = require('@gladejs/eleventy')
 
-import { terser } from 'rollup-plugin-terser'
-import gzip from 'rollup-plugin-gzip'
-import { brotliCompressSync } from 'zlib'
-import visualizer from 'rollup-plugin-visualizer'
+const resolve = require('@rollup/plugin-node-resolve').default
+const commonjs = require('@rollup/plugin-commonjs')
+const postcss = require('rollup-plugin-postcss')
+const assets = require('@rollup/plugin-url')
 
-import htmlminifier from '@gladejs/rollup/html-minifier'
-import browsersync from '@gladejs/rollup/browser-sync'
+const { terser } = require('rollup-plugin-terser')
+const gzip = require('rollup-plugin-gzip').default
+const { brotliCompressSync } = require('zlib')
+const visualizer = require('rollup-plugin-visualizer')
+
+const htmlminifier = require('@gladejs/rollup/html-minifier')
+const browsersync = require('@gladejs/rollup/browser-sync')
 
 const SOURCE_DIR = path.resolve('pages')
 const BUILD_DIR = path.resolve('build')
@@ -140,7 +142,7 @@ const plugins = [
         }),
 ]
 
-export default {
+module.exports = {
     input: BUILD_DIR,
     plugins: plugins,
 

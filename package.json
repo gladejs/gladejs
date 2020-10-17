@@ -15,9 +15,8 @@
         "name": "Aurélien Stébé",
         "email": "aurelien.stebe@gmail.com"
     },
-    "type": "module",
+    "type": "commonjs",
     "main": "./rollup.config.js",
-    "module": "./rollup.config.js",
     "exports": "./rollup.config.js",
     "license": "MIT",
     "scripts": {
