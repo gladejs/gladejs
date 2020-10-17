@@ -37,7 +37,10 @@
         "win32"
     ],
     "jest": {
-        "testEnvironment": "node"
+        "testEnvironment": "node",
+        "watchPathIgnorePatterns": [
+            "<rootDir>/tests/.+/(pages/|build/|_site/|bundle_stats\\.html)"
+        ]
     },
     "prettier": {
         "semi": false,
