@@ -57,7 +57,8 @@
             "standard",
             "prettier",
             "prettier/standard"
-        ]
+        ],
+        "reportUnusedDisableDirectives": true
     },
     "release": {
         "plugins": [
