@@ -1,0 +1,3 @@
+# Static Templating
+
+TODO
