@@ -14,8 +14,8 @@ If necessary, save this PR as a Draft, open a new issue, then use its number.
 
 ## Checklist
 
--   [ ] Documentation: is it properly updated ? do missing docs have open issues ?
--   [ ] Testing: to be done "by hand" and on your honnor for now, 'npm test' later
--   [ ] Linting: proper indentation will do for now, 'npm run lint' probably later
+-   [ ] Testing: any fresh new tests ? are the old ones still passing ?
+-   [ ] Linting: did you "npm run lint" ? because GitHub will for sure.
+-   [ ] Documentation: is it updated or are there related open issues ?
 
-REMINDER: read the "CONTRIBUTING.md" document _before_ submitting a Pull Request.
+REMINDER: read the "CONTRIBUTING.md" document _before_ you submit a Pull Request.
