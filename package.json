@@ -86,25 +86,25 @@
         "marko": "^5.0.0-next.50",
         "postcss": "^7.0.35",
         "rimraf": "^3.0.2",
-        "rollup": "^2.32.0",
+        "rollup": "^2.32.1",
         "rollup-plugin-gzip": "^2.5.0",
         "rollup-plugin-postcss": "^3.1.8",
         "rollup-plugin-terser": "^7.0.2",
         "rollup-plugin-visualizer": "^4.1.1",
-        "terser": "^5.3.5"
+        "terser": "^5.3.8"
     },
     "devDependencies": {
         "@semantic-release/changelog": "^5.0.1",
         "@semantic-release/git": "^9.0.0",
         "eslint": "^7.11.0",
-        "eslint-config-prettier": "^6.13.0",
-        "eslint-config-standard": "^14.1.1",
+        "eslint-config-prettier": "^6.14.0",
+        "eslint-config-standard": "^15.0.0",
         "eslint-plugin-import": "^2.22.1",
         "eslint-plugin-jest": "^24.1.0",
         "eslint-plugin-node": "^11.1.0",
         "eslint-plugin-promise": "^4.2.1",
-        "eslint-plugin-standard": "^4.0.1",
-        "jest": "^26.5.3",
+        "eslint-plugin-standard": "^4.0.2",
+        "jest": "^26.6.0",
         "prettier": "^2.1.2",
         "semantic-release": "^17.2.1"
     }
