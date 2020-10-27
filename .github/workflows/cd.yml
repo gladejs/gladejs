@@ -17,7 +17,7 @@ jobs:
                   node-version: 12
             - run: npm ci
             - run: npm run lint
-            - run: npx semantic-release
+            - run: npx semantic-release --dry-run
               env:
                   NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
                   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
