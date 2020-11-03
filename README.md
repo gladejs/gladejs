@@ -37,8 +37,15 @@ If the above description does not speak to you, try one of these for size :
 -   This is a [Jamstack](https://jamstack.org) static site generator framework based on Rollup
 -   It transforms your "pages" into a modern web "\_site" ready for Prod
 -   It is the best bundler (you're not using) combined with the simplest<br/>
-    SSG (you wish to use) and the fastest UI lib (you've never heard of)
+    SSG (you want to use) and the fastest UI lib (you've never heard of)
 -   In the end, it is nothing more than a well documented Rollup config file
+
+Or maybe listing what _it's not_ and _doesn't do_ will give you a better idea :
+
+-   This _is not_ yet another framework to learn (the CLI is Rollup's, the configuration is Eleventy's)
+-   The tools _are not_ hidden, you interact directly with Eleventy, PostCSS, Terser, html-minifier, ...
+-   It _does not_ force any JS in the output (unless you use Marko's client-side components, of course)
+-   You _will not_ find any mention of SSR, SPA, routes, servers, nor any GladeJS special API or "\<Link\>"
 
 This project requires [NodeJS](https://nodejs.org) v10.16 or superior and the included "npm" CLI v6.9.0 or superior.<br/>
 It is tested on the latest versions of NodeJS v10 / v12 / v14 on MacOS, Ubuntu and Windows.
