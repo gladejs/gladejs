@@ -9,15 +9,15 @@ describe('the Configuration Options', () => {
         test.todo('TODO')
     })
 
+    describe('for the NPM "package.json" File', () => {
+        test.todo('TODO')
+    })
+
     describe('for the PostCSS Parts & Plugins', () => {
         test.todo('TODO')
     })
 
     describe('for the ".eleventy.js" File', () => {
-        test.todo('TODO')
-    })
-
-    describe('for the NPM "package.json" File', () => {
         test.todo('TODO')
     })
 })
