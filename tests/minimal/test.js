@@ -4,7 +4,7 @@ const fs = require('fs-extra')
 
 const { executeCommand } = require('../utils.js')
 
-describe('requires a minimal "page" to build', () => {
+describe('requires a "page" to build', () => {
     beforeAll(() => {
         process.chdir(__dirname)
     })
