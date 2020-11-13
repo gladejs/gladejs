@@ -1,3 +1,0 @@
-# Binary & Static Assets
-
-TODO

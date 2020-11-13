@@ -1,3 +1,0 @@
-# Eleventy "layouts" Folder
-
-TODO

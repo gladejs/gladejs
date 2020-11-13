@@ -1,3 +1,0 @@
-# Eleventy "includes" Folder
-
-TODO

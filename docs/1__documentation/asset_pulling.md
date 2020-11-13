@@ -1,3 +1,3 @@
-# Binary Asset Pulling
+# Static Asset Pulling
 
 TODO

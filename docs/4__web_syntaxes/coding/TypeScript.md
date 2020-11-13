@@ -1,3 +1,0 @@
-# TypeScript Support
-
-TODO
