@@ -15,7 +15,7 @@ The following is an evolving roadmap / checklist / manifesto for the [GladeJS](h
 
 -   ✅ &nbsp; Support modern browsers with "module" script tags containing each page JS inlined and using standard imports
 -   🚧 &nbsp; Support legacy browsers with "nomodule" script tags pointing to the full bundle file transpiled by [Babel](https://babeljs.io) / [Bublé](https://buble.surge.sh/guide/) ? \[[#9](https://github.com/gladejs/gladejs/issues/9)\]
--   ✅ &nbsp; [Configurable bundle chunking](https://github.com/gladejs/rollup/blob/9d21bc77d3a34a29f02c5a7a654cf4aefadfa529/dist/gladejs-rollup.js#L81) (default: "project" for components, "markojs" for the engine, "modules" for the rest)
+-   ✅ &nbsp; Configurable bundle chunking (default: "project" for components, "markojs" for the engine, "modules" for the rest)
 -   ✅ &nbsp; Install & import NPM packages with the official "node-resolve" & "commonjs" Rollup plugins
 -   ✅ &nbsp; Mangle & compress all JS code in Production using this ["Terser" plugin](https://github.com/TrySound/rollup-plugin-terser)
 
@@ -31,8 +31,8 @@ The following is an evolving roadmap / checklist / manifesto for the [GladeJS](h
 
 -   ✅ &nbsp; Eleventy's support for [layouts](https://www.11ty.dev/docs/layouts/), [permalinks](https://www.11ty.dev/docs/permalinks/), [collections](https://www.11ty.dev/docs/collections/), [pagination](https://www.11ty.dev/docs/pagination/), [filters](https://www.11ty.dev/docs/filters/) & [shortcodes](https://www.11ty.dev/docs/shortcodes/) on top of ...
 -   ✅ &nbsp; [9 template languages](https://www.11ty.dev/docs/languages/) to pre-process the HTML and Markdown docs (with custom tags, à la [MDX](https://mdxjs.com) )
--   ✅ &nbsp; [List all Marko "pages"](https://github.com/gladejs/rollup/blob/9d21bc77d3a34a29f02c5a7a654cf4aefadfa529/dist/gladejs-rollup.js#L66) from a single folder for the Rollup input, ignoring "components" sub-folders
--   ✅ &nbsp; [Render each template](https://github.com/gladejs/rollup/blob/9d21bc77d3a34a29f02c5a7a654cf4aefadfa529/dist/gladejs-rollup.js#L38) with the CSS styles, client-side JS, page path Id & env variables as globals
+-   ✅ &nbsp; List all Marko "pages" from a single folder for the Rollup input, ignoring "components" sub-folders
+-   ✅ &nbsp; Render each template with the CSS styles, client-side JS, page path Id & env variables as globals
 -   ✅ &nbsp; Minify all HTML code in Production using ["html-minifier"](https://github.com/kangax/html-minifier) correctly configured
 
 ## Data & Assets
@@ -41,7 +41,7 @@ The following is an evolving roadmap / checklist / manifesto for the [GladeJS](h
 -   ✅ &nbsp; Inline or copy binary assets (cutoff at 7 kb by default) using the official "url" Rollup plugin
     -   ✅ &nbsp; Support publishing websites with a "publicPath" prefix for assets (JS & CSS paths are relative)
     -   🚧 &nbsp; Extend the "url" plugin config to support WEPB, Fonts, video formats, 3D model formats, etc ...
--   ✅ &nbsp; Automatic asset pulling using a [Marko compiler "transform" hook](https://github.com/gladejs/rollup/blob/9d21bc77d3a34a29f02c5a7a654cf4aefadfa529/tags/asset-transformer.js#L6) on all tags "src" attribute :
+-   ✅ &nbsp; Automatic asset pulling using a Marko compiler "transform" hook on all tags "src" attribute :
     -   ✅ &nbsp; Pull relative assets with ".PATH" --> src="./path/image.png" or src="../../path/logo.svg"
     -   🚧 &nbsp; Pull project assets with "\~/DIR" --> src="\~/assets/image.png" or src="\~/static/logo.svg"
     -   🚧 &nbsp; Pull NodeJS assets with "~NAME" --> src="~package/dist/assets/image.jpg"
