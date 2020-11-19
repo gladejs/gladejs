@@ -30,6 +30,7 @@
     <a href="https://app.netlify.com/sites/main-gladejs-site/deploys" rel="nofollow">
         <img alt="Netlify Status" src="https://api.netlify.com/api/v1/badges/8e4756b1-ba23-45b4-a9ab-6fb041c40056/deploy-status">
     </a>
+    &nbsp;
 </p>
 
 <p align="center">
@@ -48,6 +49,7 @@
     <a href="https://github.com/gladejs/gladejs/commits/next">
         <img alt="Latest Commits" src="https://badgen.net/github/last-commit/gladejs/gladejs/next">
     </a>
+    &nbsp;
 </p>
 
 ## Description
