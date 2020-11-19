@@ -11,20 +11,42 @@
 <hr/><br/>
 
 <p align="center">
+    <a href="https://www.npmjs.com/package/gladejs" rel="nofollow">
+        <img alt="NPM Version" src="https://badgen.net/npm/v/gladejs">
+    </a>
+    &nbsp;
+    <a href="https://github.com/prettier/prettier">
+        <img alt="Code Formatter" src="https://badgen.net/badge/code%20format/prettier/ff69b4">
+    </a>
+    &nbsp;
     <a href="https://standardjs.com" rel="nofollow">
-        <img alt="JavaScript Style Guide" src="https://img.shields.io/badge/code_style-standard-brightgreen.svg">
+        <img alt="JavaScript Style" src="https://badgen.net/badge/code%20style/standard/green">
     </a>
     &nbsp;
     <a href="https://github.com/semantic-release/semantic-release">
-        <img alt="semantic-release" src="https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg">
+        <img alt="Semantic Release" src="https://badgen.net/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80/semantic-release/e10079">
+    </a>
+    &nbsp;
+    <a href="https://app.netlify.com/sites/main-gladejs-site/deploys" rel="nofollow">
+        <img alt="Netlify Status" src="https://api.netlify.com/api/v1/badges/8e4756b1-ba23-45b4-a9ab-6fb041c40056/deploy-status">
+    </a>
+</p>
+
+<p align="center">
+    <a href="https://github.com/gladejs/gladejs/releases">
+        <img alt="Latest Release" src="https://badgen.net/github/release/gladejs/gladejs">
+    </a>
+    &nbsp;
+    <a href="https://github.com/gladejs/gladejs/actions">
+        <img alt="Actions Checks" src="https://badgen.net/github/checks/gladejs/gladejs">
     </a>
     &nbsp;
     <a href="https://github.com/gladejs/gladejs/blob/master/LICENSE">
-        <img alt="GitHub License" src="https://img.shields.io/github/license/gladejs/gladejs">
+        <img alt="GitHub License" src="https://badgen.net/github/license/gladejs/gladejs">
     </a>
     &nbsp;
-    <a href="https://www.npmjs.com/package/gladejs" rel="nofollow">
-        <img alt="NPM Version" src="https://img.shields.io/npm/v/gladejs">
+    <a href="https://github.com/gladejs/gladejs/commits/next">
+        <img alt="Latest Commits" src="https://badgen.net/github/last-commit/gladejs/gladejs/next">
     </a>
 </p>
 
