@@ -81,7 +81,7 @@ It is tested on the latest versions of NodeJS v10 / v12 / v14 on MacOS, Ubuntu a
 An automated & interactive "@gladejs/create" package is planned for the v0.5 release.<br/>
 It will allow for a simple "`npm init @gladejs MyWebSite`" installation, but not yet.
 
-### Manual (in 4 easy steps)
+### Manual (in 3 easy steps)
 
 1. Create a new NodeJS project & install GladeJS as a "devDependency" :
 
@@ -90,13 +90,7 @@ $ mkdir MyWebSite && cd MyWebSite
 $ npm init -y && npm i -D gladejs
 ```
 
-2. Copy the GladeJS Rollup configuration file into your project folder :
-
-```bash
-$ npx shx cp node_modules/gladejs/rollup.config.js .
-```
-
-3. Replace the "scripts" config section in your "`package.json`" with :
+2. Replace the "scripts" section in your new "`package.json`" file with :
 
 ```json
 "scripts": {
@@ -106,27 +100,27 @@ $ npx shx cp node_modules/gladejs/rollup.config.js .
 },
 ```
 
-4. Copy the GladeJS documentation pages to start building right away :
+3. Copy the GladeJS Rollup configuration file into your project folder :
 
 ```bash
-$ npx shx cp -R node_modules/gladejs/pages .
+$ npx shx cp node_modules/gladejs/rollup.config.js .
 ```
 
 ## Documentation
-
-### Command Scripts
-
-GladeJS is directly controlled via NPM scripts, using the following commands :
-
--   "`npm start`" to run Rollup in 'watch' mode for live development
--   "`npm run build`" to bundle your project for production delivery
--   "`npm run clean`" to delete all files & folders created by GladeJS
 
 ### Rollup Configuration
 
 A single "`rollup.config.js`" file is used to configure your build process.<br/>
 If you are not a NodeJS and/or Rollup guru, fret not, the defaults are just fine.<br/>
 Nevertheless, [give it a quick glance](./rollup.config.js), it's relatively organised and documented.
+
+### NPM Command Scripts
+
+GladeJS is directly controlled via NPM scripts, using the following commands :
+
+-   "`npm start`" to run Rollup in 'watch' mode for live development
+-   "`npm run build`" to bundle your project for production delivery
+-   "`npm run clean`" to delete all files & folders created by GladeJS
 
 ### Pages & Components
 
