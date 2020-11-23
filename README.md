@@ -129,4 +129,9 @@ In the meantime, just let a [floating possum guide you around Eleventy](https://
 
 ## Contributing
 
-While still in early development, you are welcome to consult the [ROADMAP.md](./ROADMAP.md) file and the ["Open Issues Status"](https://github.com/gladejs/gladejs/projects/1) project board.
+While still in early development, everything is in place to receive your contributions.
+
+-   Get acquainted with the project [PHILOSOPHY](./PHILOSOPHY.md) and general direction
+-   Consult the [ROADMAP](./ROADMAP.md) to see where things stand and what's the master plan
+-   Look for low hanging fruits in the ["Open Issues Status"](https://github.com/gladejs/gladejs/projects/1) project board
+-   Read the [CONTRIBUTING](./CONTRIBUTING.md) guidelines carefully, they are short and to the point
