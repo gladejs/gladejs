@@ -57,7 +57,13 @@ const plugins = [
         sourceDir: BUILD_DIR, // to get the correct [dirname]
         publicPath: '', // add it also to your <base href> tag
         fileName: '/assets/[dirname][name]-[hash][extname]',
-        include: ['**/*.svg', '**/*.png', '**/*.jpe?g', '**/*.gif'],
+        include: [
+            '**/*.svg',
+            '**/*.png',
+            '**/*.jp(e)?g',
+            '**/*.gif',
+            '**/*.webp',
+        ],
     }),
 
     // @docs "https://github.com/TrySound/rollup-plugin-terser#options"
