@@ -86,8 +86,9 @@ It will allow for a simple "`npm init @gladejs MyWebSite`" installation, but not
 1. Create a new NodeJS project & install GladeJS as a "devDependency" :
 
 ```bash
-$ mkdir MyWebSite && cd MyWebSite
-$ npm init -y && npm i -D gladejs
+mkdir MyWebSite && cd MyWebSite
+
+npm init -y && npm i -D gladejs
 ```
 
 2. Replace the "scripts" section in your new "`package.json`" file with :
@@ -103,7 +104,7 @@ $ npm init -y && npm i -D gladejs
 3. Copy the GladeJS Rollup configuration file into your project folder :
 
 ```bash
-$ npx shx cp node_modules/gladejs/rollup.config.js .
+npx shx cp node_modules/gladejs/rollup.config.js .
 ```
 
 ## Documentation
