@@ -76,6 +76,8 @@ It is tested on the latest versions of NodeJS v10 / v12 / v14 on MacOS, Ubuntu a
 
 ## Installation
 
+The complete installation instructions are in this section, don't look for any more details, it's all here.
+
 ### Automatic (not ready yet)
 
 An automated & interactive "@gladejs/create" package is planned for the v0.5 release.<br/>
@@ -108,6 +110,8 @@ npx shx cp node_modules/gladejs/rollup.config.js .
 ```
 
 ## Documentation
+
+The bare minimum to get you started is here, but you'll find detailed information in the ["docs" folder](./docs).
 
 ### Rollup Configuration
 
