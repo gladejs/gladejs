@@ -80,28 +80,28 @@
         "@gladejs/eleventy": "^0.3.1",
         "@gladejs/rollup": "^0.4.1",
         "@marko/rollup": "^2.3.0",
-        "@rollup/plugin-commonjs": "^16.0.0",
-        "@rollup/plugin-node-resolve": "^10.0.0",
-        "@rollup/plugin-url": "^5.0.1",
+        "@rollup/plugin-commonjs": "^17.0.0",
+        "@rollup/plugin-node-resolve": "^11.0.0",
+        "@rollup/plugin-url": "^6.0.0",
         "browser-sync": "^2.26.13",
         "cssnano": "^4.1.10",
         "execa": "^4.1.0",
         "fs-extra": "^9.0.1",
         "html-minifier": "^4.0.0",
-        "marko": "^5.0.0-next.54",
+        "marko": "^5.0.0-next.60",
         "postcss": "^7.0.35",
         "rimraf": "^3.0.2",
-        "rollup": "^2.33.3",
+        "rollup": "^2.34.0",
         "rollup-plugin-gzip": "^2.5.0",
         "rollup-plugin-postcss": "^3.1.8",
         "rollup-plugin-terser": "^7.0.2",
         "rollup-plugin-visualizer": "^4.2.0",
-        "terser": "^5.5.0"
+        "terser": "^5.5.1"
     },
     "devDependencies": {
         "@semantic-release/changelog": "^5.0.1",
         "@semantic-release/git": "^9.0.0",
-        "eslint": "^7.13.0",
+        "eslint": "^7.14.0",
         "eslint-config-prettier": "^6.15.0",
         "eslint-config-standard": "^16.0.2",
         "eslint-plugin-import": "^2.22.1",
@@ -109,8 +109,8 @@
         "eslint-plugin-node": "^11.1.0",
         "eslint-plugin-promise": "^4.2.1",
         "jest": "^26.6.3",
-        "prettier": "^2.1.2",
+        "prettier": "^2.2.1",
         "prettier-plugin-toml": "^0.3.1",
-        "semantic-release": "^17.2.3"
+        "semantic-release": "^17.3.0"
     }
 }
