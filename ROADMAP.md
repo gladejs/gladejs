@@ -63,8 +63,7 @@ The following is an evolving roadmap / checklist / manifesto for the [GladeJS](h
 
 ## Wish List
 
--   Marko v5.0 and TypeScript support
--   Proper end-to-end sourcemaps for JS & CSS files
+-   TypeScript support and proper end-to-end sourcemaps
 -   Support for [Web Components](https://www.webcomponents.org) (might just work, to be tested)
 -   Support for [CSS Modules](https://github.com/css-modules/css-modules) or some way of localizing styles per component
 -   Complete absence of Marko JS code in the output if no client-side hydration is required
