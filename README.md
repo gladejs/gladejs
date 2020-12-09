@@ -80,7 +80,7 @@ The complete installation instructions are in this section, don't look for any m
 
 ### Automatic (not ready yet)
 
-An automated & interactive "@gladejs/create" package is planned for the v0.5 release.<br/>
+A "@gladejs/create" automatic initialization package is planned for the v1.0 release.<br/>
 It will allow for a simple "`npm init @gladejs MyWebSite`" installation, but not yet.
 
 ### Manual (in 3 easy steps)
