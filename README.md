@@ -140,3 +140,14 @@ While still in early development, everything is in place to receive your contrib
 -   Consult the [ROADMAP](./ROADMAP.md) to see where things stand and what's the master plan
 -   Look for low hanging fruits in the ["Open Issues Status"](https://github.com/gladejs/gladejs/projects/1) project board
 -   Read the [CONTRIBUTING](./CONTRIBUTING.md) guidelines carefully, they are short and to the point
+
+You are now ready to contribute, so ... where is the code ? Mostly in another castle, Mario.
+
+-   The [core engine](./rollup.config.js) is here, but it's more configuration than source code
+-   The [integration tests](./tests) are here, but they are more documentation than test
+-   The [documentation dir](./docs) is here and contains the actual meat of this project
+-   The ["@gladejs/eleventy"](https://github.com/gladejs/eleventy) package integrates 11ty into Rollup for GladeJS
+-   The ["@gladejs/rollup"](https://github.com/gladejs/rollup) package contains all of the necessary glue code
+
+Finally, GladeJS relies on over 15 major OSS projects, including 7 Rollup plugins,<br/>
+contributing to any of them, not only benefits this project, but also many others.
