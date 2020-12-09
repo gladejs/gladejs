@@ -137,7 +137,7 @@ The files & folders structure is marked by a distinctive lack of imagination :
     "`index.{html|md|marko|11ty.js|liquid|njk|hbs|mustache|ejs|haml|pug|jstl}`" page.
 -   Static assets can be pulled from anywhere on your disk, the NPM registry or the World Wide Web.
 
-Now, enter [the GladeJS "docs"](./docs), follow [the floating possum around 11ty](https://www.11ty.dev/docs/) and [RTFMD (Read The Fabulous Marko Docs)](https://markojs.com/docs/getting-started/).
+Now, enter [the GladeJS "docs"](./docs), follow [the floating possum around 11ty](https://www.11ty.dev/docs/) or [RTFMD (Read The Fabulous Marko Docs)](https://markojs.com/docs/getting-started/).
 
 ## Contributing
 
