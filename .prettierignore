@@ -1,7 +1,7 @@
 /_site/
 /build/
-.DS_Store
-/node_modules/
+/CHANGELOG.md
+/.github/CODE_OF_CONDUCT.md
 /tests/**/_site/
 /tests/**/build/
 /bundle_stats.html

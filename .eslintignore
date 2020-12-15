@@ -1,0 +1,4 @@
+/_site/
+/build/
+/tests/**/_site/
+/tests/**/build/

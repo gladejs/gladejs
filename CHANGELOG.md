@@ -1,3 +1,18 @@
+# [0.5.0](https://github.com/gladejs/gladejs/compare/v0.4.3...v0.5.0) (2020-12-14)
+
+
+### Bug Fixes
+
+* **config:** run the Visualizer in Prod only again ([f0e1dfd](https://github.com/gladejs/gladejs/commit/f0e1dfda62811db5c42deeb246b028516de1bdaf))
+* **config:** switch to CommonJS completely ([0863da7](https://github.com/gladejs/gladejs/commit/0863da7e4cb33c60743fb3898683ff736c426962))
+* **config:** update Assets include list to add WebP ([fa29ffc](https://github.com/gladejs/gladejs/commit/fa29ffcd9c26e3fc480b7e4b5a8ee69afa2ab211))
+* **deps:** refresh dependencies & force a release ([cb89afb](https://github.com/gladejs/gladejs/commit/cb89afb6bf8b3dad4466b0d281ae7814aca83072))
+
+
+### Features
+
+* **marko:** upgrade to Marko v5 & drop v4 support ([a49501c](https://github.com/gladejs/gladejs/commit/a49501cacdf6f5f91cb1e612f2437ece9ff88e06))
+
 ## [0.4.3](https://github.com/gladejs/gladejs/compare/v0.4.2...v0.4.3) (2020-10-05)
 
 
