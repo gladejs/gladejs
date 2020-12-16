@@ -1,11 +1,8 @@
 'use strict'
 
+const fs = require('fs-extra')
 const path = require('path')
 const execa = require('execa')
-
-function executeCommand(command) {
-    return execa.command(command, { preferLocal: true })
-}
 
 exports.runRollup = function (confFile, envVar = {}) {
     let rollupCmd = 'rollup -c ' + path.join(confFile)
@@ -18,4 +15,16 @@ exports.runRollup = function (confFile, envVar = {}) {
 
 exports.runCleanup = function (...pathList) {
     return executeCommand('rimraf ' + pathList.join(' '))
+}
+
+function executeCommand(command) {
+    return execa.command(command, { preferLocal: true })
+}
+
+exports.writeFile = function (filePath, content) {
+    return fs.outputFile(path.join(filePath), content)
+}
+
+exports.readFile = function (filePath) {
+    return fs.readFile(path.join(filePath), 'utf-8')
 }
