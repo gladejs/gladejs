@@ -88,7 +88,7 @@ Or maybe listing what _it's not_ and _doesn't do_ will give you a better idea :
 -   You _will not_ find any mention of SSR, SPA, routes, servers, nor any GladeJS special API or "\<Link\>"
 
 This project requires [NodeJS](https://nodejs.org) v10.16 or superior and the included "npm" CLI v6.9.0 or superior.<br/>
-It is tested on the latest versions of NodeJS v10 / v12 / v14 on MacOS, Ubuntu and Windows.
+It is tested on the latest versions of NodeJS v10 / v12 / v14 / v15 on MacOS, Ubuntu and Windows.
 
 ## Installation
 
