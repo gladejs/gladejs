@@ -2,7 +2,7 @@
 
 const fs = require('fs-extra')
 
-const { executeCommand } = require('../utils.js')
+const { runRollup, runCleanup } = require('../utils.js')
 
 describe('requires a "page" to build', () => {
     beforeAll(() => {
@@ -10,7 +10,7 @@ describe('requires a "page" to build', () => {
     })
 
     afterEach(async () => {
-        await executeCommand('rimraf pages build _site')
+        await runCleanup('pages', 'build', '_site')
     })
 
     test.todo('warns if the "pages" folder is missing')
@@ -19,7 +19,7 @@ describe('requires a "page" to build', () => {
 
     it('builds an "Hello World" index page', async () => {
         await fs.outputFile('pages/index.html', '<h1>Hello World !</h1>')
-        await executeCommand('rollup -c ../../rollup.config.js')
+        await runRollup('../../rollup.config.js')
 
         const index = await fs.readFile('_site/index.html', 'utf-8')
         expect(index).toMatchInlineSnapshot(`"<h1>Hello World !</h1>"`)
