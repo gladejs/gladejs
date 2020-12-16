@@ -52,6 +52,22 @@
     &nbsp;
 </p>
 
+## GladeJS Project Status (December 2020)
+
+The current efforts are focused on the documentation and tests.
+
+The v0.5 release marks the end of the prototype phase :
+
+-   ✅ &nbsp; stable architecture & Rollup config file
+-   ✅ &nbsp; minimal implementation of assets pulling
+-   ✅ &nbsp; development mode with incremental builds
+
+The v0.6 release will focus on the CSS support :
+
+-   🚧 &nbsp; inlining of the critical and above-the-fold CSS
+-   🚧 &nbsp; proper configuration of PostCSS and its plugins
+-   🚧 &nbsp; CSS chunking per page and configurable (à la JS)
+
 ## Description
 
 GladeJS is a simple [Rollup](https://rollupjs.org) setup for bundling static Web Sites built with [Eleventy](https://www.11ty.dev) and [Marko](https://markojs.com).
