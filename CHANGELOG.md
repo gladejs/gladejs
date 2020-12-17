@@ -1,3 +1,10 @@
+## [0.5.1](https://github.com/gladejs/gladejs/compare/v0.5.0...v0.5.1) (2020-12-17)
+
+
+### Bug Fixes
+
+* **11ty:** support for Windows input/output paths ([c7f2441](https://github.com/gladejs/gladejs/commit/c7f2441c4b481a82580662eb22069585a91cf03b))
+
 # [0.5.0](https://github.com/gladejs/gladejs/compare/v0.4.3...v0.5.0) (2020-12-14)
 
 
