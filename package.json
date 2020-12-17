@@ -77,7 +77,7 @@
     },
     "dependencies": {
         "@11ty/eleventy": "^0.11.1",
-        "@gladejs/eleventy": "^0.3.2",
+        "@gladejs/eleventy": "^0.3.3",
         "@gladejs/rollup": "^0.4.2",
         "@marko/rollup": "^2.3.0",
         "@rollup/plugin-commonjs": "^17.0.0",
@@ -88,7 +88,7 @@
         "execa": "^4.1.0",
         "fs-extra": "^9.0.1",
         "html-minifier": "^4.0.0",
-        "marko": "^5.0.0-next.69",
+        "marko": "^5.0.0-next.70",
         "postcss": "^7.0.35",
         "rimraf": "^3.0.2",
         "rollup": "^2.35.1",
