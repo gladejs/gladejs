@@ -1,7 +1,6 @@
 /_site/
 /build/
 /CHANGELOG.md
-/.github/CODE_OF_CONDUCT.md
 /tests/**/_site/
 /tests/**/build/
 /bundle_stats.html
