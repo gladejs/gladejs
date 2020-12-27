@@ -77,8 +77,8 @@
     },
     "dependencies": {
         "@11ty/eleventy": "^0.11.1",
-        "@gladejs/eleventy": "^0.3.3",
-        "@gladejs/rollup": "^0.4.2",
+        "@gladejs/eleventy": "0.5.0",
+        "@gladejs/rollup": "0.5.0",
         "@marko/rollup": "^2.3.0",
         "@rollup/plugin-commonjs": "^17.0.0",
         "@rollup/plugin-node-resolve": "^11.0.1",
@@ -101,8 +101,8 @@
     "devDependencies": {
         "@semantic-release/changelog": "^5.0.1",
         "@semantic-release/git": "^9.0.0",
-        "eslint": "^7.15.0",
-        "eslint-config-prettier": "^7.0.0",
+        "eslint": "^7.16.0",
+        "eslint-config-prettier": "^7.1.0",
         "eslint-config-standard": "^16.0.2",
         "eslint-plugin-import": "^2.22.1",
         "eslint-plugin-jest": "^24.1.3",
