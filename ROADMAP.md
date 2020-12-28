@@ -40,7 +40,7 @@ The following is an evolving roadmap / checklist / manifesto for the [GladeJS](h
 -   ✅ &nbsp; Advanced [JSON & JS data cascade](https://www.11ty.dev/docs/data-cascade/) (with optional support for [YAML, TOML, CSV, etc ...](https://www.11ty.dev/docs/data-custom/) )
 -   ✅ &nbsp; Inline or copy binary assets (cutoff at 7 kb by default) using the official "url" Rollup plugin
     -   ✅ &nbsp; Support publishing websites with a "publicPath" prefix for assets (JS & CSS paths are relative)
-    -   🚧 &nbsp; Extend the "url" plugin config to support WEPB, Fonts, video formats, 3D model formats, etc ...
+    -   🚧 &nbsp; Extend the "url" plugin config to support AVIF, Fonts, video formats, 3D model formats, etc ...
 -   ✅ &nbsp; Automatic asset pulling using a Marko compiler "transform" hook on all tags "src" attribute :
     -   ✅ &nbsp; Pull relative assets with ".PATH" --> src="./path/image.png" or src="../../path/logo.svg"
     -   🚧 &nbsp; Pull project assets with "\~/DIR" --> src="\~/assets/image.png" or src="\~/static/logo.svg"

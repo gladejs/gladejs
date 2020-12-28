@@ -19,9 +19,12 @@
     "main": "./rollup.config.js",
     "exports": "./rollup.config.js",
     "license": "MIT",
+    "workspaces": [
+        "packages/*"
+    ],
     "scripts": {
-        "lint": "prettier -c . && eslint *.js tests",
         "test": "jest --ci --bail",
+        "lint": "prettier -c . && eslint .",
         "start": "rollup -c --watch",
         "clean": "rimraf build _site bundle_stats.html",
         "build": "rollup -c --environment NODE_ENV:production"
@@ -61,15 +64,26 @@
         "reportUnusedDisableDirectives": true
     },
     "release": {
+        "tagFormat": "gladejs-v${version}",
         "plugins": [
-            "@semantic-release/commit-analyzer",
+            [
+                "@semantic-release/commit-analyzer",
+                {
+                    "releaseRules": [
+                        {
+                            "scope": "@*",
+                            "release": false
+                        }
+                    ]
+                }
+            ],
             "@semantic-release/release-notes-generator",
             "@semantic-release/changelog",
             "@semantic-release/npm",
             [
                 "@semantic-release/git",
                 {
-                    "message": "chore(release): version ${nextRelease.version} :tada: "
+                    "message": "chore(release): gladejs version ${nextRelease.version} :tada: "
                 }
             ],
             "@semantic-release/github"

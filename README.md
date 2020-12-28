@@ -11,10 +11,6 @@
 <hr/><br/>
 
 <p align="center">
-    <a href="https://www.npmjs.com/package/gladejs" rel="nofollow">
-        <img alt="NPM Version" src="https://badgen.net/npm/v/gladejs">
-    </a>
-    &nbsp;
     <a href="https://github.com/prettier/prettier">
         <img alt="Code Formatter" src="https://badgen.net/badge/code%20format/prettier/ff69b4">
     </a>
@@ -27,27 +23,27 @@
         <img alt="Semantic Release" src="https://badgen.net/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80/semantic-release/e10079">
     </a>
     &nbsp;
-    <a href="https://app.netlify.com/sites/main-gladejs-site/deploys" rel="nofollow">
-        <img alt="Netlify Status" src="https://api.netlify.com/api/v1/badges/8e4756b1-ba23-45b4-a9ab-6fb041c40056/deploy-status">
+    <a href="https://www.npmjs.com/package/gladejs" rel="nofollow">
+        <img alt="Latest Version" src="https://badgen.net/npm/v/gladejs">
     </a>
     &nbsp;
 </p>
 
 <p align="center">
-    <a href="https://github.com/gladejs/gladejs/releases">
-        <img alt="Latest Release" src="https://badgen.net/github/release/gladejs/gladejs">
+    <a href="https://github.com/gladejs/gladejs/blob/master/LICENSE">
+        <img alt="GitHub License" src="https://badgen.net/github/license/gladejs/gladejs">
     </a>
     &nbsp;
     <a href="https://github.com/gladejs/gladejs/actions">
         <img alt="Actions Checks" src="https://badgen.net/github/checks/gladejs/gladejs">
     </a>
     &nbsp;
-    <a href="https://github.com/gladejs/gladejs/blob/master/LICENSE">
-        <img alt="GitHub License" src="https://badgen.net/github/license/gladejs/gladejs">
-    </a>
-    &nbsp;
     <a href="https://github.com/gladejs/gladejs/commits/next">
         <img alt="Latest Commits" src="https://badgen.net/github/last-commit/gladejs/gladejs/next">
+    </a>
+    &nbsp;
+    <a href="https://app.netlify.com/sites/main-gladejs-site/deploys" rel="nofollow">
+        <img alt="Netlify Status" src="https://api.netlify.com/api/v1/badges/8e4756b1-ba23-45b4-a9ab-6fb041c40056/deploy-status">
     </a>
     &nbsp;
 </p>
@@ -161,7 +157,7 @@ While still in early development, everything is in place to receive your contrib
 
 -   Get acquainted with the project [PHILOSOPHY](./PHILOSOPHY.md) and general direction
 -   Consult the [ROADMAP](./ROADMAP.md) to see where things stand and what's the master plan
--   Look for low hanging fruits in the ["Open Issues Status"](https://github.com/gladejs/gladejs/projects/1) project board
+-   Look for low hanging fruits in the ["Open Issues Status"](./projects/1) project board
 -   Read the [CONTRIBUTING](./CONTRIBUTING.md) guidelines carefully, they are short and to the point
 
 You are now ready to contribute, so ... where is the code ? Mostly in another castle, Mario.
@@ -169,8 +165,8 @@ You are now ready to contribute, so ... where is the code ? Mostly in another ca
 -   The [core engine](./rollup.config.js) is here, but it's more configuration than source code
 -   The [integration tests](./tests) are here, but they are more documentation than test
 -   The [documentation dir](./docs) is here and contains the actual meat of this project
--   The ["@gladejs/eleventy"](https://github.com/gladejs/eleventy) package integrates 11ty into Rollup for GladeJS
--   The ["@gladejs/rollup"](https://github.com/gladejs/rollup) package contains all of the necessary glue code
+-   The ["@gladejs/eleventy"](./packages/eleventy) package integrates 11ty into Rollup for GladeJS
+-   The ["@gladejs/rollup"](./packages/rollup) package contains all of the necessary glue code
 
 Finally, GladeJS relies on over 15 major OSS projects, including 7 Rollup plugins,<br/>
 contributing to any of them, not only benefits this project, but also many others.

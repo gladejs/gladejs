@@ -1,4 +1,5 @@
 /.github/
+/packages/
 /netlify.toml
-.eslintignore
-.prettierignore
+/.eslintignore
+/.prettierignore

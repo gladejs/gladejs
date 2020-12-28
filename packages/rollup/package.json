@@ -1,0 +1,77 @@
+{
+    "name": "@gladejs/rollup",
+    "version": "0.5.0",
+    "description": "The GladeJS Module adding support for Rollup, move along ...",
+    "keywords": [
+        "gladejs",
+        "marko",
+        "rollup-plugin",
+        "browser-sync",
+        "html-minifier"
+    ],
+    "homepage": "https://gladejs.com",
+    "repository": "github:gladejs/gladejs",
+    "bugs": "https://github.com/gladejs/gladejs/issues",
+    "author": {
+        "name": "Aurélien Stébé",
+        "email": "aurelien.stebe@gmail.com"
+    },
+    "type": "commonjs",
+    "main": "./dist/gladejs-rollup.js",
+    "exports": {
+        ".": "./dist/gladejs-rollup.js",
+        "./browser-sync": "./dist/browser-sync.js",
+        "./html-minifier": "./dist/html-minifier.js"
+    },
+    "license": "MIT",
+    "engines": {
+        "npm": ">=6.9.0",
+        "node": ">=10.16"
+    },
+    "os": [
+        "darwin",
+        "linux",
+        "win32"
+    ],
+    "release": {
+        "tagFormat": "rollup-v${version}",
+        "plugins": [
+            [
+                "@semantic-release/commit-analyzer",
+                {
+                    "releaseRules": [
+                        {
+                            "scope": "!@rollup",
+                            "release": false
+                        }
+                    ]
+                }
+            ],
+            "@semantic-release/release-notes-generator",
+            "@semantic-release/changelog",
+            "@semantic-release/npm",
+            [
+                "@semantic-release/git",
+                {
+                    "message": "chore(release): @rollup version ${nextRelease.version} :tada: "
+                }
+            ],
+            "@semantic-release/github"
+        ]
+    },
+    "dependencies": {
+        "@marko/babel-types": "^5.0.0-next.67",
+        "browser-sync": "^2.26.13",
+        "glob": "^7.1.6",
+        "html-minifier": "^4.0.0",
+        "marko": "^5.0.0-next.70",
+        "normalize-path": "^3.0.0",
+        "relateurl": "^0.2.7"
+    },
+    "peerDependencies": {
+        "rollup": "^1.20 || ^2"
+    },
+    "publishConfig": {
+        "access": "public"
+    }
+}

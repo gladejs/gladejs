@@ -5,3 +5,5 @@
 /tests/**/build/
 /bundle_stats.html
 /tests/**/bundle_stats.html
+/packages/*/CHANGELOG.md
+/.github/CODE_OF_CONDUCT.md
