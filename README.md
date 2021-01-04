@@ -157,7 +157,7 @@ While still in early development, everything is in place to receive your contrib
 
 -   Get acquainted with the project [PHILOSOPHY](./PHILOSOPHY.md) and general direction
 -   Consult the [ROADMAP](./ROADMAP.md) to see where things stand and what's the master plan
--   Look for low hanging fruits in the ["Open Issues Status"](./projects/1) project board
+-   Look for low hanging fruits in the ["Open Issues Status"](projects/1) project board
 -   Read the [CONTRIBUTING](./CONTRIBUTING.md) guidelines carefully, they are short and to the point
 
 You are now ready to contribute, so ... where is the code ? Mostly in another castle, Mario.
