@@ -72,7 +72,7 @@ If the above description does not speak to you, try one of these for size :
 
 -   This is a [Jamstack](https://jamstack.org) static site generator framework based on Rollup
 -   It transforms your "pages" into a modern web "\_site" ready for Prod
--   It is the best bundler (you're not using) combined with the simplest<br/>
+-   It is the best bundler (you're not using) combined with the simplest \
     SSG (you want to use) and the fastest UI lib (you've never heard of)
 -   In the end, it is nothing more than a well documented Rollup config file
 
@@ -83,7 +83,7 @@ Or maybe listing what _it's not_ and _doesn't do_ will give you a better idea :
 -   It _does not_ force any JS in the output (unless you use Marko's client-side components, of course)
 -   You _will not_ find any mention of SSR, SPA, routes, servers, nor any GladeJS special API or "\<Link\>"
 
-This project requires [NodeJS](https://nodejs.org) v10.16 or superior and the included "npm" CLI v6.9.0 or superior.<br/>
+This project requires [NodeJS](https://nodejs.org) v10.16 or superior and the included "npm" CLI v6.9.0 or superior. \
 It is tested on the latest versions of NodeJS v10 / v12 / v14 / v15 on MacOS, Ubuntu and Windows.
 
 ## Installation
@@ -92,7 +92,7 @@ The complete installation instructions are in this section, don't look for any m
 
 ### Automatic (not ready yet)
 
-A "@gladejs/create" automatic initialization package is planned for the v1.0 release.<br/>
+A "@gladejs/create" automatic initialization package is planned for the v1.0 release. \
 It will allow for a simple "`npm init @gladejs MyWebSite`" installation, but not yet.
 
 ### Manual (in 3 easy steps)
@@ -123,12 +123,12 @@ npx shx cp node_modules/gladejs/rollup.config.js .
 
 ## Documentation
 
-The bare minimum to get you started is here, but you'll find detailed information in the ["docs" folder](./docs).
+The bare minimum to get you started is here, but you'll find detailed information in the ["docs" folder](./docs/).
 
 ### Rollup Configuration
 
-A single "`rollup.config.js`" file is used to configure your build process.<br/>
-If you are not a NodeJS and/or Rollup guru, fret not, the defaults are just fine.<br/>
+A single "`rollup.config.js`" file is used to configure your build process. \
+If you are not a NodeJS and/or Rollup guru, fret not, the defaults are just fine. \
 Nevertheless, [give it a quick glance](./rollup.config.js), it's relatively organised and documented.
 
 ### NPM Command Scripts
@@ -145,11 +145,11 @@ The files & folders structure is marked by a distinctive lack of imagination :
 
 -   Web Pages go into the "`pages`" input dir and Marko UI Components into the "`components`" dir.
 -   There is "`layouts`" for 11ty Layouts, "`includes`" for Includes and "`datastores`" for Data Files.
--   CSS Styles are picked up from any "`style.{css|sass|scss|less}`" file placed right next to any<br/>
+-   CSS Styles are picked up from any "`style.{css|sass|scss|less}`" file placed right next to any \
     "`index.{html|md|marko|11ty.js|liquid|njk|hbs|mustache|ejs|haml|pug|jstl}`" page.
 -   Static assets can be pulled from anywhere on your disk, the NPM registry or the World Wide Web.
 
-Now, enter [the GladeJS "docs"](./docs), follow [the floating possum around 11ty](https://www.11ty.dev/docs/) or [RTFMD (Read The Fabulous Marko Docs)](https://markojs.com/docs/getting-started/).
+Now, enter [the GladeJS "docs"](./docs/), follow [the floating possum around 11ty](https://www.11ty.dev/docs/) or [RTFMD (Read The Fabulous Marko Docs)](https://markojs.com/docs/getting-started/).
 
 ## Contributing
 
@@ -163,10 +163,10 @@ While still in early development, everything is in place to receive your contrib
 You are now ready to contribute, so ... where is the code ? Mostly in another castle, Mario.
 
 -   The [core engine](./rollup.config.js) is here, but it's more configuration than source code
--   The [integration tests](./tests) are here, but they are more documentation than test
--   The [documentation dir](./docs) is here and contains the actual meat of this project
--   The ["@gladejs/eleventy"](./packages/eleventy) package integrates 11ty into Rollup for GladeJS
--   The ["@gladejs/rollup"](./packages/rollup) package contains all of the necessary glue code
+-   The [integration tests](./tests/) are here, but they are more documentation than test
+-   The [documentation dir](./docs/) is here and contains the actual meat of this project
+-   The ["@gladejs/eleventy"](./packages/eleventy/) package integrates 11ty into Rollup for GladeJS
+-   The ["@gladejs/rollup"](./packages/rollup/) package contains all of the necessary glue code
 
-Finally, GladeJS relies on over 15 major OSS projects, including 7 Rollup plugins,<br/>
+Finally, GladeJS relies on over 15 major OSS projects, including 7 Rollup plugins, \
 contributing to any of them, not only benefits this project, but also many others.

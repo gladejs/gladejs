@@ -23,8 +23,8 @@
 
 This is the [GladeJS](https://github.com/gladejs/gladejs) Module adding support for [Rollup](https://rollupjs.org), move along.
 
-...<br/>
-..<br/>
+... \
+.. \
 .
 
 Well, if you're still here I guess that you know what you're doing. 🙄
