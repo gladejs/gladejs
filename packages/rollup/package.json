@@ -60,11 +60,11 @@
         ]
     },
     "dependencies": {
-        "@marko/babel-types": "^5.0.0-next.67",
+        "@marko/babel-types": "^5.0.0-next.71",
         "browser-sync": "^2.26.13",
         "glob": "^7.1.6",
         "html-minifier": "^4.0.0",
-        "marko": "^5.0.0-next.70",
+        "marko": "^5.0.0-next.76",
         "normalize-path": "^3.0.0",
         "relateurl": "^0.2.7"
     },
