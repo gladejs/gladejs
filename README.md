@@ -48,7 +48,7 @@
     &nbsp;
 </p>
 
-## GladeJS Project Status (December 2020)
+## GladeJS Project Status (January 2021)
 
 The current efforts are focused on the documentation and tests.
 
