@@ -48,21 +48,13 @@
     &nbsp;
 </p>
 
-## GladeJS Project Status (January 2021)
+## GladeJS Project Status (March 2021)
 
-The current efforts are focused on the documentation and tests.
+The project is in a "cocoon" state and shall be reborn come springtime with ...
 
-The v0.5 release marks the end of the prototype phase :
-
--   ✅ &nbsp; stable architecture & Rollup config file
--   ✅ &nbsp; minimal implementation of assets pulling
--   ✅ &nbsp; development mode with incremental builds
-
-The v0.6 release will focus on the CSS support :
-
--   🚧 &nbsp; inlining of the critical and above-the-fold CSS
--   🚧 &nbsp; proper configuration of PostCSS and its plugins
--   🚧 &nbsp; CSS chunking per page and configurable (à la JS)
+-   🚧 &nbsp; hybrid support for SSG & SSR (pending "`@marko/rollup`" next release)
+-   🚧 &nbsp; CSS chunking per page, code-splitting and manual config (pending [**PR**](https://github.com/marko-js/rollup/pull/5))
+-   🚧 &nbsp; advanced & complete implementation of assets handling with full docs
 
 ## Description
 
