@@ -22,14 +22,14 @@ describe('the Directory Structure', () => {
         test.todo('any "style.css" next to an "index" page')
         test.todo('any "style { }" block in any Marko file')
 
+        test.todo('any "style.less" next to an "index" page')
+        test.todo('any "style.less { }" block in any Marko file')
+
         test.todo('any "style.sass" next to an "index" page')
         test.todo('any "style.sass { }" block in any Marko file')
 
         test.todo('any "style.scss" next to an "index" page')
         test.todo('any "style.scss { }" block in any Marko file')
-
-        test.todo('any "style.less" next to an "index" page')
-        test.todo('any "style.less { }" block in any Marko file')
 
         test.todo('any "style.styl" next to an "index" page')
         test.todo('any "style.styl { }" block in any Marko file')

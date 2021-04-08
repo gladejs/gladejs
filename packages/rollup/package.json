@@ -24,15 +24,6 @@
         "./html-minifier": "./dist/html-minifier.js"
     },
     "license": "MIT",
-    "engines": {
-        "npm": ">=6.9.0",
-        "node": ">=10.16"
-    },
-    "os": [
-        "darwin",
-        "linux",
-        "win32"
-    ],
     "release": {
         "tagFormat": "rollup-v${version}",
         "plugins": [
@@ -69,7 +60,7 @@
         "relateurl": "^0.2.7"
     },
     "peerDependencies": {
-        "rollup": "^1.20 || ^2"
+        "rollup": "^2"
     },
     "publishConfig": {
         "access": "public"

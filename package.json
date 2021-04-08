@@ -30,8 +30,8 @@
         "build": "rollup -c --environment NODE_ENV:production"
     },
     "engines": {
-        "npm": ">=6.9.0",
-        "node": ">=10.16"
+        "npm": ">=6.14",
+        "node": ">=14.0"
     },
     "os": [
         "darwin",

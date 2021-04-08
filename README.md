@@ -1,6 +1,6 @@
 <p align="center">
     <a href="https://gladejs.com" rel="nofollow">
-        <img width="240" alt="GladeJS Logo" src="https://raw.githubusercontent.com/gladejs/gladejs/master/pages/logos/gladejs-hsl.svg">
+        <img width="240" alt="GladeJS Logo" src="https://raw.githubusercontent.com/gladejs/gladejs/main/pages/logos/gladejs-hsl.svg">
     </a>
 </p>
 
@@ -30,7 +30,7 @@
 </p>
 
 <p align="center">
-    <a href="https://github.com/gladejs/gladejs/blob/master/LICENSE">
+    <a href="https://github.com/gladejs/gladejs/blob/main/LICENSE">
         <img alt="GitHub License" src="https://badgen.net/github/license/gladejs/gladejs">
     </a>
     &nbsp;
@@ -75,8 +75,8 @@ Or maybe listing what _it's not_ and _doesn't do_ will give you a better idea :
 -   It _does not_ force any JS in the output (unless you use Marko's client-side components, of course)
 -   You _will not_ find any mention of SSR, SPA, routes, servers, nor any GladeJS special API or "\<Link\>"
 
-This project requires [NodeJS](https://nodejs.org) v10.16 or superior and the included "npm" CLI v6.9.0 or superior. \
-It is tested on the latest versions of NodeJS v10 / v12 / v14 / v15 on MacOS, Ubuntu and Windows.
+This project requires [NodeJS](https://nodejs.org) v14.x or superior and the included "npm" CLI v6.14 or superior. \
+It is tested on the latest versions of NodeJS v14 & v15 on MacOS, Ubuntu and Windows.
 
 ## Installation
 
@@ -137,7 +137,7 @@ The files & folders structure is marked by a distinctive lack of imagination :
 
 -   Web Pages go into the "`pages`" input dir and Marko UI Components into the "`components`" dir.
 -   There is "`layouts`" for 11ty Layouts, "`includes`" for Includes and "`datastores`" for Data Files.
--   CSS Styles are picked up from any "`style.{css|sass|scss|less}`" file placed right next to any \
+-   CSS Styles are picked up from any "`style.{css|less|sass|scss|styl}`" file placed right next to any \
     "`index.{html|md|marko|11ty.js|liquid|njk|hbs|mustache|ejs|haml|pug|jstl}`" page.
 -   Static assets can be pulled from anywhere on your disk, the NPM registry or the World Wide Web.
 
