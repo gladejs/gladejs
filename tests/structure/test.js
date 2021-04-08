@@ -1,5 +1,3 @@
-'use strict'
-
 describe('the Directory Structure', () => {
     describe('for HTML Static Pages', () => {
         test.todo('any "~/pages/**/[page].html" file')

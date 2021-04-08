@@ -1,4 +1,4 @@
-'use strict'
+import utils from '../utils.js'
 
 describe('the Core Engine supports', () => {
     describe('for Live Development', () => {

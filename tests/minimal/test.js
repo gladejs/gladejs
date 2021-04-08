@@ -1,10 +1,8 @@
-'use strict'
-
-const utils = require('../utils.js')
+import utils from '../utils.js'
 
 describe('requires a "page" to build', () => {
     beforeAll(() => {
-        process.chdir(__dirname)
+        utils.processDir(import.meta.url)
     })
 
     afterEach(async () => {
@@ -17,7 +15,7 @@ describe('requires a "page" to build', () => {
 
     it('builds an "Hello World" index page', async () => {
         await utils.writeFile('pages/index.html', '<h1>Hello World !</h1>')
-        await utils.runRollup('../../rollup.config.js')
+        await utils.runRollup('../../rollup.config.mjs')
 
         const index = await utils.readFile('_site/index.html')
         expect(index).toMatchInlineSnapshot(`"<h1>Hello World !</h1>"`)

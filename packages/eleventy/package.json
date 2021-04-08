@@ -14,7 +14,7 @@
         "name": "Aurélien Stébé",
         "email": "aurelien.stebe@gmail.com"
     },
-    "type": "commonjs",
+    "type": "module",
     "main": "./dist/eleventy-rollup.js",
     "exports": "./dist/eleventy-rollup.js",
     "license": "MIT",

@@ -1,5 +1,3 @@
-'use strict'
-
 describe('the Cascading Style Sheets', () => {
     describe('for the Native CSS Syntax', () => {
         test.todo('TODO')

@@ -16,13 +16,9 @@
         "name": "Aurélien Stébé",
         "email": "aurelien.stebe@gmail.com"
     },
-    "type": "commonjs",
+    "type": "module",
     "main": "./dist/gladejs-rollup.js",
-    "exports": {
-        ".": "./dist/gladejs-rollup.js",
-        "./browser-sync": "./dist/browser-sync.js",
-        "./html-minifier": "./dist/html-minifier.js"
-    },
+    "exports": "./dist/gladejs-rollup.js",
     "license": "MIT",
     "release": {
         "tagFormat": "rollup-v${version}",

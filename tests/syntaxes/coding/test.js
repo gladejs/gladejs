@@ -1,5 +1,3 @@
-'use strict'
-
 describe('the JavaScript Coding', () => {
     describe('for the Server Side JS', () => {
         test.todo('TODO')

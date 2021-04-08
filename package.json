@@ -15,7 +15,7 @@
         "name": "Aurélien Stébé",
         "email": "aurelien.stebe@gmail.com"
     },
-    "type": "commonjs",
+    "type": "module",
     "main": "./rollup.config.js",
     "exports": "./rollup.config.js",
     "license": "MIT",
@@ -23,7 +23,7 @@
         "packages/*"
     ],
     "scripts": {
-        "test": "jest --ci --bail",
+        "test": "NODE_OPTIONS=--experimental-vm-modules jest --ci --bail",
         "lint": "prettier -c . && eslint .",
         "start": "rollup -c --watch",
         "clean": "rimraf build _site bundle_stats.html",
@@ -52,6 +52,13 @@
         "trailingComma": "es5"
     },
     "eslintConfig": {
+        "env": {
+            "node": true
+        },
+        "parserOptions": {
+            "ecmaVersion": 2020,
+            "sourceType": "module"
+        },
         "extends": [
             "eslint:recommended",
             "plugin:node/recommended",
@@ -59,8 +66,7 @@
             "plugin:promise/recommended",
             "plugin:jest/recommended",
             "standard",
-            "prettier",
-            "prettier/standard"
+            "prettier"
         ],
         "reportUnusedDisableDirectives": true
     },

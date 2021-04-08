@@ -1,5 +1,3 @@
-'use strict'
-
 describe('the Configuration Options', () => {
     describe('for the "rollup.config.js" File', () => {
         test.todo('TODO')

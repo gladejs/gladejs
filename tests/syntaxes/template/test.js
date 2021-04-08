@@ -1,5 +1,3 @@
-'use strict'
-
 describe('the Static Templating', () => {
     describe('for the HTML Syntax', () => {
         test.todo('any web native HTML tags')
