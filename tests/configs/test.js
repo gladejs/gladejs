@@ -1,5 +1,5 @@
 describe('the Configuration Options', () => {
-    describe('for the "rollup.config.js" File', () => {
+    describe('for the "rollup.config.mjs" File', () => {
         test.todo('TODO')
     })
 

@@ -20,6 +20,15 @@
     "main": "./dist/gladejs-rollup.js",
     "exports": "./dist/gladejs-rollup.js",
     "license": "MIT",
+    "engines": {
+        "npm": ">=6.14",
+        "node": ">=14.0"
+    },
+    "os": [
+        "darwin",
+        "linux",
+        "win32"
+    ],
     "release": {
         "tagFormat": "rollup-v${version}",
         "plugins": [

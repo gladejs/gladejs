@@ -101,16 +101,17 @@ npm init -y && npm i -D gladejs
 
 ```json
 "scripts": {
-    "start": "rollup -c --watch",
+    "build": "rollup -c",
+    "live": "rollup -c --watch",
     "clean": "rimraf build _site bundle_stats.html",
-    "build": "rollup -c --environment NODE_ENV:production"
+    "build:prod": "rollup -c --environment NODE_ENV:production"
 },
 ```
 
 3. Copy the GladeJS Rollup configuration file into your project folder :
 
 ```bash
-npx shx cp node_modules/gladejs/rollup.config.js .
+npx shx cp node_modules/gladejs/rollup.config.mjs .
 ```
 
 ## Documentation
@@ -119,17 +120,18 @@ The bare minimum to get you started is here, but you'll find detailed informatio
 
 ### Rollup Configuration
 
-A single "`rollup.config.js`" file is used to configure your build process. \
+A single "`rollup.config.mjs`" file is used to configure your build process. \
 If you are not a NodeJS and/or Rollup guru, fret not, the defaults are just fine. \
-Nevertheless, [give it a quick glance](./rollup.config.js), it's relatively organised and documented.
+Nevertheless, [give it a quick glance](./rollup.config.mjs), it's relatively organised and documented.
 
 ### NPM Command Scripts
 
 GladeJS is directly controlled via NPM scripts, using the following commands :
 
--   "`npm start`" to run Rollup in 'watch' mode for live development
--   "`npm run build`" to bundle your project for production delivery
+-   "`npm run live`" to run Rollup "watch mode" for live development
+-   "`npm run build`" to bundle your project without any minification
 -   "`npm run clean`" to delete all files & folders created by GladeJS
+-   "`npm run build:prod`" to bundle your project **with** minification
 
 ### Pages & Components
 
@@ -154,7 +156,7 @@ While still in early development, everything is in place to receive your contrib
 
 You are now ready to contribute, so ... where is the code ? Mostly in another castle, Mario.
 
--   The [core engine](./rollup.config.js) is here, but it's more configuration than source code
+-   The [core engine](./rollup.config.mjs) is here, but it's more configuration than source code
 -   The [integration tests](./tests/) are here, but they are more documentation than test
 -   The [documentation dir](./docs/) is here and contains the actual meat of this project
 -   The ["@gladejs/eleventy"](./packages/eleventy/) package integrates 11ty into Rollup for GladeJS

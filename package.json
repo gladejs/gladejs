@@ -16,18 +16,19 @@
         "email": "aurelien.stebe@gmail.com"
     },
     "type": "module",
-    "main": "./rollup.config.js",
-    "exports": "./rollup.config.js",
+    "main": "./rollup.config.mjs",
+    "exports": "./rollup.config.mjs",
     "license": "MIT",
     "workspaces": [
         "packages/*"
     ],
     "scripts": {
-        "test": "NODE_OPTIONS=--experimental-vm-modules jest --ci --bail",
-        "lint": "prettier -c . && eslint .",
-        "start": "rollup -c --watch",
+        "build": "rollup -c",
+        "live": "rollup -c --watch",
         "clean": "rimraf build _site bundle_stats.html",
-        "build": "rollup -c --environment NODE_ENV:production"
+        "build:prod": "rollup -c --environment NODE_ENV:production",
+        "lint": "prettier -c . && eslint .",
+        "test": "NODE_OPTIONS=--experimental-vm-modules jest --ci --bail"
     },
     "engines": {
         "npm": ">=6.14",
