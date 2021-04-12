@@ -1,19 +1,22 @@
-'use strict'
+import url from 'url'
+import path from 'path'
 
-const path = require('path')
-const fs = require('fs-extra')
-const glob = require('glob')
+import glob from 'glob'
+import fs from 'fs-extra'
 
-const normalize = require('normalize-path')
+import chokidar from 'chokidar'
+import normalize from 'normalize-path'
+
+import Eleventy from '@11ty/eleventy/src/Eleventy.js'
+
 const isLive = process.env.ROLLUP_WATCH === 'true'
-const Eleventy = require('@11ty/eleventy/src/Eleventy')
 
-module.exports = function (input, output) {
+export default function (input, output) {
     let eleventy = false
 
     // Eleventy doesn't like win32 paths even on Windows.
-    input = normalize(input).replace(/^([a-zA-Z]+:)/, '')
-    output = normalize(output).replace(/^([a-zA-Z]+:)/, '')
+    input = normalize(path.resolve(input)).replace(/^([a-zA-Z]+:)/, '')
+    output = normalize(path.resolve(output)).replace(/^([a-zA-Z]+:)/, '')
 
     return {
         name: 'eleventy',
@@ -25,8 +28,8 @@ module.exports = function (input, output) {
             eleventy.setIsVerbose(false) // be quiet, no need to list all the files
             eleventy.setIncrementalBuild(true) // fewer builds in Live mode, please
 
-            const configPath = require.resolve('./eleventy-config.js')
-            eleventy.setConfigPathOverride(path.relative('.', configPath))
+            const configPath = new URL('./eleventy-config.cjs', import.meta.url)
+            eleventy.setConfigPathOverride(url.fileURLToPath(configPath))
 
             return eleventyPromise(input, output, eleventy).then(() => options)
         },
@@ -68,7 +71,7 @@ function copyUn11tyFiles(rootDir, destDir, watchList) {
     return Promise.all(files.map(copy)).then(() => {
         if (isLive) {
             const options = { ignoreInitial: true, ignored: watchList }
-            const watcher = require('chokidar').watch(rootDir, options)
+            const watcher = chokidar.watch(rootDir, options)
 
             return watcher.on('add', copy).on('change', copy)
         } else return undefined
@@ -89,7 +92,7 @@ function renameHTMLFiles(rootDir) {
 
     return Promise.all(files.map(move)).then(() => {
         if (isLive) {
-            const watcher = require('chokidar').watch(rootDir + '/**/*.html', {
+            const watcher = chokidar.watch(rootDir + '/**/*.html', {
                 ignoreInitial: true,
             })
 
