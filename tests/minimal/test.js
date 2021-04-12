@@ -6,7 +6,7 @@ describe('requires a "page" to build', () => {
     })
 
     afterEach(async () => {
-        await utils.runCleanup('pages', 'build', '_site')
+        await utils.runCleanup('pages', 'build', '_site', 'bundle_stats.html')
     })
 
     test.todo('warns if the "pages" folder is missing')
