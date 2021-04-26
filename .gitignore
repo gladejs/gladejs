@@ -4,5 +4,3 @@
 /node_modules/
 /tests/**/_site/
 /tests/**/build/
-/bundle_stats.html
-/tests/**/bundle_stats.html
