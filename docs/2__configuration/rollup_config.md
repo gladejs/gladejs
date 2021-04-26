@@ -1,3 +1,3 @@
-# The "rollup.config.js" File
+# The "rollup.config.mjs" File
 
 TODO
