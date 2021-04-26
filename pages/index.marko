@@ -3,11 +3,16 @@
     <head>
         <meta charset="utf-8"/>
         <title>GladeJS Homepage</title>
-        <base href=out.global.pageId/>
-        <for|style| of=out.global.styles>
-            <link rel="stylesheet" href=style.href/>
-        </for>
-        <script type="module">${out.global.module}</script>
+        <rollup|entryName, cssBundle, esmBundle|>
+            $ const pageStyle = cssBundle.find(it => it.name === "styles.css");
+            <if(pageStyle)>
+                <link rel="stylesheet" href=pageStyle.filePath/>
+            </if>
+            $ const pageChunk = esmBundle.find(it => it.name === entryName);
+            <if(pageChunk)>
+                <script type="module">${pageChunk.source}</script>
+            </if>
+        </rollup>
     </head>
     <body class="home-page">
         <h1>Welcome to the GladeJS !</h1>
