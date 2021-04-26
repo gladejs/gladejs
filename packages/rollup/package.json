@@ -56,11 +56,12 @@
         ]
     },
     "dependencies": {
-        "@marko/babel-utils": "^5.7.0",
-        "@marko/compiler": "^5.7.0",
+        "@marko/babel-utils": "^5.9.0",
+        "@marko/compiler": "^5.9.0",
         "browser-sync": "^2.26.14",
-        "fs-extra": "^9.1.0",
-        "glob": "^7.1.6"
+        "execa": "^5.0.0",
+        "fast-glob": "^3.2.5",
+        "fs-extra": "^9.1.0"
     },
     "peerDependencies": {
         "rollup": "^2"

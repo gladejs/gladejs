@@ -56,8 +56,8 @@
     "dependencies": {
         "@11ty/eleventy": "^0.12.1",
         "chokidar": "^3.5.1",
+        "fast-glob": "^3.2.5",
         "fs-extra": "^9.1.0",
-        "glob": "^7.1.6",
         "normalize-path": "^3.0.0"
     },
     "peerDependencies": {
