@@ -42,8 +42,9 @@
     "jest": {
         "testEnvironment": "node",
         "watchPathIgnorePatterns": [
-            "<rootDir>/node_modules/.*",
-            "<rootDir>/tests/.+/(pages/|build/|_site/|bundle_stats\\.html)"
+            "<rootDir>/node_modules/",
+            "<rootDir>/(pages|build|_site)/",
+            "<rootDir>/tests/.+/(pages|build|_site)/"
         ]
     },
     "prettier": {
