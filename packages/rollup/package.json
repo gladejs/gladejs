@@ -17,8 +17,8 @@
         "email": "aurelien.stebe@gmail.com"
     },
     "type": "module",
-    "main": "./dist/gladejs-rollup.js",
-    "exports": "./dist/gladejs-rollup.js",
+    "main": "./index.js",
+    "exports": "./index.js",
     "license": "MIT",
     "engines": {
         "npm": ">=6.14",

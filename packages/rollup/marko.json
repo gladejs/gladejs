@@ -1,7 +1,0 @@
-{
-    "taglib-id": "glade-rollup",
-    "tags-dir": "./tags",
-    "<*>": {
-        "transformer": "./tags/asset-transformer.js"
-    }
-}
