@@ -1,6 +1,6 @@
 <p align="center">
     <a href="https://gladejs.com" rel="nofollow">
-        <img width="240" alt="GladeJS Logo" src="https://raw.githubusercontent.com/gladejs/gladejs/main/pages/logos/gladejs-hsl.svg">
+        <img width="240" alt="GladeJS Logo" src="https://raw.githubusercontent.com/gladejs/gladejs/main/pages/logos/gladejs.svg">
     </a>
 </p>
 
