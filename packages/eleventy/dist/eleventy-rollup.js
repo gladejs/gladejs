@@ -1,8 +1,8 @@
 import url from 'url'
 import path from 'path'
 
-import glob from 'glob'
 import fs from 'fs-extra'
+import glob from 'fast-glob'
 
 import chokidar from 'chokidar'
 import normalize from 'normalize-path'
@@ -21,7 +21,7 @@ export default function (input, output) {
     return {
         name: 'eleventy',
 
-        options(options) {
+        async options(options) {
             if (eleventy !== false) return options
             eleventy = new Eleventy(input, output)
 
@@ -36,7 +36,7 @@ export default function (input, output) {
     }
 }
 
-function eleventyPromise(input, output, eleventy) {
+async function eleventyPromise(input, output, eleventy) {
     return eleventy.init().then(() => {
         const templates = eleventy.eleventyFiles.getGlobWatcherFiles()
         const dataFiles = eleventy.eleventyFiles.getGlobWatcherTemplateDataFiles()
@@ -54,12 +54,10 @@ function eleventyPromise(input, output, eleventy) {
     })
 }
 
-function copyUn11tyFiles(rootDir, destDir, watchList) {
-    const files = glob.sync('*', {
-        nodir: true,
+async function copyUn11tyFiles(rootDir, destDir, watchList) {
+    const files = await glob('**', {
         cwd: rootDir,
         absolute: true,
-        matchBase: true,
         ignore: watchList,
     })
 
@@ -78,11 +76,10 @@ function copyUn11tyFiles(rootDir, destDir, watchList) {
     })
 }
 
-function renameHTMLFiles(rootDir) {
-    const files = glob.sync('*.html', {
+async function renameHTMLFiles(rootDir) {
+    const files = await glob('**.html', {
         cwd: rootDir,
         absolute: true,
-        matchBase: true,
     })
 
     const move = (file) => {
