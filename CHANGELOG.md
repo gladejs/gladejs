@@ -1,3 +1,10 @@
+## [0.6.1](https://github.com/gladejs/gladejs/compare/gladejs-v0.6.0...gladejs-v0.6.1) (2021-04-27)
+
+
+### Bug Fixes
+
+* **gladejs:** bump packages & npm ignore "/public" ([471364a](https://github.com/gladejs/gladejs/commit/471364a3e5aff0f639002e985db14690611b9cad))
+
 # [0.6.0](https://github.com/gladejs/gladejs/compare/gladejs-v0.5.1...gladejs-v0.6.0) (2021-04-27)
 
 
