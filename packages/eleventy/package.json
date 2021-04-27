@@ -1,6 +1,6 @@
 {
     "name": "@gladejs/eleventy",
-    "version": "0.5.0",
+    "version": "0.6.0",
     "description": "The GladeJS Module adding support for Eleventy, move along ...",
     "keywords": [
         "gladejs",
