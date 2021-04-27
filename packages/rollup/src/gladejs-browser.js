@@ -50,7 +50,7 @@ export function browser(mainOutput, publicPath) {
         },
 
         async closeBundle() {
-            const staticFile = path.resolve(mainOutput, 'static.js')
+            const staticFile = path.resolve(mainOutput, 'static.mjs')
 
             if (await fs.pathExists(staticFile)) {
                 if (!this.meta.watchMode) {

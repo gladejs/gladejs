@@ -28,7 +28,8 @@ export function server(input) {
                     const isLive = this.meta.watchMode
 
                     options.input = await staticServer(input, output, isLive)
-                    options.external = /^.*\/node_modules\/.+\.[cm]?js(on)?$/
+                    options.external = /\/node_modules\/.+\.[cm]?js(on)?$/
+                    options.output[0].entryFileNames = '[name].mjs'
                 }
             } else {
                 options.input = input
@@ -80,7 +81,7 @@ async function staticServer(input, output, isLive) {
     staticCode += `  ]);\n}\n`
 
     if (isLive) staticCode += `\n(await run());\nprocess.exit(0);\n`
-    const staticFile = path.resolve(input, 'static.js')
+    const staticFile = path.resolve(input, 'static.mjs')
     await fs.outputFile(staticFile, staticCode)
 
     return staticFile
