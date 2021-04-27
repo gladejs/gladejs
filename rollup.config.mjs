@@ -72,7 +72,7 @@ export default [
             commonjs({ include: /node_modules/ }),
             ...assetsOptions.map((o) => assets(o)),
         ],
-        watch: { exclude: BUILD_DIR + '/static.js' },
+        watch: { exclude: BUILD_DIR + '/static.mjs' },
     },
     {
         plugins: [
