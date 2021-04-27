@@ -14,15 +14,26 @@ const isLive = process.env.ROLLUP_WATCH === 'true'
 export default function (input, output) {
     let eleventy = false
 
-    // Eleventy doesn't like win32 paths even on Windows.
-    input = normalize(path.resolve(input)).replace(/^([a-zA-Z]+:)/, '')
-    output = normalize(path.resolve(output)).replace(/^([a-zA-Z]+:)/, '')
-
     return {
         name: 'eleventy',
 
         async options(options) {
-            if (eleventy !== false) return options
+            if (eleventy !== false) return
+
+            input = path.resolve(input)
+            output = path.resolve(output)
+
+            if (!(await fs.pathExists(input))) {
+                throw new Error(`Input "${input}" should exist first.`)
+            }
+            if ((await fs.readdir(input)).length === 0) {
+                throw new Error(`Input "${input}" is empty, job done.`)
+            }
+
+            // Eleventy doesn't like win32 paths even on Windows.
+            input = normalize(input).replace(/^([a-zA-Z]+:)/, '')
+            output = normalize(output).replace(/^([a-zA-Z]+:)/, '')
+
             eleventy = new Eleventy(input, output)
 
             eleventy.setIsVerbose(false) // be quiet, no need to list all the files
