@@ -1,3 +1,24 @@
+# [0.6.0](https://github.com/gladejs/gladejs/compare/gladejs-v0.5.1...gladejs-v0.6.0) (2021-04-27)
+
+
+### Bug Fixes
+
+* **gladejs:** improve scripts & rename config file ([9d39b20](https://github.com/gladejs/gladejs/commit/9d39b20405595a240e18581e208708571de43d36))
+* **gladejs:** move logos around & rename them a bit ([a922527](https://github.com/gladejs/gladejs/commit/a922527a9e4d053e99504abd5327c0fdaecf40f7))
+* **gladejs:** remove the Visualizer plugin for now ([dd1b116](https://github.com/gladejs/gladejs/commit/dd1b116a8c9c8103c51c97d95b8d1055b24cc2e7))
+* **scripts:** improve & organize the NPM commands ([8ed3653](https://github.com/gladejs/gladejs/commit/8ed36538653211571c5333a0f9566d919cf8a17d))
+
+
+### Features
+
+* **@eleventy:** switch from "glob" to "fast-glob" ([8863461](https://github.com/gladejs/gladejs/commit/8863461bb91da7509157b2b783e186e4bff0a34a))
+* **@eleventy:** switch to ESM code, except config ([e0540ae](https://github.com/gladejs/gladejs/commit/e0540ae374315b04ea5c5d540bbf97f66a128c8c))
+* **@rollup:** complete rewrite for Marko plugin v3 ([1aa606c](https://github.com/gladejs/gladejs/commit/1aa606cdda8d18267ddceb57b62cc86e0e788e6e))
+* **gladejs:** add support & tests for NodeJS v16 ([9cfbeea](https://github.com/gladejs/gladejs/commit/9cfbeea5a3db66a2c9e66564e119448f0d591708))
+* **gladejs:** complete rewrite for Marko plugin v3 ([eefe6b7](https://github.com/gladejs/gladejs/commit/eefe6b75134585ed4c0a39813cecec284a1a8c15))
+* **gladejs:** drop support for NodeJS v10 & v12 ([e1eeeb6](https://github.com/gladejs/gladejs/commit/e1eeeb67836a925d3613bcf453b9bfee860191f4))
+* **gladejs:** switch to type "module" & ESM code ([2be0e28](https://github.com/gladejs/gladejs/commit/2be0e28473301c0430cd260f8d3d92c64a895e3a))
+
 ## [0.5.1](https://github.com/gladejs/gladejs/compare/v0.5.0...v0.5.1) (2020-12-17)
 
 
