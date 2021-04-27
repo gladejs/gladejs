@@ -28,7 +28,7 @@
         "clean": "rimraf build _site",
         "build:prod": "rollup -c --environment NODE_ENV:production",
         "lint": "prettier -c . && eslint .",
-        "test": "NODE_OPTIONS=--experimental-vm-modules jest --ci --bail tests"
+        "test": "cross-env NODE_OPTIONS=--experimental-vm-modules jest --ci --bail tests"
     },
     "engines": {
         "npm": ">=6.14",
@@ -127,6 +127,7 @@
         "@semantic-release/github": "^7.2.1",
         "@semantic-release/npm": "^7.1.1",
         "@semantic-release/release-notes-generator": "^9.0.2",
+        "cross-env": "^7.0.3",
         "eslint": "^7.25.0",
         "eslint-config-prettier": "^8.3.0",
         "eslint-config-standard": "^16.0.2",
