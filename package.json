@@ -100,8 +100,8 @@
     },
     "dependencies": {
         "@11ty/eleventy": "^0.12.1",
-        "@gladejs/eleventy": "^0.5.0",
-        "@gladejs/rollup": "^0.5.0",
+        "@gladejs/eleventy": "^0.6.0",
+        "@gladejs/rollup": "^0.6.0",
         "@marko/rollup": "^3.1.0",
         "@rollup/plugin-commonjs": "^18.0.0",
         "@rollup/plugin-node-resolve": "^11.2.1",
