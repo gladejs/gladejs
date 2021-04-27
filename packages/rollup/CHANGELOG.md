@@ -1,3 +1,13 @@
+## [0.6.1](https://github.com/gladejs/gladejs/compare/rollup-v0.6.0...rollup-v0.6.1) (2021-04-27)
+
+
+### Bug Fixes
+
+* **@eleventy:** add input sanity checks in options ([5dada6f](https://github.com/gladejs/gladejs/commit/5dada6f582c2ba28a25cf5950399220c66ae4628))
+* **@rollup:** use ".mjs" for the static server file ([0f75235](https://github.com/gladejs/gladejs/commit/0f75235e37b98991ae956b412632efe24748493a))
+* **gladejs:** bump packages & npm ignore "/public" ([471364a](https://github.com/gladejs/gladejs/commit/471364a3e5aff0f639002e985db14690611b9cad))
+* **gladejs:** use ".mjs" for the static watch opts ([7083353](https://github.com/gladejs/gladejs/commit/7083353e6a215da8e46530c423bd69e784c0a417))
+
 # [0.6.0](https://github.com/gladejs/gladejs/compare/rollup-v0.5.0...rollup-v0.6.0) (2021-04-27)
 
 
