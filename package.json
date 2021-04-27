@@ -74,6 +74,10 @@
     },
     "release": {
         "tagFormat": "gladejs-v${version}",
+        "branches": [
+            "main",
+            "next"
+        ],
         "plugins": [
             [
                 "@semantic-release/commit-analyzer",
@@ -92,7 +96,7 @@
             [
                 "@semantic-release/git",
                 {
-                    "message": "chore(release): gladejs version ${nextRelease.version} :tada: "
+                    "message": "chore(release): gladejs package version ${nextRelease.version} :tada: "
                 }
             ],
             "@semantic-release/github"

@@ -29,6 +29,10 @@
     ],
     "release": {
         "tagFormat": "eleventy-v${version}",
+        "branches": [
+            "main",
+            "next"
+        ],
         "plugins": [
             [
                 "@semantic-release/commit-analyzer",
@@ -47,7 +51,7 @@
             [
                 "@semantic-release/git",
                 {
-                    "message": "chore(release): @eleventy version ${nextRelease.version} :tada: "
+                    "message": "chore(release): eleventy package version ${nextRelease.version} :tada: "
                 }
             ],
             "@semantic-release/github"
