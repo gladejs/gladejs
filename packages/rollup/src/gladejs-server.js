@@ -5,8 +5,7 @@ import fs from 'fs-extra'
 import glob from 'fast-glob'
 
 import { taglib } from '@marko/compiler'
-
-const CSS_FILTER = /\.(css|less|s[ac]ss|styl)$/
+import { CSS_FILTER } from './gladejs-utils.js'
 
 export function server(input) {
     let assetTransform
@@ -29,7 +28,7 @@ export function server(input) {
 
                     options.input = await staticServer(input, output, isLive)
                     options.external = /\/node_modules\/.+\.[cm]?js(on)?$/
-                    options.output[0].entryFileNames = '[name].mjs'
+                    options.output[0].entryFileNames = 'static.mjs'
                 }
             } else {
                 options.input = input

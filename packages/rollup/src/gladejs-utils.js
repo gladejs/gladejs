@@ -1,5 +1,7 @@
 import path from 'path'
 
+export const CSS_FILTER = /\.(css|less|s[ac]ss|styl)$/
+
 export function serializer() {
     return (bundle) =>
         bundle.map((chunk) =>
