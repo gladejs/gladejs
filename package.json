@@ -104,9 +104,11 @@
     },
     "dependencies": {
         "@11ty/eleventy": "^0.12.1",
+        "@babel/preset-env": "^7.14.1",
         "@gladejs/eleventy": "^0.6.1",
         "@gladejs/rollup": "^0.6.1",
         "@marko/rollup": "^3.2.1",
+        "@rollup/plugin-babel": "^5.3.0",
         "@rollup/plugin-commonjs": "^18.1.0",
         "@rollup/plugin-node-resolve": "^11.2.1",
         "@rollup/plugin-url": "^6.0.0",
