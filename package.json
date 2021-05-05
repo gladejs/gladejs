@@ -108,7 +108,7 @@
         "@gladejs/rollup": "^0.6.1",
         "@marko/rollup": "^3.2.1",
         "@rollup/plugin-commonjs": "^18.1.0",
-        "@rollup/plugin-node-resolve": "^13.0.0",
+        "@rollup/plugin-node-resolve": "^11.2.1",
         "@rollup/plugin-url": "^6.0.0",
         "browser-sync": "^2.26.14",
         "chokidar": "^3.5.1",
