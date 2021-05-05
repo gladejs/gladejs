@@ -54,7 +54,7 @@ The project has finally emerged from hibernation with :
 
 -   ✅ &nbsp; dual support for SSG (by default) and SSR (with a `server.js` input)
 -   ✅ &nbsp; a magical "src" attribute and disappearing "style", "link" & "script" tags
--   ✅ &nbsp; the powerful `<rollup>` tag to process the "`esm`" and "`css`" bundles
+-   ✅ &nbsp; the powerful `<rollup>` tag to process the `esm` and `css` bundles
 
 Upcoming in version 0.7.0 :
 
