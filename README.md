@@ -48,13 +48,19 @@
     &nbsp;
 </p>
 
-## GladeJS Project Status (March 2021)
+## GladeJS Project Status (May 2021)
 
-The project is in a "cocoon" state and shall be reborn come springtime with ...
+The project has finally emerged from hibernation with :
 
--   🚧 &nbsp; hybrid support for SSG & SSR (pending "`@marko/rollup`" next release)
--   🚧 &nbsp; CSS chunking per page, code-splitting and manual config (pending [**PR**](https://github.com/marko-js/rollup/pull/5))
--   🚧 &nbsp; advanced & complete implementation of assets handling with full docs
+-   ✅ &nbsp; dual support for SSG (by default) and SSR (with a `server.js` input)
+-   ✅ &nbsp; a magical "src" attribute and disappearing "style", "link" & "script" tags
+-   ✅ &nbsp; the powerful `<rollup>` tag to process the "`esm`" and "`css`" bundles
+
+Upcoming in version 0.7.0 :
+
+-   🚧 &nbsp; CSS chunking per page, code-splitting and manual config
+-   🚧 &nbsp; a "legacy" build plugin for the module / nomodule pattern
+-   🚧 &nbsp; improved implementation of asset handling with examples
 
 ## Description
 
