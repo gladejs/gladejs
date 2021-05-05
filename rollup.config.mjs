@@ -60,41 +60,42 @@ const terserOptions = (format) => {
     }
 }
 
-export default [
-    {
-        output: { dir: OUTPUT_DIR },
-        plugins: [
-            eleventy(SOURCE_DIR, BUILD_DIR),
-            gladejs.server(BUILD_DIR),
-            marko.default.server(),
+const serverConfig = {
+    output: { dir: OUTPUT_DIR },
+    plugins: [
+        eleventy(SOURCE_DIR, BUILD_DIR),
+        gladejs.server(BUILD_DIR),
+        marko.default.server(),
 
-            resolve({ preferBuiltins: true }),
-            commonjs({ include: /node_modules/ }),
-            ...assetsOptions.map((o) => assets(o)),
-        ],
-        watch: { exclude: BUILD_DIR + '/static.mjs' },
-    },
-    {
-        plugins: [
-            styles(stylesOptions),
-            gladejs.browser(OUTPUT_DIR, PUBLIC_PATH),
-            marko.default.browser({ serialize: gladejs.serializer() }),
+        resolve({ preferBuiltins: true }),
+        commonjs({ include: /node_modules/ }),
+        ...assetsOptions.map((o) => assets(o)),
+    ],
+    watch: { exclude: BUILD_DIR + '/static.mjs' },
+}
 
-            resolve({ preferBuiltins: false, browser: true }),
-            commonjs({ include: /node_modules/ }),
-            ...assetsOptions.map((o) => assets({ emitFiles: false, ...o })),
-        ],
-        output: [
-            {
-                dir: OUTPUT_DIR + '/css',
-                assetFileNames: '[name]-[hash].css',
-            },
-            {
-                dir: OUTPUT_DIR + '/esm',
-                plugins: [isProd && terser(terserOptions())],
-                manualChunks: gladejs.moduleChunking(),
-                chunkFileNames: '[name]-[hash].js',
-            },
-        ],
-    },
-]
+const browserConfig = {
+    plugins: [
+        styles(stylesOptions),
+        gladejs.browser(OUTPUT_DIR, PUBLIC_PATH),
+        marko.default.browser({ serialize: gladejs.serializer() }),
+
+        resolve({ preferBuiltins: false, browser: true }),
+        commonjs({ include: /node_modules/ }),
+        ...assetsOptions.map((o) => assets({ emitFiles: false, ...o })),
+    ],
+    output: [
+        {
+            dir: OUTPUT_DIR + '/css',
+            assetFileNames: '[name]-[hash].css',
+        },
+        {
+            dir: OUTPUT_DIR + '/esm',
+            chunkFileNames: '[name]-[hash].js',
+            manualChunks: gladejs.moduleChunking(),
+            plugins: [isProd && terser(terserOptions())],
+        },
+    ],
+}
+
+export default [serverConfig, browserConfig]
