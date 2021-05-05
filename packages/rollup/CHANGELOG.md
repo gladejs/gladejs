@@ -1,3 +1,13 @@
+## [0.6.2](https://github.com/gladejs/gladejs/compare/rollup-v0.6.1...rollup-v0.6.2) (2021-05-05)
+
+
+### Bug Fixes
+
+* **@rollup:** move the CSS_FILTER const to "utils" ([7ce22bc](https://github.com/gladejs/gladejs/commit/7ce22bcfe0869c25552f12fd549724d9f2b0549a))
+* **config:** flatten the config & export at the end ([e9a89a1](https://github.com/gladejs/gladejs/commit/e9a89a12bb8c7fbaae04f0337df4c83a60c49037))
+* **gladejs:** revert node-resolve plugin to 11.2.1 ([faae603](https://github.com/gladejs/gladejs/commit/faae6035d675a6b9a81e59cd73c0d333896cb84a))
+* **gladejs:** update Marko and Rollup dependencies ([384bb3f](https://github.com/gladejs/gladejs/commit/384bb3fc74636071c41b96bbe2c74b20a31df601))
+
 ## [0.6.1](https://github.com/gladejs/gladejs/compare/rollup-v0.6.0...rollup-v0.6.1) (2021-04-27)
 
 
