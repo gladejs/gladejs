@@ -1,6 +1,7 @@
 import path from 'path'
 
 export const CSS_FILTER = /\.(css|less|s[ac]ss|styl)$/
+export const MARKO_ENTRY = '\0marko-browser-entry:'
 
 export function serializer() {
     return (bundle) =>
@@ -11,6 +12,8 @@ export function serializer() {
                       name: chunk.name,
                       fileName: chunk.fileName,
                       filePath: chunk.filePath,
+                      entries: chunk.entries,
+                      source: chunk.isEntry ? chunk.source.trim() : undefined,
                   }
                 : {
                       type: 'chunk',
@@ -18,19 +21,9 @@ export function serializer() {
                       fileName: chunk.fileName,
                       filePath: chunk.filePath,
                       imports: chunk.imports,
-                      exports: chunk.exports,
-                      isEntry: chunk.isEntry,
-                      facadeModuleId: chunk.facadeModuleId,
                       isDynamicEntry: chunk.isDynamicEntry,
                       dynamicImports: chunk.dynamicImports,
-                      source: chunk.isEntry
-                          ? chunk.code
-                                .replace(
-                                    /(import[^;'"]*['"])(\.)(\/[^;'"]+['"];)/g,
-                                    `$1${path.dirname(chunk.filePath)}$3`
-                                )
-                                .trim()
-                          : undefined,
+                      source: chunk.isEntry ? chunk.source.trim() : undefined,
                   }
         )
 }
@@ -51,5 +44,15 @@ export function moduleChunking() {
             id === '\0commonjsHelpers.js'
         )
             return 'modules'
+    }
+}
+
+export function stylesChunking() {
+    return (id) => {
+        if (id.startsWith(path.resolve('components'))) return 'project'
+        if (id.includes(path.join('/node_modules/'))) return 'modules'
+
+        if (path.basename(id).startsWith('inline_')) return 'inline'
+        if (path.basename(id).startsWith('style.')) return 'styles'
     }
 }
