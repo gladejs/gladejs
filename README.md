@@ -64,7 +64,7 @@ Upcoming in version 0.7.0 :
 
 ## Description
 
-GladeJS is a simple [Rollup](https://rollupjs.org) setup for bundling static Web Sites built with [Eleventy](https://www.11ty.dev) and [Marko](https://markojs.com).
+GladeJS is a simple [Rollup](https://rollupjs.org) setup for bundling static Web Sites built with [Marko](https://markojs.com) and [Eleventy](https://www.11ty.dev).
 
 If the above description does not speak to you, try one of these for size :
 
