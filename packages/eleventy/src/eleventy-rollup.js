@@ -50,7 +50,8 @@ export default function (input, output) {
 async function eleventyPromise(input, output, eleventy) {
     return eleventy.init().then(() => {
         const templates = eleventy.eleventyFiles.getGlobWatcherFiles()
-        const dataFiles = eleventy.eleventyFiles.getGlobWatcherTemplateDataFiles()
+        const dataFiles =
+            eleventy.eleventyFiles.getGlobWatcherTemplateDataFiles()
 
         const eleventing = isLive ? eleventy.watch() : eleventy.write()
 
