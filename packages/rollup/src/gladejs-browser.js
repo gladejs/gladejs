@@ -6,6 +6,7 @@ import bs from 'browser-sync'
 
 export function browser(mainOutput, publicPath) {
     let cssOutput, esmOutput, browserSync
+    let staticCode, serverProc
 
     return {
         name: 'gladejs/browser',
@@ -53,23 +54,41 @@ export function browser(mainOutput, publicPath) {
             const staticFile = path.resolve(mainOutput, 'static.mjs')
 
             if (await fs.pathExists(staticFile)) {
-                if (!this.meta.watchMode) {
-                    const staticCode = '\n;(await run());process.exit(0);\n'
-                    await fs.appendFile(staticFile, staticCode)
+                if (!staticCode) {
+                    staticCode = 'run().then(() => process.exit(0));'
+                    await fs.appendFile(staticFile, staticCode + '\n')
                 }
 
-                await execa.node(staticFile)
+                await execa.node(staticFile, [], { stdio: 'inherit' })
 
                 if (this.meta.watchMode) {
                     if (!browserSync) {
-                        browserSync = bs.create('gladejs')
+                        browserSync = bs.create('gladejs-static')
                         browserSync.init({ server: mainOutput })
                     } else browserSync.reload()
                 } else await fs.remove(staticFile)
+            } else {
+                const serverFile = path.resolve(mainOutput, 'server.mjs')
+
+                if (this.meta.watchMode && (await fs.pathExists(serverFile))) {
+                    if (serverProc) serverProc.kill()
+
+                    serverProc = execa.node(
+                        serverFile,
+                        [path.basename(mainOutput)],
+                        { stdio: 'inherit' }
+                    )
+
+                    if (!browserSync) {
+                        browserSync = bs.create('gladejs-server')
+                        browserSync.init({ proxy: 'localhost:8080' })
+                    } else browserSync.reload()
+                }
             }
         },
 
         closeWatcher() {
+            if (serverProc) serverProc.kill()
             if (browserSync) browserSync.exit()
         },
     }

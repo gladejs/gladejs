@@ -1,8 +1,8 @@
 'use strict'
 
+const createHash = require('crypto').createHash
+const resolvePath = require('path').resolve
 const markoUtils = require('@marko/babel-utils')
-
-const CSS_FILTER = /\.(css|less|s[ac]ss|styl)$/
 
 const ASSET_TAGS = {
     link: 'href',
@@ -11,90 +11,90 @@ const ASSET_TAGS = {
     body: 'background',
 }
 
-module.exports = function transform(path) {
+module.exports = function transform(path, type) {
     if (markoUtils.isDynamicTag(path)) return
-    const nodeName = path.get('name.value').node
 
-    if (nodeName === 'style') return removeInline(path, 'css')
-    if (nodeName === 'script' && removeInline(path, 'js')) return
+    const tagAttr = findAttrByName(path, 'rollup')
+    const tagType = getAttrValue(tagAttr)
 
-    const removePath = isRemovable(path)
-    const outputType = path.hub.file.markoOpts.output
+    if (tagType === 'ignore') return tagAttr.remove()
 
-    path.get('attributes').forEach((attr) => {
-        const attrName = attr.get('name').node
+    const nodeName = path.node.name.value
+    const nodeBody = path.node.body.body
 
-        if (attrName !== 'src' && ASSET_TAGS[nodeName] !== attrName) return
-        const { confident, value } = attr.get('value').evaluate()
-        if (!confident || !value || !isAssetPath(value)) return
-        if (removePath && outputType === 'html') return path.remove()
+    if (['style', 'script'].includes(nodeName) && nodeBody.length === 1) {
+        return type.isMarkoText(nodeBody[0]) && translate(path)
+    }
 
-        const nameHint = nodeName === 'script' ? undefined : 'asset'
-        const asset = markoUtils.importDefault(path.hub.file, value, nameHint)
+    let source = findAttrByName(path, ASSET_TAGS[nodeName])
+    if (!source) source = findAttrByName(path, 'src')
 
-        return removePath ? path.remove() : attr.set('value', asset)
-    })
+    const href = source ? getAttrValue(source) : undefined
+    if (tagType !== 'bundle' && !isValidAssetPath(href)) return
+
+    const isStyles = getAttrValue(path, 'rel') === 'stylesheet'
+    if (nodeName === 'link' && isStyles) return translate(path, href)
+
+    if (['style', 'script'].includes(nodeName)) return translate(path, href)
+    source.set('value', markoUtils.importDefault(path.hub.file, href, 'asset'))
 }
 
-function removeInline(nodePath, nodeType) {
-    const nodeBody = nodePath.get('body').node.body
-    const outputType = nodePath.hub.file.markoOpts.output
+function translate(path, href) {
+    let fileName = getAttrValue(path, 'name') ?? getAttrValue(path, 'id')
+    let fileType = getAttrValue(path, 'type') ?? getAttrValue(path, 'class')
 
-    if (nodeBody.length !== 1) return false
-    if (nodeBody[0].type !== 'MarkoText') return false
+    const isScript = path.node.name.value === 'script'
 
-    if (outputType !== 'html') {
-        const fileName = getAttrByName(nodePath, 'id') ?? 'inline'
-        const fileType = getAttrByName(nodePath, 'class') ?? nodeType
+    if (href) {
+        const lastSepIdx = href.lastIndexOf('/') + 1
+        const lastDotIdx = href.lastIndexOf('.')
 
-        nodePath.hub.file.metadata.marko.deps.push({
-            code: nodePath.get('body.body.0.value').node,
-            virtualPath: `${fileName}.${fileType}`,
+        if (!fileName) fileName = href.slice(lastSepIdx, lastDotIdx)
+        if (!fileType) fileType = href.slice(lastDotIdx + 1)
+
+        if (process.env.VITE_ENV) {
+            href = resolvePath(path.hub.file.metadata.marko.id, '..', href)
+        }
+
+        path.hub.file.metadata.marko.deps.push({
+            code: `${isScript ? '' : '@'}import "${href}";`,
+            virtualPath: `./virtual-${fileName}.${fileType}`,
         })
+    } else {
+        const code = path.node.body.body[0].value
+        const hash = createHash('sha1').update(code).digest('hex')
+
+        if (!fileName) fileName = 'inlined-' + hash.slice(0, 8)
+        if (!fileType) fileType = isScript ? 'js' : 'css'
+
+        const file = './' + fileName + '.' + fileType
+        path.hub.file.metadata.marko.deps.push({ code, virtualPath: file })
     }
 
-    nodePath.remove()
-    return true
+    return path.remove()
 }
 
-function getAttrByName(nodePath, attrName) {
-    const attrNode = nodePath
-        .get('attributes')
-        .find((attr) => attr.get('name').node === attrName)
-
-    if (attrNode) {
-        const { confident, value } = attrNode.get('value').evaluate()
-        if (confident && value && !value.includes(' ')) return value
-    }
-
-    return undefined
+function findAttrByName(path, name) {
+    if (name === undefined) return undefined
+    return path.get('attributes').find((attr) => attr.node.name === name)
 }
 
-function isRemovable(nodePath) {
-    const nodeName = nodePath.get('name.value').node
+function getAttrValue(attr, name) {
+    if (name) attr = findAttrByName(attr, name)
+    if (attr === undefined) return undefined
 
-    if (nodeName === 'script') return true
-    if (nodeName !== 'link') return false
-
-    return nodePath.get('attributes').some((attr) => {
-        const attrName = attr.get('name').node
-        if (attrName !== 'rel' && attrName !== 'href') return false
-
-        const attrValue = attr.get('value').evaluate().value
-        if (attrName === 'rel') return attrValue === 'stylesheet'
-
-        return CSS_FILTER.test(attrValue)
-    })
+    const { confident, value } = attr.get('value').evaluate()
+    return confident && value ? ('' + value).trim() : undefined
 }
 
-function isAssetPath(attrValue) {
-    if (typeof attrValue !== 'string') return false
+function isValidAssetPath(href) {
+    if (typeof href !== 'string') return false
 
-    if (attrValue[0] === '/') return false // Ignore absolute paths for the moment.
-    if (!attrValue.startsWith('./')) return false // Ignore non relative paths also.
+    if (href[0] === '/') return false // Ignore absolute paths for the moment.
+    if (!/^\.\.?\//.test(href)) return false // Ignore non relative paths also.
 
-    if (!/\.[^.]+$/.test(attrValue)) return false // Ignore paths without extension.
-    if (/^[a-z]{2,}:/i.test(attrValue)) return false // Ignore paths with a protocol.
+    if (/^[a-z]{2,}:/i.test(href)) return false // Ignore paths with a protocol.
+    if (!/\.[a-z]+$/i.test(href)) return false // Ignore paths without extension.
 
     return true
 }

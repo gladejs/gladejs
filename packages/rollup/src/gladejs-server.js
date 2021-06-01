@@ -4,31 +4,48 @@ import path from 'path'
 import fs from 'fs-extra'
 import glob from 'fast-glob'
 
-import { taglib } from '@marko/compiler'
-import { CSS_FILTER } from './gladejs-utils.js'
+import execa from 'execa'
+
+import { CSS_FILTER, registerTagLib } from './gladejs-utils.js'
 
 export function server(input) {
-    let assetTransform
+    let markoTagLibs = false
 
     return {
         name: 'gladejs/server',
 
         async options(options) {
             input = path.resolve(input)
+
             if (!(await fs.pathExists(input))) {
                 throw new Error(`Input "${input}" does not exist !`)
             }
 
             if ((await fs.stat(input)).isDirectory()) {
+                options.output[0].entryFileNames = '[name].mjs'
+
+                options.external.push(/\/node_modules\/.+\.[cm]?js(on)?$/)
+                options.external.push('fs-extra', 'express', '@marko/express')
+
                 if (await fs.pathExists(path.join(input, 'server.js'))) {
                     options.input = path.resolve(input, 'server.js')
-                } else {
-                    const output = options.output[0].dir
-                    const isLive = this.meta.watchMode
 
-                    options.input = await staticServer(input, output, isLive)
-                    options.external = /\/node_modules\/.+\.[cm]?js(on)?$/
-                    options.output[0].entryFileNames = 'static.mjs'
+                    if (process.env.VITE_ENV) {
+                        return viteDevServer(input, options.input)
+                    }
+                } else {
+                    if (await fs.pathExists(path.join(input, 'static.js'))) {
+                        options.input = path.resolve(input, 'static.js')
+                    } else {
+                        const output = options.output[0].dir
+
+                        const mode = {
+                            isLive: this.meta.watchMode,
+                            isVite: process.env.VITE_ENV,
+                        }
+
+                        options.input = await staticServer(input, output, mode)
+                    }
                 }
             } else {
                 options.input = input
@@ -36,13 +53,9 @@ export function server(input) {
         },
 
         buildStart() {
-            if (!assetTransform) {
-                assetTransform = url.fileURLToPath(
-                    new URL('./asset-transform.cjs', import.meta.url)
-                )
-                taglib.register('@gladejs/rollup', {
-                    '<*>': { transformer: assetTransform },
-                })
+            if (!markoTagLibs) {
+                registerTagLib()
+                markoTagLibs = true
             }
         },
 
@@ -52,7 +65,9 @@ export function server(input) {
     }
 }
 
-async function staticServer(input, output, isLive) {
+async function staticServer(input, output, mode) {
+    if (mode.isVite) return viteDevServer(input)
+
     const pages = await glob('**.marko', {
         ignore: ['**/components/**'],
         cwd: input,
@@ -62,26 +77,78 @@ async function staticServer(input, output, isLive) {
         throw new Error(`Input "${input}" does not have any page !`)
     }
 
-    let staticCode = `import fs from 'fs-extra';\n\n`
+    const inputCode = []
 
-    pages.forEach((page, index) => {
-        staticCode += `import page_${index} from './${page}';\n`
+    if (mode.isLive) {
+        inputCode.push(`import express from 'express';`)
+        inputCode.push(`import markoWare from '@marko/express';`, '')
+    } else inputCode.push(`import fs from 'fs-extra';`, '')
+
+    inputCode.push(...pages.map((p, i) => `import p${i} from './${p}';`), '')
+
+    if (mode.isLive) {
+        inputCode.push(`express().use(markoWare.default())`)
+        inputCode.push(`  .use('/', express.static('${output}'))`)
+    } else {
+        inputCode.push(`export async function run() {`)
+        inputCode.push(`    return Promise.all([`)
+    }
+
+    inputCode.push(
+        ...pages.map((p, i) => {
+            if (mode.isLive) {
+                let pagePath = p.slice(0, -6)
+                if (pagePath === 'index') pagePath = ''
+
+                if (pagePath.endsWith('/index')) {
+                    pagePath = pagePath.slice(0, -6)
+                } else if (pagePath) pagePath += '.html'
+
+                return `  .get('/${pagePath}', (_, r) => r.marko(p${i}, {}))`
+            } else {
+                const fileName = path.join(output, p.slice(0, -6) + '.html')
+
+                return (
+                    `        p${i}.render({}).then((r) => ` +
+                    `fs.outputFile('${fileName}', r.getOutput())),`
+                )
+            }
+        })
+    )
+
+    if (mode.isLive) {
+        inputCode.push('  .listen(8080);', '')
+    } else inputCode.push('    ]);', '}', '')
+
+    const inputName = mode.isLive ? 'server' : 'static'
+    const inputFile = path.resolve(input, inputName + '.mjs')
+
+    await fs.outputFile(inputFile, inputCode.join('\n'))
+
+    return inputFile
+}
+
+async function viteDevServer(input, serverFile) {
+    if (serverFile === undefined) {
+        serverFile = path.resolve(input, 'server.mjs')
+
+        const viteServerFile = url.fileURLToPath(
+            new URL('./vite-server.mjs', import.meta.url)
+        )
+
+        await fs.copy(viteServerFile, serverFile)
+    }
+
+    const rollupTag = path.resolve(input, 'components', 'rollup.marko')
+    await fs.outputFile(rollupTag, '<!-- EMPTY_GLADEJS_ROLLUP_TAG -->')
+
+    const serverProc = execa.node(serverFile, [path.basename(input)], {
+        stdio: 'inherit',
     })
 
-    staticCode += `\nexport async function run() {\n  return Promise.all([\n`
-
-    pages.forEach((page, index) => {
-        staticCode += `    page_${index}.render({}).then(`
-        staticCode += `result => fs.outputFile('${output}/`
-        staticCode += page.substring(0, page.length - 6)
-        staticCode += `.html', result.getOutput())),\n`
-    })
-
-    staticCode += `  ]);\n}\n`
-
-    if (isLive) staticCode += `\n(await run());\nprocess.exit(0);\n`
-    const staticFile = path.resolve(input, 'static.mjs')
-    await fs.outputFile(staticFile, staticCode)
-
-    return staticFile
+    try {
+        await serverProc
+    } finally {
+        process.exit(0) // eslint-disable-line
+    }
 }
