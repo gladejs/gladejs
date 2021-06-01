@@ -107,6 +107,7 @@ npm init -y && npm i -D gladejs
 
 ```json
 "scripts": {
+    "vite": "rollup -c --watch --environment VITE_ENV",
     "live": "rollup -c --watch",
     "build": "rollup -c",
     "clean": "rimraf build _site",
@@ -134,6 +135,7 @@ Nevertheless, [give it a quick glance](./rollup.config.mjs), it's relatively org
 
 GladeJS is directly controlled via NPM scripts, using the following commands :
 
+-   "`npm run vite`" to run ViteJS "watch mode" for fast development
 -   "`npm run live`" to run Rollup "watch mode" for live development
 -   "`npm run build`" to bundle your project without any minification
 -   "`npm run clean`" to delete all files & folders created by GladeJS

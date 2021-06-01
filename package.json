@@ -23,6 +23,7 @@
         "packages/*"
     ],
     "scripts": {
+        "vite": "rollup -c --watch --environment VITE_ENV",
         "live": "rollup -c --watch",
         "build": "rollup -c",
         "clean": "rimraf build _site",
