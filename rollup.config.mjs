@@ -26,7 +26,7 @@ const stylesOptions = {
     mode: ['extract', 'styles.css'], // funnel into 1 file
     minimize: isProd, // and apply "cssnano" in production
     url: {
-        inline: false, // ... or copy it in ...
+        inline: false, // ... or copy into ...
         publicPath: PUBLIC_PATH + '/css/assets/',
         hash: '/assets/[name]-[hash][extname]',
     },
@@ -71,7 +71,7 @@ const serverConfig = {
         commonjs({ include: /node_modules/ }),
         ...assetsOptions.map((o) => assets(o)),
     ],
-    watch: { exclude: BUILD_DIR + '/static.mjs' },
+    watch: { exclude: BUILD_DIR + '/{static,server}.?js' },
 }
 
 const browserConfig = {
