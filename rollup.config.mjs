@@ -23,8 +23,8 @@ const isProd = process.env.NODE_ENV === 'production'
 
 // @docs https://github.com/Anidetrix/rollup-plugin-styles#configuration
 const stylesOptions = {
-    mode: ['extract', 'styles.css'], // funnel into 1 file
-    minimize: isProd, // and apply "cssnano" in production
+    mode: ['extract'], // generates static CSS files
+    minimize: isProd, // using CSSnano in production
     url: {
         inline: false, // ... or copy into ...
         publicPath: PUBLIC_PATH + '/css/assets/',
@@ -88,6 +88,7 @@ const browserConfig = {
         {
             dir: OUTPUT_DIR + '/css',
             assetFileNames: '[name]-[hash].css',
+            manualChunks: gladejs.stylesChunking(),
         },
         {
             dir: OUTPUT_DIR + '/esm',
