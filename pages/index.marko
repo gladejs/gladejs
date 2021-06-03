@@ -4,7 +4,7 @@
         <meta charset="utf-8"/>
         <title>Welcome to the GladeJS !</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-        <rollup|entryName, cssBundle, esmBundle|>
+        <rollup|entryName, cssBundle, esmBundle, cjsBundle|>
             $ const pageStyle = cssBundle.find(it => it.name === entryName);
             <if(pageStyle)>
                 <style>${pageStyle.source}</style>
@@ -15,6 +15,9 @@
             $ const pageChunk = esmBundle.find(it => it.name === entryName);
             <if(pageChunk)>
                 <script type="module" async>${pageChunk.source}</script>
+            </if>
+            <if(cjsBundle.length)>
+                <script nomodule async src=cjsBundle[0].filePath/>
             </if>
         </rollup>
     </head>

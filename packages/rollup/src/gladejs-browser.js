@@ -6,10 +6,15 @@ import bs from 'browser-sync'
 
 import { CSS_FILTER, MARKO_ENTRY } from './gladejs-utils.js'
 
+let browserSync = false
+let legacyConfig = false
+let staticCode, serverProc
+
+const legacyInputId = '\0gladejs-legacy.js'
+
 export function browser(mainOutput, publicPath) {
-    let cssOutput, esmOutput, browserSync
-    let staticCode, serverProc
     const virtualStyles = {}
+    let cssOutput, esmOutput
 
     return {
         name: 'gladejs/browser',
@@ -166,46 +171,98 @@ export function browser(mainOutput, publicPath) {
         },
 
         async closeBundle() {
-            const staticFile = path.resolve(mainOutput, 'static.mjs')
-
-            if (await fs.pathExists(staticFile)) {
-                if (!staticCode) {
-                    staticCode = 'run().then(() => process.exit(0));'
-                    await fs.appendFile(staticFile, staticCode + '\n')
-                }
-
-                await execa.node(staticFile, [], { stdio: 'inherit' })
-
-                if (this.meta.watchMode) {
-                    if (!browserSync) {
-                        browserSync = bs.create('gladejs-static')
-                        browserSync.init({ server: mainOutput })
-                    } else browserSync.reload()
-                } else await fs.remove(staticFile)
-            } else {
-                const serverFile = path.resolve(mainOutput, 'server.mjs')
-
-                if (this.meta.watchMode && (await fs.pathExists(serverFile))) {
-                    if (serverProc) serverProc.kill()
-
-                    serverProc = execa.node(
-                        serverFile,
-                        [path.basename(mainOutput)],
-                        { stdio: 'inherit' }
-                    )
-
-                    if (!browserSync) {
-                        browserSync = bs.create('gladejs-server')
-                        browserSync.init({ proxy: 'localhost:8080' })
-                    } else browserSync.reload()
-                }
+            if (!legacyConfig) {
+                await staticServer(mainOutput, this.meta.watchMode)
             }
+        },
+
+        closeWatcher() {
+            if (!legacyConfig && serverProc) serverProc.kill()
+            if (!legacyConfig && browserSync) browserSync.exit()
+        },
+    }
+}
+
+export function legacy(mainOutput, publicPath) {
+    let legacyInputCode
+    legacyConfig = true
+
+    return {
+        name: 'gladejs/legacy',
+
+        options(options) {
+            legacyInputCode = Object.values(options.input).map(
+                (page) => `import '\0marko-browser-entry:${page}';`
+            )
+
+            options.input = legacyInputId
+        },
+
+        resolveId(id, importer) {
+            if (!importer && id === legacyInputId) return legacyInputId
+        },
+
+        load(id) {
+            if (id === legacyInputId) return legacyInputCode.join('\n')
+
+            if (CSS_FILTER.test(id)) return 'export default {};'
+        },
+
+        generateBundle(outputOptions, bundle) {
+            const output = outputOptions.dir.slice(mainOutput.length)
+
+            Object.values(bundle).forEach((legacy) => {
+                if (legacy.code.trim()) {
+                    legacy.type = 'asset'
+                    legacy.source = legacy.code
+                    legacy.filePath = `${publicPath}${output}/${legacy.fileName}`
+                } else delete bundle[legacy.fileName]
+            })
+        },
+
+        async closeBundle() {
+            await staticServer(mainOutput, this.meta.watchMode)
         },
 
         closeWatcher() {
             if (serverProc) serverProc.kill()
             if (browserSync) browserSync.exit()
         },
+    }
+}
+
+async function staticServer(output, isLive) {
+    const staticFile = path.resolve(output, 'static.mjs')
+
+    if (await fs.pathExists(staticFile)) {
+        if (!staticCode) {
+            staticCode = 'run().then(() => process.exit(0));'
+            await fs.appendFile(staticFile, staticCode + '\n')
+        }
+
+        await execa.node(staticFile, [], { stdio: 'inherit' })
+
+        if (isLive) {
+            if (!browserSync) {
+                browserSync = bs.create('gladejs-static')
+                browserSync.init({ server: output })
+            } else browserSync.reload()
+        } else await fs.remove(staticFile)
+    } else {
+        const serverFile = path.resolve(output, 'server.mjs')
+
+        if (isLive && (await fs.pathExists(serverFile))) {
+            if (serverProc) serverProc.kill()
+
+            serverProc = execa.node(serverFile, [path.basename(output)], {
+                stdio: 'inherit',
+            })
+
+            if (!browserSync) {
+                browserSync = bs.create('gladejs-server')
+                browserSync.init({ proxy: 'localhost:8080' })
+            } else browserSync.reload()
+        }
     }
 }
 
