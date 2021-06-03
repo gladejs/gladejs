@@ -1,4 +1,7 @@
+import url from 'url'
 import path from 'path'
+
+import { taglib } from '@marko/compiler'
 
 export const CSS_FILTER = /\.(css|less|s[ac]ss|styl)$/
 
@@ -52,4 +55,22 @@ export function moduleChunking() {
         )
             return 'modules'
     }
+}
+
+export function registerTagLib() {
+    const assetTransform = url.fileURLToPath(
+        new URL('./asset-transform.cjs', import.meta.url)
+    )
+
+    taglib.register('@gladejs/rollup', {
+        '<*>': { transform: assetTransform },
+    })
+}
+
+export function urlToMarkoFile(url) {
+    if (url.endsWith('.html')) url = url.slice(0, -4) + 'marko'
+    if (!url.split('/').pop().includes('.')) url += '/index.marko'
+    if (url.endsWith('.marko')) url += '?marko-server-entry'
+
+    return './' + url
 }
