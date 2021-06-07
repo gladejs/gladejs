@@ -172,6 +172,12 @@ export function browser(mainOutput, publicPath) {
             if (!legacyConfig) {
                 await staticServer(mainOutput, this.meta.watchMode)
             }
+
+            if (await fs.pathExists(cssOutput)) {
+                if ((await fs.readdir(cssOutput)).length === 0) {
+                    if (!this.meta.watchMode) await fs.remove(cssOutput)
+                }
+            }
         },
 
         closeWatcher() {
