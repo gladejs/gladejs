@@ -54,9 +54,6 @@ export function stylesChunking() {
     return (id) => {
         if (id.startsWith(path.resolve('components'))) return 'project'
         if (id.includes(path.join('/node_modules/'))) return 'modules'
-
-        if (path.basename(id).startsWith('inline_')) return 'inline'
-        if (path.basename(id).startsWith('style.')) return 'styles'
     }
 }
 
