@@ -45,12 +45,15 @@ export function browser(mainOutput, publicPath) {
 
         load(id) {
             if (!id.endsWith('.style')) return
+
+            this.addWatchFile(id.slice(0, -6) + '.marko')
+            if (virtualStyles[id]) return virtualStyles[id]
+
             let deferredResolve
             const promisedStyle = new Promise((resolve) => {
                 deferredResolve = resolve
             })
 
-            this.addWatchFile(id.slice(0, -6) + '.marko')
             promisedStyle.resolve = deferredResolve
             virtualStyles[id] = promisedStyle
 
@@ -78,7 +81,11 @@ export function browser(mainOutput, publicPath) {
                 styleId = styleId.slice(MARKO_ENTRY.length)
             }
 
+            if (typeof virtualStyles[styleId] === 'object') {
             virtualStyles[styleId].resolve(styleCode.join('\n'))
+            }
+
+            virtualStyles[styleId] = styleCode.join('\n')
         },
 
         generateBundle(outputOptions, bundle) {
