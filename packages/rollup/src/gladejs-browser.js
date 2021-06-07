@@ -6,11 +6,7 @@ import bs from 'browser-sync'
 
 import { CSS_FILTER, MARKO_ENTRY } from './gladejs-utils.js'
 
-let browserSync = false
-let legacyConfig = false
-let staticCode, serverProc
-
-const legacyInputId = '\0gladejs-legacy.js'
+let serverProc, browserSync, legacyConfig, staticCodeRun
 
 export function browser(mainOutput, publicPath) {
     const virtualStyles = {}
@@ -54,7 +50,6 @@ export function browser(mainOutput, publicPath) {
         load(id) {
             if (!id.endsWith('.style')) return
             let deferredResolve
-
             const promisedStyle = new Promise((resolve) => {
                 deferredResolve = resolve
             })
@@ -68,11 +63,11 @@ export function browser(mainOutput, publicPath) {
 
         moduleParsed(module) {
             if (!module.id.endsWith('.marko')) return
+
             let importMatch
-
             const styleCode = []
-            const importRegExp = /(import[^;'"]*['"]([^;'"]+)['"];)/g
 
+            const importRegExp = /(import[^;'"]*['"]([^;'"]+)['"];)/g
             while ((importMatch = importRegExp.exec(module.code)) !== null) {
                 if (
                     CSS_FILTER.test(importMatch[2]) ||
@@ -142,8 +137,8 @@ export function browser(mainOutput, publicPath) {
 
                             if (chunk.isEntry) {
                                 chunk.source = chunk.code.replace(
-                                    /(import[^;'"]*['"])(\.)(\/[^;'"]+['"];)/g,
-                                    `$1${path.dirname(chunk.filePath)}$3`
+                                    /(import[^;'"]*['"])\.(\/[^;'"]+['"];)/g,
+                                    `$1${path.dirname(chunk.filePath)}$2`
                                 )
                             }
                         } else delete bundle[chunk.fileName]
@@ -184,6 +179,8 @@ export function browser(mainOutput, publicPath) {
 }
 
 export function legacy(mainOutput, publicPath) {
+    const legacyInputId = '\0gladejs-legacy.js'
+
     let legacyInputCode
     legacyConfig = true
 
@@ -192,7 +189,7 @@ export function legacy(mainOutput, publicPath) {
 
         options(options) {
             legacyInputCode = Object.values(options.input).map(
-                (page) => `import '\0marko-browser-entry:${page}';`
+                (page) => `import '${MARKO_ENTRY}${page}';`
             )
 
             options.input = legacyInputId
@@ -235,9 +232,9 @@ async function staticServer(output, isLive) {
     const staticFile = path.resolve(output, 'static.mjs')
 
     if (await fs.pathExists(staticFile)) {
-        if (!staticCode) {
-            staticCode = 'run().then(() => process.exit(0));'
-            await fs.appendFile(staticFile, staticCode + '\n')
+        if (!staticCodeRun) {
+            staticCodeRun = 'run().then(() => process.exit(0));'
+            await fs.appendFile(staticFile, staticCodeRun + '\n')
         }
 
         await execa.node(staticFile, [], { stdio: 'inherit' })

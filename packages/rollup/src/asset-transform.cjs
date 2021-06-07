@@ -67,7 +67,7 @@ function translate(path, href) {
         if (!fileName) fileName = 'inlined-' + hash.slice(0, 8)
         if (!fileType) fileType = isScript ? 'js' : 'css'
 
-        const file = './' + fileName + '.' + fileType
+        const file = `./${fileName}.${fileType}`
         path.hub.file.metadata.marko.deps.push({ code, virtualPath: file })
     }
 
