@@ -16,7 +16,7 @@
             <if(pageChunk)>
                 <script type="module" async>${pageChunk.source}</script>
             </if>
-            <if(cjsBundle.length)>
+            <if(pageChunk && cjsBundle.length)>
                 <script nomodule async src=cjsBundle[0].filePath/>
             </if>
         </rollup>
