@@ -18,18 +18,14 @@ export function browser(mainOutput, publicPath) {
         options(options) {
             cssOutput = options.output[0].dir
             esmOutput = options.output[1].dir
-
-            options.onwarn = silenceEmptyWarnings(options.onwarn)
         },
 
         buildStart(options) {
             Object.entries(options.input).forEach(([name, path]) => {
-                this.emitFile({
-                    type: 'chunk',
-                    name: name + '.style',
-                    id: path.slice(0, -6) + '.style',
+                options.input[name + '.style'] = path.slice(0, -6) + '.style'
                 })
-            })
+
+            options.onwarn = silenceEmptyWarnings(options.onwarn)
         },
 
         resolveId(id, importer) {
