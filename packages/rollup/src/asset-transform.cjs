@@ -46,26 +46,33 @@ function translate(path, href) {
     const isScript = path.node.name.value === 'script'
 
     if (href) {
+        if (!isScript && !fileName && !fileType) {
+            markoUtils.importDefault(path.hub.file, href)
+            return path.remove()
+        }
+
         const lastSepIdx = href.lastIndexOf('/') + 1
         const lastDotIdx = href.lastIndexOf('.')
 
         if (!fileName) fileName = href.slice(lastSepIdx, lastDotIdx)
-        if (!fileType) fileType = href.slice(lastDotIdx + 1)
+        if (!fileType) fileType = isScript ? 'js' : href.slice(lastDotIdx + 1)
 
         if (process.env.VITE_ENV) {
             href = resolvePath(path.hub.file.metadata.marko.id, '..', href)
         }
 
-        path.hub.file.metadata.marko.deps.push({
-            code: `${isScript ? '' : '@'}import "${href}";`,
-            virtualPath: `./virtual-${fileName}.${fileType}`,
-        })
+        const code = `${isScript ? '' : '@'}import "${href}";`
+        const file = `./${path.node.name.value}-${fileName}.${fileType}`
+
+        path.hub.file.metadata.marko.deps.push({ code, virtualPath: file })
     } else {
         const code = path.node.body.body[0].value
-        const hash = createHash('sha1').update(code).digest('hex')
-
-        if (!fileName) fileName = 'inlined-' + hash.slice(0, 8)
         if (!fileType) fileType = isScript ? 'js' : 'css'
+
+        if (!fileName) {
+            const hash = createHash('sha1').update(code).digest('hex')
+            fileName = 'inlined-' + hash.slice(0, 8)
+        }
 
         const file = `./${fileName}.${fileType}`
         path.hub.file.metadata.marko.deps.push({ code, virtualPath: file })
