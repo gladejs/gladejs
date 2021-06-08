@@ -23,7 +23,7 @@ export function browser(mainOutput, publicPath) {
         buildStart(options) {
             Object.entries(options.input).forEach(([name, path]) => {
                 options.input[name + '.style'] = path.slice(0, -6) + '.style'
-                })
+            })
 
             options.onwarn = silenceEmptyWarnings(options.onwarn)
         },
@@ -82,7 +82,7 @@ export function browser(mainOutput, publicPath) {
             }
 
             if (typeof virtualStyles[styleId] === 'object') {
-            virtualStyles[styleId].resolve(styleCode.join('\n'))
+                virtualStyles[styleId].resolve(styleCode.join('\n'))
             }
 
             virtualStyles[styleId] = styleCode.join('\n')
@@ -196,12 +196,13 @@ export function legacy(mainOutput, publicPath) {
     return {
         name: 'gladejs/legacy',
 
-        options(options) {
+        buildStart(options) {
             legacyInputCode = Object.values(options.input).map(
                 (page) => `import '${MARKO_ENTRY}${page}';`
             )
 
-            options.input = legacyInputId
+            options.input = [legacyInputId]
+            options.onwarn = silenceEmptyWarnings(options.onwarn)
         },
 
         resolveId(id, importer) {
