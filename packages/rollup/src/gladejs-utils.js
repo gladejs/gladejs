@@ -8,27 +8,17 @@ export const MARKO_ENTRY = '\0marko-browser-entry:'
 
 export function serializer() {
     return (bundle) =>
-        bundle.map((chunk) =>
-            chunk.type === 'asset'
-                ? {
-                      type: 'asset',
-                      name: chunk.name,
-                      fileName: chunk.fileName,
-                      filePath: chunk.filePath,
-                      entries: chunk.entries,
-                      source: chunk.isEntry ? chunk.source.trim() : undefined,
-                  }
-                : {
-                      type: 'chunk',
-                      name: chunk.name,
-                      fileName: chunk.fileName,
-                      filePath: chunk.filePath,
-                      imports: chunk.imports,
-                      isDynamicEntry: chunk.isDynamicEntry,
-                      dynamicImports: chunk.dynamicImports,
-                      source: chunk.isEntry ? chunk.source.trim() : undefined,
-                  }
-        )
+        bundle.map((chunk) => ({
+            type: chunk.type,
+            name: chunk.name,
+            fileName: chunk.fileName,
+            filePath: chunk.filePath,
+            entries: chunk.entries,
+            imports: chunk.imports,
+            isDynamicEntry: chunk.isDynamicEntry,
+            dynamicImports: chunk.dynamicImports,
+            source: chunk.isEntry ? chunk.source.trim() : undefined,
+        }))
 }
 
 export function moduleChunking() {
