@@ -65,11 +65,11 @@
         "@marko/express": "^1.0.0",
         "@marko/vite": "^1.3.2",
         "browser-sync": "^2.26.14",
-        "execa": "^5.0.1",
+        "execa": "^5.1.1",
         "express": "^4.17.1",
         "fast-glob": "^3.2.5",
-        "fs-extra": "^9.1.0",
-        "vite": "^2.3.5"
+        "fs-extra": "^10.0.0",
+        "vite": "^2.3.7"
     },
     "peerDependencies": {
         "rollup": "^2.50"

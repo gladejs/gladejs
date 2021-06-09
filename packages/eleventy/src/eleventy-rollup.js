@@ -7,7 +7,7 @@ import glob from 'fast-glob'
 import chokidar from 'chokidar'
 import normalize from 'normalize-path'
 
-import Eleventy from '@11ty/eleventy/src/Eleventy.js'
+import Eleventy from '@11ty/eleventy'
 
 const isLive = process.env.ROLLUP_WATCH === 'true'
 
@@ -34,13 +34,15 @@ export default function (input, output) {
             input = normalize(input).replace(/^([a-zA-Z]+:)/, '')
             output = normalize(output).replace(/^([a-zA-Z]+:)/, '')
 
-            eleventy = new Eleventy(input, output)
+            const configPath = new URL('./eleventy-config.cjs', import.meta.url)
+
+            eleventy = new Eleventy(input, output, {
+                configPath: url.fileURLToPath(configPath),
+                config: await loadUserConfig(path.resolve('.eleventy.cjs')),
+            })
 
             eleventy.setIsVerbose(false) // be quiet, no need to list all the files
             eleventy.setIncrementalBuild(true) // fewer builds in Live mode, please
-
-            const configPath = new URL('./eleventy-config.cjs', import.meta.url)
-            eleventy.setConfigPathOverride(url.fileURLToPath(configPath))
 
             return eleventyPromise(input, output, eleventy).then(() => options)
         },
@@ -108,4 +110,10 @@ async function renameHTMLFiles(rootDir) {
             return watcher.on('add', move).on('change', move)
         } else return undefined
     })
+}
+
+async function loadUserConfig(filePath) {
+    if (!(await fs.pathExists(filePath))) return undefined
+
+    return (await import(filePath)).default // eslint-disable-line
 }
