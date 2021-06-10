@@ -48,13 +48,27 @@ export function stylesChunking() {
 }
 
 export function registerTagLib() {
-    const assetTransform = url.fileURLToPath(
+    const assetTransformer = url.fileURLToPath(
         new URL('./asset-transform.cjs', import.meta.url)
     )
+    const gladejsRollupTag = url.fileURLToPath(
+        new URL('./gladejs-rollup.marko', import.meta.url)
+    )
 
-    taglib.register('@gladejs/rollup', {
-        '<*>': { transform: assetTransform },
-    })
+    const components = {
+        '<*>': { transform: assetTransformer },
+        '<gladejs-rollup>': { template: gladejsRollupTag },
+    }
+
+    if (process.env.VITE_ENV) {
+        const rollupViteFake = url.fileURLToPath(
+            new URL('./rollup-vite.marko', import.meta.url)
+        )
+
+        components['<rollup>'] = { template: rollupViteFake }
+    }
+
+    taglib.register('@gladejs/rollup', components)
 }
 
 export function urlToMarkoFile(url) {

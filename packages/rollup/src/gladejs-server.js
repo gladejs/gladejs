@@ -139,9 +139,6 @@ async function viteDevServer(input, serverFile) {
         await fs.copy(viteServerFile, serverFile)
     }
 
-    const rollupTag = path.resolve(input, 'components', 'rollup.marko')
-    await fs.outputFile(rollupTag, '<!-- EMPTY_GLADEJS_ROLLUP_TAG -->')
-
     const serverProc = execa.node(serverFile, [path.basename(input)], {
         stdio: 'inherit',
     })
