@@ -64,15 +64,15 @@
         "@marko/compiler": "^5.10",
         "@marko/express": "^1.0.0",
         "@marko/vite": "^1.3.2",
-        "browser-sync": "^2.26.14",
+        "browser-sync": "^2.27.1",
         "execa": "^5.1.1",
         "express": "^4.17.1",
         "fast-glob": "^3.2.5",
         "fs-extra": "^10.0.0",
-        "vite": "^2.3.7"
+        "vite": "^2.3.8"
     },
     "peerDependencies": {
-        "rollup": "^2.50"
+        "rollup": "^2.52"
     },
     "publishConfig": {
         "access": "public"

@@ -58,14 +58,14 @@
         ]
     },
     "dependencies": {
-        "@11ty/eleventy": "^1.0.0-canary.29",
-        "chokidar": "^3.5.1",
+        "@11ty/eleventy": "^1.0.0-canary.38",
+        "chokidar": "^3.5.2",
         "fast-glob": "^3.2.5",
         "fs-extra": "^10.0.0",
         "normalize-path": "^3.0.0"
     },
     "peerDependencies": {
-        "rollup": "^2.50"
+        "rollup": "^2.52"
     },
     "publishConfig": {
         "access": "public"
