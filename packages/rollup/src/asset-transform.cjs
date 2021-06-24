@@ -1,8 +1,9 @@
 'use strict'
 
-const createHash = require('crypto').createHash
-const resolvePath = require('path').resolve
+const { basename, extname, resolve } = require('path')
+
 const markoUtils = require('@marko/babel-utils')
+const markoTypes = require('@marko/compiler').types
 
 const ASSET_TAGS = {
     link: 'href',
@@ -11,7 +12,7 @@ const ASSET_TAGS = {
     body: 'background',
 }
 
-module.exports = function transform(path, type) {
+module.exports = function transform(path) {
     if (markoUtils.isDynamicTag(path)) return
 
     const tagAttr = findAttrByName(path, 'rollup')
@@ -23,7 +24,7 @@ module.exports = function transform(path, type) {
     const nodeBody = path.node.body.body
 
     if (['style', 'script'].includes(nodeName) && nodeBody.length === 1) {
-        return type.isMarkoText(nodeBody[0]) && translate(path)
+        return markoTypes.isMarkoText(nodeBody[0]) && translate(path)
     }
 
     let source = findAttrByName(path, ASSET_TAGS[nodeName])
@@ -40,45 +41,59 @@ module.exports = function transform(path, type) {
 }
 
 function translate(path, href) {
-    let fileName = getAttrValue(path, 'name') ?? getAttrValue(path, 'id')
-    let fileType = getAttrValue(path, 'type') ?? getAttrValue(path, 'class')
+    const scopedAttr = findAttrByName(path, 'scoped')
+    const parentPath = markoUtils.findParentTag(path)
 
     const isScript = path.node.name.value === 'script'
 
+    let fileName = getAttrValue(path, 'name') ?? getAttrValue(path, 'id')
+    let fileType = getAttrValue(path, 'type') ?? getAttrValue(path, 'class')
+
+    let code = path.node.body.body[0]?.value
+
     if (href) {
-        if (!isScript && !fileName && !fileType) {
+        code = `${isScript ? '' : '@'}import "${href}";`
+
+        if (!isScript && !scopedAttr && !fileName && !fileType) {
             markoUtils.importDefault(path.hub.file, href)
             return path.remove()
         }
 
-        const lastSepIdx = href.lastIndexOf('/') + 1
-        const lastDotIdx = href.lastIndexOf('.')
-
-        if (!fileName) fileName = href.slice(lastSepIdx, lastDotIdx)
-        if (!fileType) fileType = isScript ? 'js' : href.slice(lastDotIdx + 1)
-
         if (process.env.VITE_ENV) {
-            href = resolvePath(path.hub.file.metadata.marko.id, '..', href)
+            href = resolve(path.hub.file.metadata.marko.id, '..', href)
         }
 
-        const code = `${isScript ? '' : '@'}import "${href}";`
-        const file = `./${path.node.name.value}-${fileName}.${fileType}`
+        if (!fileType) fileType = isScript ? 'js' : extname(href).slice(1)
+    } else if (!fileType) fileType = isScript ? 'js' : 'css'
 
-        path.hub.file.metadata.marko.deps.push({ code, virtualPath: file })
-    } else {
-        const code = path.node.body.body[0].value
-        if (!fileType) fileType = isScript ? 'js' : 'css'
+    if (['css', 'less'].includes(fileType) && scopedAttr && parentPath) {
+        const scope = translateScoped(path, scopedAttr, parentPath)
 
-        if (!fileName) {
-            const hash = createHash('sha1').update(code).digest('hex')
-            fileName = 'inlined-' + hash.slice(0, 8)
-        }
-
-        const file = `./${fileName}.${fileType}`
-        path.hub.file.metadata.marko.deps.push({ code, virtualPath: file })
+        code = `.${scope} {${href ? `@import (less) "${href}";` : code}}`
+        fileType = 'less'
     }
 
+    fileName = `./${fileName ?? getUniqueTagId(path)}.${fileType}`
+    path.hub.file.metadata.marko.deps.push({ code, virtualPath: fileName })
+
     return path.remove()
+}
+
+function translateScoped(path, scopedAttr, parentPath) {
+    const scope = getAttrValue(scopedAttr) ?? getUniqueTagId(path)
+
+    let classAttr = findAttrByName(parentPath, 'class')
+    let attrValue = getAttrValue(classAttr)
+
+    attrValue = attrValue ? `${attrValue} ${scope}` : scope
+    attrValue = markoTypes.StringLiteral(attrValue)
+
+    if (!classAttr) {
+        classAttr = markoTypes.MarkoAttribute('class', attrValue)
+        parentPath.node.attributes.push(classAttr)
+    } else classAttr.set('value', attrValue)
+
+    return scope
 }
 
 function findAttrByName(path, name) {
@@ -91,7 +106,9 @@ function getAttrValue(attr, name) {
     if (attr === undefined) return undefined
 
     const { confident, value } = attr.get('value').evaluate()
-    return confident && value ? ('' + value).trim() : undefined
+    const strValue = confident ? `${value}`.trim() : undefined
+
+    return ['', 'true'].includes(strValue) ? undefined : strValue
 }
 
 function isValidAssetPath(href) {
@@ -104,4 +121,15 @@ function isValidAssetPath(href) {
     if (!/\.[a-z]+$/i.test(href)) return false // Ignore paths without extension.
 
     return true
+}
+
+function getUniqueTagId(path) {
+    let name = path.hub.file.metadata.marko.id
+    if (name.endsWith('/index.marko')) name = name.slice(0, -12)
+
+    name = basename(name, '.marko')
+    name += '-' + path.node.name.value
+    name += '-L' + path.node.loc.start.line
+
+    return name
 }
