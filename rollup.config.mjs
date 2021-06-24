@@ -4,6 +4,8 @@ import eleventy from '@gladejs/eleventy'
 
 import resolve from '@rollup/plugin-node-resolve'
 import commonjs from '@rollup/plugin-commonjs'
+
+import babel from '@rollup/plugin-babel'
 import assets from '@rollup/plugin-url'
 
 import styles from 'rollup-plugin-styles'
@@ -99,4 +101,26 @@ const browserConfig = {
     ],
 }
 
-export default [serverConfig, browserConfig]
+const legacyConfig = isProd && {
+    plugins: [
+        marko.default.browser({ serialize: gladejs.serializer() }),
+        gladejs.legacy(OUTPUT_DIR, PUBLIC_PATH),
+        isProd && terser(terserOptions('cjs')),
+
+        resolve({ preferBuiltins: false, browser: true }),
+        commonjs({ include: /node_modules/ }),
+        ...assetsOptions.map((o) => assets({ emitFiles: false, ...o })),
+    ],
+    output: {
+        dir: OUTPUT_DIR + '/cjs',
+        entryFileNames: 'legacy-[hash].js',
+        plugins: [
+            babel.getBabelOutputPlugin({
+                targets: 'IE >= 11, since 2015, defaults',
+                presets: [['@babel/env', { modules: 'cjs' }]],
+            }),
+        ],
+    },
+}
+
+export default [serverConfig, browserConfig, legacyConfig].filter((c) => c)
