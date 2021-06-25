@@ -28,8 +28,3 @@ This is the [GladeJS](https://github.com/gladejs/gladejs) Module adding support 
 .
 
 Well, if you're still here I guess that you know what you're doing. 🙄
-
-## Content
-
--   [The main GladeJS Rollup plugin](./dist/gladejs-rollup.js), the actual core of the project
--   [The asset "transformer" hook](./tags/asset-transformer.js), the magic to handle your images

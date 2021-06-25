@@ -48,38 +48,24 @@
     &nbsp;
 </p>
 
-## GladeJS Project Status (May 2021)
-
-The project has finally emerged from hibernation with :
-
--   ✅ &nbsp; dual support for SSG (by default) and SSR (with a `server.js` input)
--   ✅ &nbsp; a magical "src" attribute and disappearing "style", "link" & "script" tags
--   ✅ &nbsp; the powerful "`<rollup>`" tag to process the `esm` and `css` bundles
-
-Upcoming in version 0.7.0 :
-
--   🚧 &nbsp; CSS chunking per page, code-splitting and manual config
--   🚧 &nbsp; a "legacy" build plugin for the module / nomodule pattern
--   🚧 &nbsp; improved implementation of asset handling with examples
-
 ## Description
 
-GladeJS is a simple [Rollup](https://rollupjs.org) setup for bundling static Web Sites built with [Marko](https://markojs.com) and [Eleventy](https://www.11ty.dev).
+GladeJS is a simple [Rollup](https://rollupjs.org) setup for bundling Web Sites built with [Marko](https://markojs.com) and [Eleventy](https://www.11ty.dev).
 
 If the above description does not speak to you, try one of these for size :
 
--   This is a [Jamstack](https://jamstack.org) static site generator framework based on Rollup
+-   This is a [Jamstack](https://jamstack.org) dual _SSG / SSR_ frontend framework using Rollup
 -   It transforms your "pages" into a modern web "\_site" ready for Prod
 -   It is the best bundler (you're not using) combined with the simplest \
     SSG (you want to use) and the fastest UI lib (you've never heard of)
--   In the end, it is nothing more than a well documented Rollup config file
+-   In the end, it is nothing more than a well documented Rollup config
 
 Or maybe listing what _it's not_ and _doesn't do_ will give you a better idea :
 
 -   This _is not_ yet another framework to learn (the CLI is Rollup's, the configuration is Eleventy's)
--   The tools _are not_ hidden, you interact directly with Eleventy, PostCSS, Terser, html-minifier, ...
+-   The tools _are not_ hidden, you interact directly with Eleventy, PostCSS, Terser, Babel, CSSnano,...
 -   It _does not_ force any JS in the output (unless you use Marko's client-side components, of course)
--   You _will not_ find any mention of SPA, routes, servers, nor any GladeJS special API or "\<Link\>"
+-   You _will not_ find any mention of SPA, routes, servers, nor any GladeJS special API or `<Link>` tag
 
 This project requires [NodeJS](https://nodejs.org) v14.x or superior and the included "npm" CLI v6.14 or superior. \
 It is tested on the latest versions of NodeJS v14, v15 & v16 on MacOS, Ubuntu and Windows.
@@ -164,11 +150,11 @@ While still in early development, everything is in place to receive your contrib
 
 You are now ready to contribute, so ... where is the code ? Mostly in another castle, Mario.
 
--   The [core engine](./rollup.config.mjs) is here, but it's more configuration than source code
+-   The [core engine](./rollup.config.mjs) is here, but it is more configuration than source code
 -   The [integration tests](./tests/) are here, but they are more documentation than test
 -   The [documentation dir](./docs/) is here and contains the actual meat of this project
 -   The ["@gladejs/eleventy"](./packages/eleventy/) package integrates 11ty into Rollup for GladeJS
 -   The ["@gladejs/rollup"](./packages/rollup/) package contains all of the necessary glue code
 
-Finally, GladeJS relies on over 15 major OSS projects, including 7 Rollup plugins, \
+Finally, GladeJS relies on over 22 major OSS projects, including 7 Rollup plugins, \
 contributing to any of them, not only benefits this project, but also many others.

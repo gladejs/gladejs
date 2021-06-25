@@ -86,6 +86,7 @@ const browserConfig = {
         commonjs({ include: /node_modules/ }),
         ...assetsOptions.map((o) => assets({ emitFiles: false, ...o })),
     ],
+
     output: [
         {
             dir: OUTPUT_DIR + '/css',
@@ -111,6 +112,7 @@ const legacyConfig = isProd && {
         commonjs({ include: /node_modules/ }),
         ...assetsOptions.map((o) => assets({ emitFiles: false, ...o })),
     ],
+
     output: {
         dir: OUTPUT_DIR + '/cjs',
         entryFileNames: 'legacy-[hash].js',
