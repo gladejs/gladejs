@@ -18,21 +18,21 @@ jobs:
             - run: npm i && npm run lint
 
             - name: release @gladejs/eleventy
-              run: npx semantic-release --dry-run
+              run: npx semantic-release
               working-directory: ./packages/eleventy
               env:
                   NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
                   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
             - name: release @gladejs/rollup
-              run: npx semantic-release --dry-run
+              run: npx semantic-release
               working-directory: ./packages/rollup
               env:
                   NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
                   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
             - name: release the GladeJS
-              run: npx semantic-release --dry-run
+              run: npx semantic-release
               env:
                   NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
                   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
