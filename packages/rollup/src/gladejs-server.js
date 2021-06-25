@@ -24,7 +24,7 @@ export function server(input) {
             if ((await fs.stat(input)).isDirectory()) {
                 options.output[0].entryFileNames = '[name].mjs'
 
-                options.external.push(/\/node_modules\/.+\.[cm]?js(on)?$/)
+                // options.external.push(/\/node_modules\/.+\.[cm]?js(on)?$/)
                 options.external.push('fs-extra', 'express', '@marko/express')
 
                 if (await fs.pathExists(path.join(input, 'server.js'))) {
