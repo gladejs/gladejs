@@ -103,9 +103,9 @@ const browserConfig = {
 
 const legacyConfig = isProd && {
     plugins: [
-        marko.default.browser({ serialize: gladejs.serializer() }),
+        terser(terserOptions('cjs')),
         gladejs.legacy(OUTPUT_DIR, PUBLIC_PATH),
-        isProd && terser(terserOptions('cjs')),
+        marko.default.browser({ serialize: gladejs.serializer() }),
 
         resolve({ preferBuiltins: false, browser: true }),
         commonjs({ include: /node_modules/ }),
