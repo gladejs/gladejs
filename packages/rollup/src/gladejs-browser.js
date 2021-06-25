@@ -220,8 +220,7 @@ export function legacy(mainOutput, publicPath) {
 
             Object.values(bundle).forEach((legacy) => {
                 if (legacy.code.trim()) {
-                    legacy.type = 'asset'
-                    legacy.source = legacy.code
+                    legacy.isEntry = false
                     legacy.filePath = `${publicPath}${output}/${legacy.fileName}`
                 } else delete bundle[legacy.fileName]
             })
