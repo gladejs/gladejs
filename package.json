@@ -109,7 +109,7 @@
         "@babel/core": "^7.14.6",
         "@babel/preset-env": "^7.14.7",
         "@gladejs/eleventy": "^0.7.0",
-        "@gladejs/rollup": "^0.7.0",
+        "@gladejs/rollup": "^0.7.1",
         "@marko/express": "^1.0.0",
         "@marko/rollup": "^3.3.1",
         "@marko/vite": "^1.3.2",
