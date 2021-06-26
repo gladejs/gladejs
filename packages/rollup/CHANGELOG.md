@@ -1,3 +1,10 @@
+## [0.7.1](https://github.com/gladejs/gladejs/compare/rollup-v0.7.0...rollup-v0.7.1) (2021-06-26)
+
+
+### Bug Fixes
+
+* **@rollup:** declare "gladejs-rollup" in exports ([9f895e6](https://github.com/gladejs/gladejs/commit/9f895e657a92b7e05eee1930500b4be868b5f56b))
+
 # [0.7.0](https://github.com/gladejs/gladejs/compare/rollup-v0.6.2...rollup-v0.7.0) (2021-06-26)
 
 
