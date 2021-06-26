@@ -1,3 +1,38 @@
+# [0.7.0](https://github.com/gladejs/gladejs/compare/eleventy-v0.6.1...eleventy-v0.7.0) (2021-06-26)
+
+
+### Bug Fixes
+
+* **@rollup:** clean up empty "css" output folders ([a425fa8](https://github.com/gladejs/gladejs/commit/a425fa88a8274a81c27e8bab37b46adebc9cf1b5))
+* **@rollup:** correct the legacy bundle serialization ([818e2e1](https://github.com/gladejs/gladejs/commit/818e2e1aabf9e6ef6a005a460b85ff0f5a218185))
+* **@rollup:** improve the "promisedStyle" handling ([446c300](https://github.com/gladejs/gladejs/commit/446c300679956107d1503517a4448748bbdb30aa))
+* **@rollup:** improve the browser plugin init phase ([675ee96](https://github.com/gladejs/gladejs/commit/675ee963e58369d44f74c8ae74a960a9252564c5))
+* **@rollup:** improve the JS & CSS assets handling ([4b7e516](https://github.com/gladejs/gladejs/commit/4b7e5160f26a959cdb58dab644296b0407148032))
+* **@rollup:** improve the legacy plugin init phase ([ea75ada](https://github.com/gladejs/gladejs/commit/ea75ada156e9a4f103644daedea0e0f33cb51086))
+* **@rollup:** modify the default "Unique Tag Id" ([9c80f43](https://github.com/gladejs/gladejs/commit/9c80f436b27048dad8015c7849f4d3c103a9a3b7))
+* **@rollup:** move the CSS_FILTER const to "utils" ([7ce22bc](https://github.com/gladejs/gladejs/commit/7ce22bcfe0869c25552f12fd549724d9f2b0549a))
+* **@rollup:** simplify the "serializer" implementation ([eed8fb0](https://github.com/gladejs/gladejs/commit/eed8fb0740c818ef46d8adf75c7a4bb3d0c2d76b))
+* **@rollup:** simplify the default "stylesChunking" ([bac0a3d](https://github.com/gladejs/gladejs/commit/bac0a3d24ed6af559db1d3a0bcf6824ffd15685d))
+* **@rollup:** upgrade to plugin-node-resolve v13 ([bb1e8aa](https://github.com/gladejs/gladejs/commit/bb1e8aac84c792673beebdea68c4da6706c11855))
+* **config:** flatten the config & export at the end ([e9a89a1](https://github.com/gladejs/gladejs/commit/e9a89a12bb8c7fbaae04f0337df4c83a60c49037))
+* **config:** reorder legacy config plugins correctly ([3dea83d](https://github.com/gladejs/gladejs/commit/3dea83d9a2eda2328df034757b02e36064f26b60))
+* **gladejs:** revert node-resolve plugin to 11.2.1 ([faae603](https://github.com/gladejs/gladejs/commit/faae6035d675a6b9a81e59cd73c0d333896cb84a))
+* **gladejs:** update Marko and Rollup dependencies ([384bb3f](https://github.com/gladejs/gladejs/commit/384bb3fc74636071c41b96bbe2c74b20a31df601))
+
+
+### Features
+
+* **@eleventy:** upgrade to Eleventy v1.0 Canary ([28341c9](https://github.com/gladejs/gladejs/commit/28341c9fe9f7ac0bbc3beedd050b5600df3fdfe1))
+* **@rollup:** add legacy plugin for IE 11 support ([0aa3d82](https://github.com/gladejs/gladejs/commit/0aa3d825d154db3fe84b47720d4bb5fefd20150a))
+* **@rollup:** add ViteJS based live mode support ([ced3b23](https://github.com/gladejs/gladejs/commit/ced3b232b8899c8dba6784d8eaaf98455f068a04))
+* **@rollup:** create the easy "gladejs-rollup" tag ([175dce7](https://github.com/gladejs/gladejs/commit/175dce74639fd80bc5e5ab8cae4536ddbdcf767c))
+* **@rollup:** implement CSS code-splitting support ([b19d02b](https://github.com/gladejs/gladejs/commit/b19d02b8aea1434f2d772dd5de5d8b3f26bef837))
+* **@rollup:** support CSS scoping with scoped attr ([1f3bad7](https://github.com/gladejs/gladejs/commit/1f3bad7df10f1d2fa7d8af5702a7c2979ded2984))
+* **gladejs:** add legacy config for IE 11 support ([7259c6d](https://github.com/gladejs/gladejs/commit/7259c6d504f594895db7c9417c295065773d1058))
+* **gladejs:** add legacy config for IE 11 support ([d9c8275](https://github.com/gladejs/gladejs/commit/d9c8275268c6f07cf97e177a27448f757eba3de9))
+* **gladejs:** update Rollup conf for CSS splitting ([c4390f8](https://github.com/gladejs/gladejs/commit/c4390f8905902e193f89fac556e4c38ed71c9208))
+* **gladejs:** update Rollup conf for vite live mode ([8904b46](https://github.com/gladejs/gladejs/commit/8904b460fc71f722a35d431f51118a3b49124c0b))
+
 ## [0.6.1](https://github.com/gladejs/gladejs/compare/eleventy-v0.6.0...eleventy-v0.6.1) (2021-04-27)
 
 
