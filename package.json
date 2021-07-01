@@ -98,6 +98,10 @@
             [
                 "@semantic-release/git",
                 {
+                    "assets": [
+                        "CHANGELOG.md",
+                        "package.json"
+                    ],
                     "message": "chore(release): gladejs package version ${nextRelease.version} :tada: "
                 }
             ],

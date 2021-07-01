@@ -54,6 +54,10 @@
             [
                 "@semantic-release/git",
                 {
+                    "assets": [
+                        "CHANGELOG.md",
+                        "package.json"
+                    ],
                     "message": "chore(release): rollup package version ${nextRelease.version} :tada: "
                 }
             ],
