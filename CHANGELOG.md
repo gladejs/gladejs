@@ -1,3 +1,10 @@
+## [0.7.2](https://github.com/gladejs/gladejs/compare/gladejs-v0.7.1...gladejs-v0.7.2) (2021-07-02)
+
+
+### Bug Fixes
+
+* **deps:** minor version bumps for public release ([481eaa7](https://github.com/gladejs/gladejs/commit/481eaa7f743a2d74d4788b00a7b70264856aabf5))
+
 ## [0.7.1](https://github.com/gladejs/gladejs/compare/gladejs-v0.7.0...gladejs-v0.7.1) (2021-06-26)
 
 
