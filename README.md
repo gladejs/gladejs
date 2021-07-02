@@ -1,3 +1,5 @@
+<br/>
+
 <p align="center">
     <a href="https://gladejs.com" rel="nofollow">
         <img width="240" alt="GladeJS Logo" src="https://raw.githubusercontent.com/gladejs/gladejs/main/pages/logos/gladejs.svg">
@@ -15,7 +17,7 @@
         <img alt="Code Formatter" src="https://badgen.net/badge/code%20format/prettier/ff69b4">
     </a>
     &nbsp;
-    <a href="https://standardjs.com" rel="nofollow">
+    <a href="https://github.com/standard/standard">
         <img alt="JavaScript Style" src="https://badgen.net/badge/code%20style/standard/green">
     </a>
     &nbsp;
@@ -23,15 +25,15 @@
         <img alt="Semantic Release" src="https://badgen.net/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80/semantic-release/e10079">
     </a>
     &nbsp;
-    <a href="https://www.npmjs.com/package/gladejs" rel="nofollow">
-        <img alt="Latest Version" src="https://badgen.net/npm/v/gladejs">
+    <a href="https://github.com/gladejs/gladejs/blob/main/LICENSE">
+        <img alt="GitHub License" src="https://badgen.net/github/license/gladejs/gladejs">
     </a>
     &nbsp;
 </p>
 
 <p align="center">
-    <a href="https://github.com/gladejs/gladejs/blob/main/LICENSE">
-        <img alt="GitHub License" src="https://badgen.net/github/license/gladejs/gladejs">
+    <a href="https://www.npmjs.com/package/gladejs" rel="nofollow">
+        <img alt="Latest Version" src="https://badgen.net/npm/v/gladejs">
     </a>
     &nbsp;
     <a href="https://github.com/gladejs/gladejs/actions">
@@ -85,7 +87,9 @@ It will allow for a simple "`npm init @gladejs MyWebSite`" installation, but not
 
 ```bash
 mkdir MyWebSite && cd MyWebSite
+```
 
+```bash
 npm init -y && npm i -D gladejs
 ```
 
@@ -107,7 +111,7 @@ npm init -y && npm i -D gladejs
 npx shx cp node_modules/gladejs/rollup.config.mjs .
 ```
 
-## Documentation
+## Documentation [WIP]
 
 The bare minimum to get you started is here, but you'll find detailed information in the ["docs" folder](./docs/).
 
@@ -133,13 +137,24 @@ The files & folders structure is marked by a distinctive lack of imagination :
 
 -   Web Pages go into the "`pages`" input dir and Marko UI Components into the "`components`" dir.
 -   There is "`layouts`" for 11ty Layouts, "`includes`" for Includes and "`datastores`" for Data Files.
--   CSS Styles are picked up from any "`style.{css|less|sass|scss|styl}`" file placed right next to any \
+-   CSS Styles are picked up from any "`style.{css|less|sass|scss|styl}`" file placed next to any \
     "`index.{html|md|marko|11ty.js|liquid|njk|hbs|mustache|ejs|haml|pug|jstl}`" page.
--   Static assets can be pulled from anywhere on your disk, the NPM registry or the World Wide Web.
+
+### Assets & Resources
+
+Static assets are pulled in using relative, absolute or NPM package file paths :
+
+-   Using the standard ESM "`import`" keyword at the top of any page for CSS, JS and images.
+-   Using the "`src`" attribute or any normal HTML resource tag ("`script`", "`style`", "`link`").
+
+CSS & JS resources are "swallowed" by Rollup to be bundled, chunked and pressed.
+
+-   Don't forget to inject them back into the HTML HEAD tag using ["`<gladejs-rollup />`"](./packages/rollup/src/gladejs-rollup.marko).
+-   Use the `name`, `type`, `scoped` & `rollup="ignore|bundle"` attributes for more control.
 
 Now, enter [the GladeJS "docs"](./docs/), follow [the floating possum around 11ty](https://www.11ty.dev/docs/) or [RTFMD (Read The Fabulous Marko Docs)](https://markojs.com/docs/getting-started/).
 
-## Contributing
+## Contributing [WIP]
 
 While still in early development, everything is in place to receive your contributions.
 
