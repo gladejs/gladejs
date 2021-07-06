@@ -106,7 +106,7 @@ async function staticServer(input, output, mode) {
 
                 return `  .get('/${pagePath}', (_, r) => r.marko(p${i}, {}))`
             } else {
-                const fileName = path.join(output, p.slice(0, -6) + '.html')
+                const fileName = path.resolve(output, p.slice(0, -6) + '.html')
 
                 return (
                     `        p${i}.render({}).then((r) => ` +

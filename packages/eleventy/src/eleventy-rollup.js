@@ -79,6 +79,7 @@ async function copyUn11tyFiles(rootDir, destDir, watchList) {
         ignore: watchList,
     })
 
+    console.log(watchList)
     console.log(files)
 
     const copy = (file) => {
