@@ -205,7 +205,7 @@ export function legacy(mainOutput, publicPath) {
 
         buildStart(options) {
             legacyInputCode = Object.values(options.input).map(
-                (page) => `import '${MARKO_ENTRY}${page}';`
+                (page) => `import '${MARKO_ENTRY}${path.resolve(page)}';`
             )
 
             options.input = [legacyInputId]
