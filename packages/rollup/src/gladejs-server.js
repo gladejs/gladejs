@@ -123,6 +123,8 @@ async function staticServer(input, output, mode) {
     const inputName = mode.isLive ? 'server' : 'static'
     const inputFile = path.resolve(input, inputName + '.mjs')
 
+    console.log(inputCode)
+
     await fs.outputFile(inputFile, inputCode.join('\n'))
 
     return inputFile
