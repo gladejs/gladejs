@@ -33,14 +33,14 @@ export default function (input, output) {
             }
 
             // Eleventy doesn't like win32 paths even on Windows.
-            input = normalize(input).replace(/^([a-zA-Z]+:)/, '')
-            output = normalize(output).replace(/^([a-zA-Z]+:)/, '')
+            const elevInput = normalize(input).replace(/^([a-zA-Z]+:)/, '')
+            const elevOutput = normalize(output).replace(/^([a-zA-Z]+:)/, '')
 
-            console.log(output)
+            console.log(elevOutput)
 
             const configPath = new URL('./eleventy-config.cjs', import.meta.url)
 
-            eleventy = new Eleventy(input, output, {
+            eleventy = new Eleventy(elevInput, elevOutput, {
                 configPath: url.fileURLToPath(configPath),
                 config: await loadUserConfig(path.resolve('.eleventy.cjs')),
             })
