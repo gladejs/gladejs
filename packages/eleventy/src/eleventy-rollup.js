@@ -79,8 +79,11 @@ async function copyUn11tyFiles(rootDir, destDir, watchList) {
         ignore: watchList,
     })
 
+    console.log(files)
+
     const copy = (file) => {
         const dest = destDir + file.substring(rootDir.length)
+        console.log('COPY ::' + file + ' to ' + dest)
         return fs.ensureDir(path.dirname(dest)).then(() => fs.copy(file, dest))
     }
 
