@@ -23,6 +23,8 @@ export default function (input, output) {
             input = path.resolve(input)
             output = path.resolve(output)
 
+            console.log(output)
+
             if (!(await fs.pathExists(input))) {
                 throw new Error(`Input "${input}" should exist first.`)
             }
@@ -33,6 +35,8 @@ export default function (input, output) {
             // Eleventy doesn't like win32 paths even on Windows.
             input = normalize(input).replace(/^([a-zA-Z]+:)/, '')
             output = normalize(output).replace(/^([a-zA-Z]+:)/, '')
+
+            console.log(output)
 
             const configPath = new URL('./eleventy-config.cjs', import.meta.url)
 
