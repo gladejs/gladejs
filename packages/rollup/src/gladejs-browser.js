@@ -21,9 +21,16 @@ export function browser(mainOutput, publicPath) {
         },
 
         buildStart(options) {
-            Object.entries(options.input).forEach(([name, path]) => {
-                options.input[name + '.style'] = path.slice(0, -6) + '.style'
+            console.log(options.input)
+
+            Object.entries(options.input).forEach(([name, file]) => {
+                file = path.resolve(file)
+                options.input[name] = file
+
+                options.input[name + '.style'] = file.slice(0, -6) + '.style'
             })
+
+            console.log(options.input)
 
             options.onwarn = silenceEmptyWarnings(options.onwarn)
         },
