@@ -74,7 +74,7 @@ async function eleventyPromise(input, output, eleventy) {
 
 async function copyUn11tyFiles(rootDir, destDir, watchList) {
     const files = await glob('**', {
-        cwd: rootDir,
+        cwd: rootDir.replace(/^([a-zA-Z]+:)/, ''),
         absolute: true,
         ignore: watchList,
     })
@@ -100,7 +100,7 @@ async function copyUn11tyFiles(rootDir, destDir, watchList) {
 
 async function renameHTMLFiles(rootDir) {
     const files = await glob('**.html', {
-        cwd: rootDir,
+        cwd: rootDir.replace(/^([a-zA-Z]+:)/, ''),
         absolute: true,
     })
 

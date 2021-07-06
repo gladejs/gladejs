@@ -110,7 +110,7 @@ async function staticServer(input, output, mode) {
 
                 return (
                     `        p${i}.render({}).then((r) => ` +
-                    `fs.outputFile('${fileName}', r.getOutput())),`
+                    `fs.outputFile("${fileName}", r.getOutput())),`
                 )
             }
         })
