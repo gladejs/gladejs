@@ -20,8 +20,8 @@ export default function (input, output) {
         async options(options) {
             if (eleventy !== false) return
 
-            input = path.resolve(input)
-            output = path.resolve(output)
+            input = normalize(path.resolve(input))
+            output = normalize(path.resolve(output))
 
             console.log(output)
 
@@ -33,8 +33,8 @@ export default function (input, output) {
             }
 
             // Eleventy doesn't like win32 paths even on Windows.
-            const elevInput = normalize(input).replace(/^([a-zA-Z]+:)/, '')
-            const elevOutput = normalize(output).replace(/^([a-zA-Z]+:)/, '')
+            const elevInput = input.replace(/^([a-zA-Z]+:)/, '')
+            const elevOutput = output.replace(/^([a-zA-Z]+:)/, '')
 
             console.log(elevOutput)
 
@@ -48,9 +48,7 @@ export default function (input, output) {
             eleventy.setIsVerbose(false) // be quiet, no need to list all the files
             eleventy.setIncrementalBuild(true) // fewer builds in Live mode, please
 
-            return eleventyPromise(elevInput, elevOutput, eleventy).then(
-                () => options
-            )
+            return eleventyPromise(input, output, eleventy).then(() => options)
         },
     }
 }
