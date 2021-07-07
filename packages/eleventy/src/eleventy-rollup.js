@@ -40,7 +40,7 @@ export default function (input, output) {
 
             const configPath = new URL('./eleventy-config.cjs', import.meta.url)
 
-            eleventy = new Eleventy(elevInput, elevOutput, {
+            eleventy = new Eleventy(input, output, {
                 configPath: url.fileURLToPath(configPath),
                 config: await loadUserConfig(path.resolve('.eleventy.cjs')),
             })
