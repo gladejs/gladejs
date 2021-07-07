@@ -48,7 +48,9 @@ export default function (input, output) {
             eleventy.setIsVerbose(false) // be quiet, no need to list all the files
             eleventy.setIncrementalBuild(true) // fewer builds in Live mode, please
 
-            return eleventyPromise(input, output, eleventy).then(() => options)
+            return eleventyPromise(elevInput, elevOutput, eleventy).then(
+                () => options
+            )
         },
     }
 }
@@ -74,7 +76,7 @@ async function eleventyPromise(input, output, eleventy) {
 
 async function copyUn11tyFiles(rootDir, destDir, watchList) {
     const files = await glob('**', {
-        cwd: rootDir.replace(/^([a-zA-Z]+:)/, ''),
+        cwd: rootDir,
         absolute: true,
         ignore: watchList,
     })
@@ -100,7 +102,7 @@ async function copyUn11tyFiles(rootDir, destDir, watchList) {
 
 async function renameHTMLFiles(rootDir) {
     const files = await glob('**.html', {
-        cwd: rootDir.replace(/^([a-zA-Z]+:)/, ''),
+        cwd: rootDir,
         absolute: true,
     })
 

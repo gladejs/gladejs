@@ -24,9 +24,6 @@ export function browser(mainOutput, publicPath) {
             console.log(options.input)
 
             Object.entries(options.input).forEach(([name, file]) => {
-                file = path.resolve(file)
-                options.input[name] = file
-
                 options.input[name + '.style'] = file.slice(0, -6) + '.style'
             })
 
@@ -205,7 +202,7 @@ export function legacy(mainOutput, publicPath) {
 
         buildStart(options) {
             legacyInputCode = Object.values(options.input).map(
-                (page) => `import '${MARKO_ENTRY}${path.resolve(page)}';`
+                (page) => `import '${MARKO_ENTRY}${page}';`
             )
 
             options.input = [legacyInputId]
