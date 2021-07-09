@@ -32,15 +32,15 @@ export default function (input, output) {
                 throw new Error(`Input "${input}" is empty, job done.`)
             }
 
-            // Eleventy doesn't like win32 paths even on Windows.
-            const elevInput = input.replace(/^([a-zA-Z]+:)/, '')
-            const elevOutput = output.replace(/^([a-zA-Z]+:)/, '')
+            // Eleventy doesn't like drive letters on Windows.
+            const elevInput = input.replace(/^[a-zA-Z]+:/, '')
+            const elevOutput = output.replace(/^[a-zA-Z]+:/, '')
 
             console.log(elevOutput)
 
             const configPath = new URL('./eleventy-config.cjs', import.meta.url)
 
-            eleventy = new Eleventy(input, output, {
+            eleventy = new Eleventy(elevInput, elevOutput, {
                 configPath: url.fileURLToPath(configPath),
                 config: await loadUserConfig(path.resolve('.eleventy.cjs')),
             })
@@ -73,10 +73,13 @@ async function eleventyPromise(input, output, eleventy) {
 }
 
 async function copyUn11tyFiles(rootDir, destDir, watchList) {
+    const driveLetter = rootDir.match(/^[a-zA-Z]+:/) ?? ['']
+    watchList = watchList.map((path) => driveLetter[0] + path)
+
     const files = await glob('**', {
-        cwd: rootDir,
-        absolute: true,
         ignore: watchList,
+        absolute: true,
+        cwd: rootDir,
     })
 
     console.log(watchList)
@@ -100,8 +103,8 @@ async function copyUn11tyFiles(rootDir, destDir, watchList) {
 
 async function renameHTMLFiles(rootDir) {
     const files = await glob('**.html', {
-        cwd: rootDir,
         absolute: true,
+        cwd: rootDir,
     })
 
     const move = (file) => {
