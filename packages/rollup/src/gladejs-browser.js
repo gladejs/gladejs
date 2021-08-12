@@ -21,8 +21,8 @@ export function browser(mainOutput, publicPath) {
         },
 
         buildStart(options) {
-            Object.entries(options.input).forEach(([name, path]) => {
-                options.input[name + '.style'] = path.slice(0, -6) + '.style'
+            Object.entries(options.input).forEach(([name, file]) => {
+                options.input[name + '.style'] = file.slice(0, -6) + '.style'
             })
 
             options.onwarn = silenceEmptyWarnings(options.onwarn)

@@ -23,6 +23,8 @@ export function serializer() {
 
 export function moduleChunking() {
     return (id) => {
+        if (!id.endsWith('.js') && !id.endsWith('.marko')) return
+
         if (id.startsWith(path.resolve('components'))) return 'project'
 
         if (
@@ -42,6 +44,8 @@ export function moduleChunking() {
 
 export function stylesChunking() {
     return (id) => {
+        if (!id.endsWith('.css') && !id.endsWith('.style')) return
+
         if (id.startsWith(path.resolve('components'))) return 'project'
         if (id.includes(path.join('/node_modules/'))) return 'modules'
     }
