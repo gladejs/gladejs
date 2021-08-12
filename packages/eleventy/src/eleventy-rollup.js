@@ -20,8 +20,8 @@ export default function (input, output) {
         async options(options) {
             if (eleventy !== false) return
 
-            input = path.resolve(input)
-            output = path.resolve(output)
+            input = normalize(path.resolve(input))
+            output = normalize(path.resolve(output))
 
             if (!(await fs.pathExists(input))) {
                 throw new Error(`Input "${input}" should exist first.`)
@@ -30,14 +30,15 @@ export default function (input, output) {
                 throw new Error(`Input "${input}" is empty, job done.`)
             }
 
-            // Eleventy doesn't like win32 paths even on Windows.
-            input = normalize(input).replace(/^([a-zA-Z]+:)/, '')
-            output = normalize(output).replace(/^([a-zA-Z]+:)/, '')
+            // Eleventy doesn't like drive letters on Windows.
+            const elevInput = input.replace(/^[a-zA-Z]+:/, '')
+            const elevOutput = output.replace(/^[a-zA-Z]+:/, '')
 
-            const configPath = new URL('./eleventy-config.cjs', import.meta.url)
+            const configURL = new URL('./eleventy-config.cjs', import.meta.url)
+            const configPath = normalize(url.fileURLToPath(configURL))
 
-            eleventy = new Eleventy(input, output, {
-                configPath: url.fileURLToPath(configPath),
+            eleventy = new Eleventy(elevInput, elevOutput, {
+                configPath: configPath.replace(/^[a-zA-Z]+:/, ''),
                 config: await loadUserConfig(path.resolve('.eleventy.cjs')),
             })
 
@@ -69,10 +70,13 @@ async function eleventyPromise(input, output, eleventy) {
 }
 
 async function copyUn11tyFiles(rootDir, destDir, watchList) {
+    const driveLetter = rootDir.match(/^[a-zA-Z]+:/) ?? ['']
+    watchList = watchList.map((path) => driveLetter[0] + path)
+
     const files = await glob('**', {
-        cwd: rootDir,
-        absolute: true,
         ignore: watchList,
+        absolute: true,
+        cwd: rootDir,
     })
 
     const copy = (file) => {
@@ -92,8 +96,8 @@ async function copyUn11tyFiles(rootDir, destDir, watchList) {
 
 async function renameHTMLFiles(rootDir) {
     const files = await glob('**.html', {
-        cwd: rootDir,
         absolute: true,
+        cwd: rootDir,
     })
 
     const move = (file) => {
