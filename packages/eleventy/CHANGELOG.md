@@ -1,3 +1,16 @@
+## [0.7.1](https://github.com/gladejs/gladejs/compare/eleventy-v0.7.0...eleventy-v0.7.1) (2021-08-12)
+
+
+### Bug Fixes
+
+* **@eleventy:** normalize paths & drives on Windows ([1461477](https://github.com/gladejs/gladejs/commit/146147753d4651ba10b7645d97e5b19437d01dca))
+* **@rollup:** add filters to the "chunking" functions ([2dc0c66](https://github.com/gladejs/gladejs/commit/2dc0c664324c7d689c0bce73fc4dcabb30420848))
+* **@rollup:** declare "gladejs-rollup" in exports ([9f895e6](https://github.com/gladejs/gladejs/commit/9f895e657a92b7e05eee1930500b4be868b5f56b))
+* **@rollup:** normalize paths in "static server" code ([e9d7753](https://github.com/gladejs/gladejs/commit/e9d7753ed937965cb0c373ca2f9c73fe21252d91))
+* **deps:** bump all deps to their latest version ([1530859](https://github.com/gladejs/gladejs/commit/1530859b7a828a9cc0ee6358b5a616602505ae22))
+* **deps:** minor version bumps for public release ([481eaa7](https://github.com/gladejs/gladejs/commit/481eaa7f743a2d74d4788b00a7b70264856aabf5))
+* **gladejs:** bump "@gladejs/rollup" for latest fix ([7716fce](https://github.com/gladejs/gladejs/commit/7716fcebedc4bc2423751d99c0f92604136eb095))
+
 # [0.7.0](https://github.com/gladejs/gladejs/compare/eleventy-v0.6.1...eleventy-v0.7.0) (2021-06-26)
 
 
