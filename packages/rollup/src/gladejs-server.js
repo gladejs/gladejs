@@ -5,6 +5,7 @@ import fs from 'fs-extra'
 import glob from 'fast-glob'
 
 import execa from 'execa'
+import normalize from 'normalize-path'
 
 import { CSS_FILTER, registerTagLib } from './gladejs-utils.js'
 
@@ -70,7 +71,7 @@ async function staticServer(input, output, mode) {
 
     const pages = await glob('**.marko', {
         ignore: ['**/components/**'],
-        cwd: input,
+        cwd: normalize(input),
     })
 
     if (pages.length === 0) {
@@ -106,11 +107,11 @@ async function staticServer(input, output, mode) {
 
                 return `  .get('/${pagePath}', (_, r) => r.marko(p${i}, {}))`
             } else {
-                const fileName = path.join(output, p.slice(0, -6) + '.html')
+                const filePath = path.resolve(output, p.slice(0, -6) + '.html')
 
                 return (
                     `        p${i}.render({}).then((r) => ` +
-                    `fs.outputFile('${fileName}', r.getOutput())),`
+                    `fs.outputFile("${normalize(filePath)}", r.getOutput())),`
                 )
             }
         })
