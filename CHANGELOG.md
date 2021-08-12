@@ -1,3 +1,13 @@
+## [0.7.3](https://github.com/gladejs/gladejs/compare/gladejs-v0.7.2...gladejs-v0.7.3) (2021-08-12)
+
+
+### Bug Fixes
+
+* **@eleventy:** normalize paths & drives on Windows ([1461477](https://github.com/gladejs/gladejs/commit/146147753d4651ba10b7645d97e5b19437d01dca))
+* **@rollup:** add filters to the "chunking" functions ([2dc0c66](https://github.com/gladejs/gladejs/commit/2dc0c664324c7d689c0bce73fc4dcabb30420848))
+* **@rollup:** normalize paths in "static server" code ([e9d7753](https://github.com/gladejs/gladejs/commit/e9d7753ed937965cb0c373ca2f9c73fe21252d91))
+* **deps:** bump all deps to their latest version ([1530859](https://github.com/gladejs/gladejs/commit/1530859b7a828a9cc0ee6358b5a616602505ae22))
+
 ## [0.7.2](https://github.com/gladejs/gladejs/compare/gladejs-v0.7.1...gladejs-v0.7.2) (2021-07-02)
 
 
