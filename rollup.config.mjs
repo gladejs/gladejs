@@ -5,11 +5,11 @@ import eleventy from '@gladejs/eleventy'
 import resolve from '@rollup/plugin-node-resolve'
 import commonjs from '@rollup/plugin-commonjs'
 
-import babel from '@rollup/plugin-babel'
 import assets from '@rollup/plugin-url'
-
 import styles from 'rollup-plugin-styles'
+
 import { terser } from 'rollup-plugin-terser'
+import { getBabelOutputPlugin } from '@rollup/plugin-babel'
 
 const SOURCE_DIR = process.env.GLADEJS_SOURCE_DIR ?? 'pages'
 const BUILD_DIR = process.env.GLADEJS_BUILD_DIR ?? 'build'
@@ -23,17 +23,6 @@ const OTHER_ASSETS = '**/*.(ttf|otf|eot|woff2?|wasm)'
 
 const isProd = process.env.NODE_ENV === 'production'
 
-// @docs https://github.com/Anidetrix/rollup-plugin-styles#configuration
-const stylesOptions = {
-    mode: ['extract'], // generates static CSS files
-    minimize: isProd, // using CSSnano in production
-    url: {
-        inline: false, // ... or copy into ...
-        publicPath: PUBLIC_PATH + '/css/assets/',
-        hash: '/assets/[name]-[hash][extname]',
-    },
-}
-
 // @docs https://github.com/rollup/plugins/tree/master/packages/url#options
 const assetsOptions = [
     {
@@ -44,6 +33,17 @@ const assetsOptions = [
         include: [IMAGE_ASSETS, MEDIA_ASSETS, OTHER_ASSETS],
     },
 ]
+
+// @docs https://github.com/Anidetrix/rollup-plugin-styles#configuration
+const stylesOptions = {
+    mode: ['extract'], // generates static CSS files
+    minimize: isProd, // using CSSnano in production
+    url: {
+        inline: false, // ... or copy into ...
+        publicPath: PUBLIC_PATH + '/css/assets/',
+        hash: '/assets/[name]-[hash][extname]',
+    },
+}
 
 // @docs https://github.com/TrySound/rollup-plugin-terser#options
 const terserOptions = (format) => {
@@ -117,7 +117,7 @@ const legacyConfig = isProd && {
         dir: OUTPUT_DIR + '/cjs',
         entryFileNames: 'legacy-[hash].js',
         plugins: [
-            babel.getBabelOutputPlugin({
+            getBabelOutputPlugin({
                 targets: 'IE >= 11, since 2015, defaults',
                 presets: [['@babel/env', { modules: 'cjs' }]],
             }),
