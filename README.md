@@ -138,7 +138,7 @@ The files & folders structure is marked by a distinctive lack of imagination :
 -   Web Pages go into the "`pages`" input dir and Marko UI Components into the "`components`" dir.
 -   There is "`layouts`" for 11ty Layouts, "`includes`" for Includes and "`datastores`" for Data Files.
 -   CSS Styles are picked up from any "`style.{css|less|sass|scss|styl}`" file placed next to any \
-    "`index.{html|md|marko|11ty.js|liquid|njk|hbs|mustache|ejs|haml|pug|jstl}`" page.
+    "`index.{html|md|marko|11ty.js|liquid|njk|hbs|mustache|ejs|haml|pug}`" page.
 
 ### Assets & Resources
 
