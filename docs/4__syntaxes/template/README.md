@@ -14,4 +14,3 @@ TODO
 -   [EJS](./EJS.md)
 -   [Haml](./Haml.md)
 -   [Pug](./Pug.md)
--   [JSTL](./JSTL.md)

@@ -134,7 +134,7 @@ The files & folders structure is marked by a distinctive lack of imagination :
 -   Web Pages go into the "`pages`" input dir and Marko UI Components into the "`components`" dir.
 -   There is "`layouts`" for 11ty Layouts, "`includes`" for Includes and "`datastores`" for Data Files.
 -   CSS Styles are picked up from any "`style.{css|sass|scss|less}`" file placed right next to any<br/>
-    "`index.{html|md|marko|11ty.js|liquid|njk|hbs|mustache|ejs|haml|pug|jstl}`" page.
+    "`index.{html|md|marko|11ty.js|liquid|njk|hbs|mustache|ejs|haml|pug}`" page.
 -   Static assets can be pulled from anywhere on your disk, the NPM registry or the World Wide Web.
 
 Now, enter [the GladeJS "docs"](./docs), follow [the floating possum around 11ty](https://www.11ty.dev/docs/) or [RTFMD (Read The Fabulous Marko Docs)](https://markojs.com/docs/getting-started/).

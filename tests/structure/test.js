@@ -15,7 +15,6 @@ describe('the Directory Structure', () => {
         test.todo('any "~/pages/**/[page].ejs" file')
         test.todo('any "~/pages/**/[page].haml" file')
         test.todo('any "~/pages/**/[page].pug" file')
-        test.todo('any "~/pages/**/[page].jstl" file')
     })
 
     describe('for CSS Styles Sources', () => {
@@ -69,7 +68,6 @@ describe('the Directory Structure', () => {
         test.todo('any "~/includes/**/[name].ejs" file')
         test.todo('any "~/includes/**/[name].haml" file')
         test.todo('any "~/includes/**/[name].pug" file')
-        test.todo('any "~/includes/**/[name].jstl" file')
     })
 
     describe('for 11ty "layouts" Dir', () => {
@@ -85,7 +83,6 @@ describe('the Directory Structure', () => {
         test.todo('any "~/layouts/**/[name].ejs" file')
         test.todo('any "~/layouts/**/[name].haml" file')
         test.todo('any "~/layouts/**/[name].pug" file')
-        test.todo('any "~/layouts/**/[name].jstl" file')
     })
 
     describe('for 11ty Special Data Keys', () => {

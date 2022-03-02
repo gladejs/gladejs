@@ -55,8 +55,4 @@ describe('the Static Templating', () => {
     describe('for the Pug Syntax', () => {
         test.todo('TODO')
     })
-
-    describe('for the JSTL Syntax', () => {
-        test.todo('TODO')
-    })
 })
