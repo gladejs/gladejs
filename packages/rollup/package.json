@@ -65,20 +65,21 @@
         ]
     },
     "dependencies": {
-        "@marko/babel-utils": "^5.15",
-        "@marko/compiler": "^5.15",
+        "@marko/babel-utils": "^5.19",
+        "@marko/compiler": "^5.19",
         "@marko/express": "^1.0.0",
-        "@marko/vite": "^2.0.0",
-        "browser-sync": "^2.27.5",
-        "execa": "^5.1.1",
-        "express": "^4.17.1",
-        "fast-glob": "^3.2.7",
-        "fs-extra": "^10.0.0",
+        "@marko/vite": "^2.2.7",
+        "browser-sync": "^2.27.7",
+        "execa": "^6.1.0",
+        "express": "^4.17.3",
+        "fast-glob": "^3.2.11",
+        "fs-extra": "^10.0.1",
+        "jsesc": "^3.0.2",
         "normalize-path": "^3.0.0",
-        "vite": "^2.4.4"
+        "vite": "^2.8.6"
     },
     "peerDependencies": {
-        "rollup": "^2.55"
+        "rollup": "^2.69"
     },
     "publishConfig": {
         "access": "public"

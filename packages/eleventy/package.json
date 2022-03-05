@@ -69,7 +69,7 @@
         "normalize-path": "^3.0.0"
     },
     "peerDependencies": {
-        "rollup": "^2.55"
+        "rollup": "^2.69"
     },
     "publishConfig": {
         "access": "public"
