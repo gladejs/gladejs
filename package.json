@@ -111,9 +111,9 @@
         ]
     },
     "dependencies": {
-        "@11ty/eleventy": "^1.0.0-canary.41",
-        "@babel/core": "^7.15.0",
-        "@babel/preset-env": "^7.15.0",
+        "@11ty/eleventy": "^1.0.0",
+        "@babel/core": "^7.17.5",
+        "@babel/preset-env": "^7.16.11",
         "@gladejs/eleventy": "^0.7.1",
         "@gladejs/rollup": "^0.7.2",
         "@marko/express": "^1.0.0",
