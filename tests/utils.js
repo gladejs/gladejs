@@ -2,7 +2,7 @@ import url from 'url'
 import path from 'path'
 
 import fs from 'fs-extra'
-import execa from 'execa'
+import { execaCommand } from 'execa'
 
 function runRollup(confFile, envVar = {}) {
     let rollupCmd = 'rollup -c ' + path.join(confFile)
@@ -18,7 +18,7 @@ function runCleanup(...pathList) {
 }
 
 function executeCommand(command) {
-    return execa.command(command, { preferLocal: true })
+    return execaCommand(command, { preferLocal: true })
 }
 
 function writeFile(filePath, content) {

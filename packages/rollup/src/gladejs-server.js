@@ -4,7 +4,7 @@ import path from 'path'
 import fs from 'fs-extra'
 import glob from 'fast-glob'
 
-import execa from 'execa'
+import { execaNode } from 'execa'
 import normalize from 'normalize-path'
 
 import { CSS_FILTER, registerTagLib } from './gladejs-utils.js'
@@ -140,7 +140,7 @@ async function viteDevServer(input, serverFile) {
         await fs.copy(viteServerFile, serverFile)
     }
 
-    const serverProc = execa.node(serverFile, [path.basename(input)], {
+    const serverProc = execaNode(serverFile, [path.basename(input)], {
         stdio: 'inherit',
     })
 

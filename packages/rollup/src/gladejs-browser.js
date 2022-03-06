@@ -1,8 +1,8 @@
 import path from 'path'
 import fs from 'fs-extra'
 
-import execa from 'execa'
 import bs from 'browser-sync'
+import { execaNode } from 'execa'
 
 import { CSS_FILTER, MARKO_ENTRY } from './gladejs-utils.js'
 
@@ -246,7 +246,7 @@ async function staticServer(output, isLive) {
             await fs.appendFile(staticFile, staticCodeRun + '\n')
         }
 
-        await execa.node(staticFile, [], { stdio: 'inherit' })
+        await execaNode(staticFile, [], { stdio: 'inherit' })
 
         if (isLive) {
             if (!browserSync) {
@@ -260,7 +260,7 @@ async function staticServer(output, isLive) {
         if (isLive && (await fs.pathExists(serverFile))) {
             if (serverProc) serverProc.kill()
 
-            serverProc = execa.node(serverFile, [path.basename(output)], {
+            serverProc = execaNode(serverFile, [path.basename(output)], {
                 stdio: 'inherit',
             })
 
