@@ -23,16 +23,13 @@ async function run(input) {
 
         .use('/', express.static(input))
         .use('*', async (req, res, next) => {
-            try {
-                const url = gladejs.urlToMarkoFile(input + req.baseUrl)
-                const ssr = await viteServer.ssrLoadModule(url)
+            const url = gladejs.urlToMarkoFile(input + req.baseUrl)
+            const ssr = await viteServer.ssrLoadModule(url, {
+                fixStacktrace: true,
+            })
 
-                if (typeof ssr.default === 'string') next()
-                else res.marko(ssr.default, {})
-            } catch (error) {
-                viteServer.ssrFixStacktrace(error)
-                next(error)
-            }
+            if (typeof ssr.default === 'string') next()
+            else res.marko(ssr.default, {})
         })
         .listen(8080)
 
