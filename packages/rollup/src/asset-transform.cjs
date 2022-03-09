@@ -137,8 +137,10 @@ function getUniqueTagId(path) {
     let name = path.hub.file.metadata.marko.id
     if (name.endsWith('/index.marko')) name = name.slice(0, -12)
 
-    name = 'g_' + basename(name, '.marko')
-    name += '-L' + path.node.loc.start.line
+    const isProd = process.env.NODE_ENV === 'production'
+
+    name = (isProd ? '' : 'id_') + basename(name, '.marko')
+    name += (isProd ? '' : '_L') + path.node.loc.start.line
 
     return name
 }
