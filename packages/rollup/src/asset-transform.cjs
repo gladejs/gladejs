@@ -57,7 +57,7 @@ function translate(path, href) {
     const isScript = path.node.name.value === 'script'
 
     let fileName = getAttrValue(path, 'name') ?? getAttrValue(path, 'id')
-    let fileType = getAttrValue(path, 'type') ?? getAttrValue(path, 'class')
+    let fileType = getAttrValue(path, 'lang') ?? getAttrValue(path, 'class')
 
     let code = path.node.body.body[0]?.value
 
@@ -96,10 +96,10 @@ function translateScoped(path, scopedAttr, parentPath) {
     let attrValue = getAttrValue(classAttr)
 
     attrValue = attrValue ? `${attrValue} ${scope}` : scope
-    attrValue = markoTypes.StringLiteral(attrValue)
+    attrValue = markoTypes.stringLiteral(attrValue)
 
     if (!classAttr) {
-        classAttr = markoTypes.MarkoAttribute('class', attrValue)
+        classAttr = markoTypes.markoAttribute('class', attrValue)
         parentPath.node.attributes.push(classAttr)
     } else classAttr.set('value', attrValue)
 
