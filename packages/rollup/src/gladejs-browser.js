@@ -215,6 +215,10 @@ export function legacy(mainOutput, publicPath) {
             if (CSS_FILTER.test(id)) return 'export default {};'
         },
 
+        transform(_, id) {
+            if (CSS_FILTER.test(id)) return 'export default {};'
+        },
+
         generateBundle(outputOptions, bundle) {
             const output = outputOptions.dir.slice(mainOutput.length)
 

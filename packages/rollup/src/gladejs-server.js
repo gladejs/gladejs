@@ -63,6 +63,10 @@ export function server(input) {
         load(id) {
             if (CSS_FILTER.test(id)) return 'export default {};'
         },
+
+        transform(_, id) {
+            if (CSS_FILTER.test(id)) return 'export default {};'
+        },
     }
 }
 
