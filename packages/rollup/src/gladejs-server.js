@@ -7,10 +7,10 @@ import glob from 'fast-glob'
 import { execaNode } from 'execa'
 import normalize from 'normalize-path'
 
-import { CSS_FILTER, registerTagLib } from './gladejs-utils.js'
+import { CSS_FILTER, registerTaglib } from './gladejs-utils.js'
 
 export function server(input) {
-    let markoTagLibs = false
+    let markoTaglibs = false
 
     return {
         name: 'gladejs/server',
@@ -54,9 +54,9 @@ export function server(input) {
         },
 
         buildStart() {
-            if (!markoTagLibs) {
-                registerTagLib()
-                markoTagLibs = true
+            if (!markoTaglibs) {
+                registerTaglib()
+                markoTaglibs = true
             }
         },
 

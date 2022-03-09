@@ -1,12 +1,15 @@
 <rollup|entryName, cssBundle, esmBundle, cjsBundle|>
-    $ const pageStyle = cssBundle.find((it) => it.name === entryName)
+    <const/pageStyle=cssBundle.find((it) => it.name === entryName)/>
+
     <if(pageStyle)>
-        <style>${pageStyle.source}</style>
+        <style rollup='ignore'>${pageStyle.source}</style>
     </if>
     <for|style| of=cssBundle.filter((it) => it.entries.includes(entryName))>
         <link rel='stylesheet' href=style.filePath>
     </for>
-    $ const pageChunk = esmBundle.find((it) => it.name === entryName)
+
+    <const/pageChunk=esmBundle.find((it) => it.name === entryName)/>
+
     <if(pageChunk)>
         <script type='module' async>${pageChunk.source}</script>
     </if>

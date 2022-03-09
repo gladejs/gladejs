@@ -51,28 +51,23 @@ export function stylesChunking() {
     }
 }
 
-export function registerTagLib() {
-    const assetTransformer = url.fileURLToPath(
-        new URL('./asset-transform.cjs', import.meta.url)
-    )
-    const gladejsRollupTag = url.fileURLToPath(
-        new URL('./gladejs-rollup.marko', import.meta.url)
+export function registerTaglib() {
+    const taglibPath = url.fileURLToPath(
+        new URL('../marko.json', import.meta.url)
     )
 
     const components = {
-        '<*>': { transform: assetTransformer },
-        '<gladejs-rollup>': { template: gladejsRollupTag },
+        taglibId: '@gladejs/rollup',
+        transform: './src/asset-transform.cjs',
+        taglibImports: ['@marko/tags-api-preview/marko.json'],
+        '<gladejs-rollup>': { template: './src/gladejs-rollup.marko' },
     }
 
     if (process.env.VITE_ENV) {
-        const rollupViteFake = url.fileURLToPath(
-            new URL('./rollup-vite.marko', import.meta.url)
-        )
-
-        components['<rollup>'] = { template: rollupViteFake }
+        components['<rollup>'] = { template: './src/rollup-vite.marko' }
     }
 
-    taglib.register('@gladejs/rollup', components)
+    taglib.register(taglibPath, components)
 }
 
 export function urlToMarkoFile(url) {

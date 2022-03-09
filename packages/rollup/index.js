@@ -5,7 +5,7 @@ import {
     serializer,
     moduleChunking,
     stylesChunking,
-    registerTagLib,
+    registerTaglib,
     urlToMarkoFile,
 } from './src/gladejs-utils.js'
 
@@ -16,6 +16,6 @@ export default {
     serializer,
     moduleChunking,
     stylesChunking,
-    registerTagLib,
+    registerTaglib,
     urlToMarkoFile,
 }

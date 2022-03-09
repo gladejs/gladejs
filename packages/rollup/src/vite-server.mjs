@@ -10,7 +10,7 @@ import markoWare from '@marko/express'
 import bs from 'browser-sync'
 
 async function run(input) {
-    gladejs.registerTagLib()
+    gladejs.registerTaglib()
 
     const viteServer = await createServer({
         server: { middlewareMode: 'ssr' },

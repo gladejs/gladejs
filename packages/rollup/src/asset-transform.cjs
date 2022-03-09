@@ -12,16 +12,26 @@ const ASSET_TAGS = {
     body: 'background',
 }
 
-module.exports = function transform(path) {
+module.exports = {
+    MarkoTag(path) {
+        transform(path)
+    },
+}
+
+function transform(path) {
     if (markoUtils.isDynamicTag(path)) return
+
+    const nodeName = path.node.name.value
+    const nodeBody = path.node.body.body
 
     const tagAttr = findAttrByName(path, 'rollup')
     const tagType = getAttrValue(tagAttr)
 
-    if (tagType === 'ignore') return tagAttr.remove()
+    if (['rollup', 'style'].includes(nodeName)) {
+        path.hub.file.path.node.extra.___featureType = 'class'
+    }
 
-    const nodeName = path.node.name.value
-    const nodeBody = path.node.body.body
+    if (tagType === 'ignore') return tagAttr.remove()
 
     if (['style', 'script'].includes(nodeName) && nodeBody.length === 1) {
         return markoTypes.isMarkoText(nodeBody[0]) && translate(path)
