@@ -1,20 +1,21 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8" />
-        <title>Welcome to the GladeJS !</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <gladejs-rollup />
-    </head>
-    <body class="home-page">
-        <h1>Welcome to the GladeJS !</h1>
-        <a class="logo" href="https://github.com/gladejs/gladejs">
-            <img alt="GladeJS GitHub" src="./logos/gladejs.svg" />
-        </a>
-        <h2>
-            Coming Soon to a
-            <a href="https://github.com/gladejs/gladejs">GitHub</a>
-            near you ...
-        </h2>
-    </body>
-</html>
+---
+layout: default
+title: Welcome to the GladeJS !
+
+logo_path: ./logos/gladejs.svg
+github_url: https://github.com/gladejs/gladejs
+---
+
+<main class="home-page">
+    <h1>{{ title }}</h1>
+
+    <a class="logo" href="{{ github_url }}">
+        <img alt="GladeJS GitHub" src="{{ logo_path }}" />
+    </a>
+
+    <h2>
+        Coming Soon to a
+        <a href="{{ github_url }}">GitHub</a>
+        near you ...
+    </h2>
+</main>

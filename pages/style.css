@@ -5,6 +5,7 @@
 }
 
 body {
+    margin: 0;
     color: #222;
     background-color: #fafafa;
     font-family: system-ui, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell,
