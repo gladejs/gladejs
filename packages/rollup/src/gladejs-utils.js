@@ -58,13 +58,15 @@ export function registerTaglib() {
 
     const components = {
         taglibId: '@gladejs/rollup',
+        tagsDir: './src/components',
         transform: './src/asset-transform.cjs',
         taglibImports: ['@marko/tags-api-preview/marko.json'],
-        '<gladejs-rollup>': { template: './src/gladejs-rollup.marko' },
     }
 
     if (process.env.VITE_ENV) {
-        components['<rollup>'] = { template: './src/rollup-vite.marko' }
+        components['<rollup>'] = {
+            template: './src/components/rollup-vite.marko',
+        }
     }
 
     taglib.register(taglibPath, components)

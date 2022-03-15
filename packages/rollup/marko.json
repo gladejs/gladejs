@@ -1,6 +1,3 @@
 {
-    "taglib-id": "gladejs-rollup",
-    "<gladejs-rollup>": {
-        "attributes": {}
-    }
+    "taglib-id": "gladejs-rollup"
 }

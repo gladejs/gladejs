@@ -16,10 +16,7 @@
     },
     "type": "module",
     "main": "./index.js",
-    "exports": {
-        ".": "./index.js",
-        "./src/gladejs-rollup.marko": "./src/gladejs-rollup.marko"
-    },
+    "exports": "./index.js",
     "license": "MIT",
     "engines": {
         "npm": ">=6.14",
